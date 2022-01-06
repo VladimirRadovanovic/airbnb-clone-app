@@ -12,7 +12,7 @@ nav {
 }
 
 .logo-img {
-    margin-left: 20px;
+    margin-left: 15px;
     height: 35px;
 }
 
@@ -20,6 +20,8 @@ nav {
     color: white;
     font-size: 20px;
     margin-left: 6px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 
