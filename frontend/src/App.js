@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import splashImg from '../src/images/splash-img.jpg'
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +16,12 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <div className="black-box">
+        <div className="splash-img-container">
+          <img src={splashImg} />
+        </div>
+      </div>
+      <div className="white-box"></div>
       {isLoaded && (
         <Switch>
 

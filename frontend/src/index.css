@@ -21,3 +21,27 @@ img {
     padding: 0;
     margin: 0;
 }
+
+.black-box {
+    background-color: black;
+    height: 1000px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 50px;
+}
+.white-box {
+    background-color: white;
+    height: 800px;
+}
+
+.splash-img-container {
+    width: 85%;
+
+
+}
+
+.splash-img-container img {
+    border-radius: 20px;
+    opacity: 0.7;
+}

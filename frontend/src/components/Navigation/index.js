@@ -101,7 +101,7 @@ function Navigation({ isLoaded }) {
           </li>
         </ul>
       </nav>
-      <div style={{ height: '2000px' }}></div>
+
     </>
   );
 }
