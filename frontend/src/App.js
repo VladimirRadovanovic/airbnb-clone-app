@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import splashImg from '../src/images/splash-img.jpg'
+import splashImg from '../src/images/splash-img3.jpg'
 
 function App() {
   const dispatch = useDispatch();
