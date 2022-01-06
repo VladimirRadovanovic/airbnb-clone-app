@@ -1,6 +1,7 @@
 .nav-list {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     list-style: none;
 }
 nav {
@@ -10,4 +11,20 @@ nav {
 
 }
 
+.logo-img {
+    margin-left: 20px;
+    height: 35px;
+}
 
+.logo-text {
+    color: white;
+    font-size: 20px;
+    margin-left: 6px;
+}
+
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}

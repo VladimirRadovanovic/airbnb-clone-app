@@ -27,9 +27,9 @@ function Navigation({ isLoaded }){
   return (
     <nav className='nav'>
     <ul className='nav-list'>
-      <li>
-        <NavLink exact to="/"><img src={whiteLogo} alt='logo'></img></NavLink>
-        <span>EarthBnB</span>
+      <li className='class-container'>
+        <NavLink className='logo-link' exact to="/"><img className='logo-img' src={whiteLogo} alt='logo'></img><span className='logo-text'>EarthBnB</span></NavLink>
+
       </li>
       <li>
 
