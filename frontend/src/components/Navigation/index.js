@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import whiteLogo from '../../images/white-logo.png'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -24,12 +25,18 @@ function Navigation({ isLoaded }){
   // }
 
   return (
-    <ul>
+    <nav className='nav'>
+    <ul className='nav-list'>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/"><img src={whiteLogo} alt='logo'></img></NavLink>
+        <span>EarthBnB</span>
+      </li>
+      <li>
+
         {isLoaded && <ProfileButton user={sessionUser}/>}
       </li>
     </ul>
+    </nav>
   );
 }
 
