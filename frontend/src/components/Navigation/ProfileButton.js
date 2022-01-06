@@ -5,6 +5,12 @@ import LoginFormModal from "../LoginFormModal";
 import LoginForm from "../LoginFormModal/LoginForm";
 import SignupForm from "../SignupFormModal/SignupForm";
 import { Modal } from '../../context/Modal';
+import whiteLogo from '../../images/white-logo.png'
+import profilePic from '../../images/profile.jpeg'
+import './ProfileButton.css';
+
+
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -33,14 +39,20 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    setShowLoginModal(false)
+    setShowSignupModal(false)
   };
 
   return (
     <>
       {user ? (
         <>
-          <button onClick={openMenu}>
-            <i className="fas fa-user-circle" />
+          <button className="profile-button" onClick={openMenu}>
+            <i className="fas fa-bars bars" />
+            <div className="profile-img-container">
+            <img className="profile-img" src={profilePic} alt='profile picture' />
+
+            </div>
           </button>
           {showMenu && (
             <ul className="profile-dropdown">
@@ -54,8 +66,13 @@ function ProfileButton({ user }) {
         </>
       ) : (
         <>
-          <button onClick={openMenu}>
-            <i className="fas fa-user-circle" />
+          <button className="profile-button" onClick={openMenu}>
+            <i className="fas fa-bars bars" />
+            <div className="profile-img-container">
+            <img className="profile-img" src={profilePic} alt='profile picture' />
+
+            </div>
+
           </button>
           {showMenu && (
             <ul className="profile-dropdown">
