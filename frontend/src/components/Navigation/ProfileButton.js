@@ -61,7 +61,7 @@ function ProfileButton({ user }) {
               <span className="logout-container">
 
               <div>
-                <button onClick={logout}>Log Out</button>
+                <button className="logout-button" onClick={logout}>Log Out</button>
               </div>
 
               </span>

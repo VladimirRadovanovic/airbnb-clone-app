@@ -70,7 +70,8 @@
     background-color: rgb(241, 241, 241);
 }
 
-.login-button {
+.login-button,
+.logout-button {
     font-weight: bolder;
 }
 
