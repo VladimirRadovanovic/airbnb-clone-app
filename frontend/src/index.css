@@ -46,14 +46,17 @@ img {
     border-radius: 25px;
     opacity: 0.9;
     color: white;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    /* font-family: 'Be Vietnam Pro', sans-serif; */
     font-family: 'Rubik', sans-serif;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    font-size: 33px;
+    font-size: 31px;
+
 
 }
+
+
 
 
 
@@ -94,6 +97,7 @@ img {
     border-radius: 30px;
     align-items: center;
     justify-content: center;
+    transition: 0.1s;
     /* text-align: center; */
 }
 /* .explore-spots-link span {
@@ -103,11 +107,15 @@ img {
     text-align: center;
 } */
 
+.spots-link-container:hover {
+    background-color: rgb(241, 241, 241);
+}
+
 .img-text-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 
 }
 h2 {
