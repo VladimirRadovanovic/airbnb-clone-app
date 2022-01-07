@@ -4,11 +4,16 @@ import { useDispatch } from "react-redux";
 
 import './LoginForm.css'
 
-function LoginForm() {
+function LoginForm({setShowLoginModal}) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+
+  const handleClick = () => {
+    setShowLoginModal(false)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +29,7 @@ function LoginForm() {
   return (
     <>
     <div className="modal-login-header">
-    <span><button><i className="fas fa-times"></i></button></span>
+    <span><button type='button' onClick={handleClick}><i className="fas fa-times"></i></button></span>
     <div className="title-container">
     <h3>Log In</h3>
     </div>
