@@ -7,6 +7,7 @@ import SignupForm from "../SignupFormModal/SignupForm";
 import { Modal } from '../../context/Modal';
 import whiteLogo from '../../images/white-logo.png'
 import profilePlaceholderPic from '../../images/profile-placeholder.png'
+import profilePic from '../../images/t.jpeg'
 import './ProfileButton.css';
 
 
@@ -50,7 +51,7 @@ function ProfileButton({ user }) {
           <button className="profile-button" onClick={openMenu}>
             <i className="fas fa-bars bars" />
             <div className="profile-img-container">
-            <img className="profile-img" src={profilePlaceholderPic} alt='profile picture' />
+            <img className="profile-img" src={user ? profilePic : profilePlaceholderPic} alt='profile picture' />
 
             </div>
           </button>
