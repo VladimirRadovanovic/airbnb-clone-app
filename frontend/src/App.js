@@ -30,8 +30,15 @@ function App() {
 
             </div>
           </div>
+
         </div>
-        <div className="white-box"></div>
+        <div className="img2-container">
+        <div className="splash-img-container2">
+                fsfdsfsdfdsfsdfdsfds
+          </div>
+
+        </div>
+        {/* <div className="white-box"></div> */}
       </main>
       {isLoaded && (
         <Switch>
