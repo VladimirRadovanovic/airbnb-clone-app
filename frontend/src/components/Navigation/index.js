@@ -13,7 +13,7 @@ function Navigation({ isLoaded }) {
   const [navClass, setNavClass] = useState('nav')
   const [logo, setLogo] = useState(whiteLogo)
   const [logoText, setLogoText] = useState('logo-text')
-  console.log(navClass)
+
 
 
 
@@ -35,7 +35,7 @@ function Navigation({ isLoaded }) {
 
   useEffect(() => {
     let y = window.scrollY
-    console.log('firstRunning')
+
     if (y === 0) {
       document.addEventListener('scroll', onScroll)
       // setX((prevState) => prevState + 1 )
@@ -48,7 +48,7 @@ function Navigation({ isLoaded }) {
 
   useEffect(() => {
     let y = window.scrollY
-    console.log('running')
+
 
     if (y !== 0) {
       document.addEventListener('scroll', onScroll)
@@ -69,7 +69,7 @@ function Navigation({ isLoaded }) {
 
     } else {
       if (navClass === 'nav-white' && y !== 0) return
-      console.log('rendering*******************')
+
 
       setNavClass('nav-white')
       setLogo(redLogo)
@@ -80,12 +80,6 @@ function Navigation({ isLoaded }) {
 
   }
 
-
-  // let y = window.scrollY
-  // console.log(y, 'yyyyyyyyyyyyyyyyyyyyy')
-  // if (y === 0) {
-  //   setNavClass('nav')
-  // }
 
   return (
     <>

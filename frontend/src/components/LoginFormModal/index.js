@@ -4,12 +4,10 @@ import LoginForm from './LoginForm';
 
 function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
-console.log(setShowModal, showModal, 'inIndex*****')
-  // console.log(showModal)
 
-  // function closeModal(prop) {
-  //   setShowModal(prop)
-  // }
+
+
+
 
   return (
     <>

@@ -153,9 +153,7 @@ h2 {
     transition: 0.1s;
 }
 
-.host-link-container:hover {
-    background-color: rgb(46, 46, 46);
-}
+
 
 .host-link {
     display: flex;
@@ -172,5 +170,11 @@ h2 {
     font-size: 18px;
     text-decoration: none;
     font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    background-color: black;
+    border: none;
 
+}
+.host-link:hover {
+    background-color: rgb(46, 46, 46);
 }

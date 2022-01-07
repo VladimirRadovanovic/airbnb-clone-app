@@ -24,7 +24,7 @@ function SplashPage(){
               <h2>Share your home.</h2>
 
               <div className="host-link-container">
-                <NavLink className='host-link' to='/api/spots'>Try hosting</NavLink>
+                <button className='host-link' to='/api/spots'>Try hosting</button>
               </div>
 
             </div>
