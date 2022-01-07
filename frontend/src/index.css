@@ -39,9 +39,10 @@ img {
 
 .splash-img-container {
     width: 85%;
-    height: 70%;
+    height: 85%;
     background-image: url('../src/images/splash-img3.jpg');
     background-size: cover;
+    background-position: center;
     border-radius: 25px;
     opacity: 0.9;
     color: white;
@@ -54,9 +55,7 @@ img {
 
 }
 
-.splash-img-container h2 {
 
-}
 
 /* .splash-img-container img {
     border-radius: 25px;
