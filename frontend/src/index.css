@@ -31,6 +31,7 @@ img {
     align-items: flex-start;
     justify-content: center;
     padding-top: 50px;
+
 }
 .white-box {
     background-color: white;
@@ -42,6 +43,7 @@ img {
     height: 85%;
     background-image: url('../src/images/splash-img4.jpg');
     background-size: cover;
+
     background-position-y: -270px;
     border-radius: 25px;
     opacity: 0.9;
@@ -52,7 +54,7 @@ img {
     justify-content: center;
     align-items: flex-end;
     font-size: 31px;
-
+    /* z-index: -1; */
 
 }
 
@@ -60,13 +62,7 @@ img {
 
 
 
-/* .splash-img-container img {
-    border-radius: 25px;
-    opacity: 0.7;
-    height: 100%;
-    width: 100%;
 
-} */
 
 .explore-spots-link {
     display: flex;

@@ -29,9 +29,13 @@
     font-size: 15px;
 
 }
+/* .dropdown-container {
+    position: relative;
+} */
 
 .profile-dropdown {
     position: fixed;
+    /* z-index: 2; */
     list-style: none;
     background-color: white;
     display: flex;
@@ -47,6 +51,7 @@
     box-shadow: 0 10px 24px 3px rgb(0 0 0 / 14%);
 
 }
+
 
 .profile-dropdown button {
     background: none!important;

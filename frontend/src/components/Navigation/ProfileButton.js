@@ -55,6 +55,7 @@ function ProfileButton({ user }) {
             </div>
           </button>
           {showMenu && (
+            <div className="dropdown-container">
             <div className="profile-dropdown">
               <div className="dropdown-user-info">{user.username}</div>
               <div className="dropdown-user-info">{user.email}</div>
@@ -65,6 +66,7 @@ function ProfileButton({ user }) {
               </div>
 
               </span>
+            </div>
             </div>
           )}
         </>
