@@ -34,7 +34,7 @@ function App() {
         </div>
         <div className="img2-container">
         <div className="splash-img-container2">
-                fsfdsfsdfdsfsdfdsfds
+              <div className="inner-img-container"></div>
           </div>
 
         </div>

@@ -45,7 +45,7 @@ img {
     background-image: url('../src/images/splash-img4.jpg');
     background-size: cover;
 
-    background-position-y: -270px;
+    background-position-y: -70px;
     border-radius: 25px;
     opacity: 0.9;
     color: white;
@@ -127,7 +127,8 @@ h2 {
 .splash-img-container2 {
     background: linear-gradient(
         180deg, #ffffff 0%, #dadada 135%);
-    display: block;
+    display: flex;
+    justify-content: end;
     height: 740px;
     width: 85%;
     border-radius: 25px;
@@ -137,4 +138,14 @@ h2 {
     /* display: flex;
     align-items: center; */
 
+}
+
+.inner-img-container {
+    background-image: url('./images/host.jpg');
+    background-position: center;
+    background-size: cover;
+    width: 50%;
+    height: 740px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
