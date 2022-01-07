@@ -40,9 +40,9 @@ img {
 .splash-img-container {
     width: 85%;
     height: 85%;
-    background-image: url('../src/images/splash-img3.jpg');
+    background-image: url('../src/images/splash-img4.jpg');
     background-size: cover;
-    background-position: center;
+    background-position-y: -270px;
     border-radius: 25px;
     opacity: 0.9;
     color: white;
