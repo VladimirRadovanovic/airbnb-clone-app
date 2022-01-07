@@ -6,7 +6,7 @@ import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
 
-function SignupForm() {
+function SignupForm({setShowSignupModal}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -15,7 +15,9 @@ function SignupForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-
+  const handleClick = () => {
+    setShowSignupModal(false)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,48 +33,65 @@ function SignupForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+    <>
+      <div className="modal-signup-header">
+        <span><button type='button' onClick={handleClick}>X</button></span>
+        <div className="title-container">
+          <h3>Sign up</h3>
+        </div>
+      </div>
+      <div className="signup-form-container">
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <span className="welcome-span">Welcome to EarthBnB</span>
+          <ul>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <div className="signup-input-container">
+          {/* <label>
+          Email
+          </label> */}
+          <input
+            placeholder="Email"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          {/* <label>
+          Username
+          </label> */}
+          <input
+            placeholder="Username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          {/* <label>
+          Password
+          </label> */}
+          <input
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          {/* <label>
+          Confirm Password
+          </label> */}
+          <input
+            placeholder="Confirm password"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+          </div>
+          <button type="submit">Continue</button>
+        </form>
+      </div>
+    </>
   );
 }
 

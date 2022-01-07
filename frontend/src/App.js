@@ -34,7 +34,15 @@ function App() {
         </div>
         <div className="img2-container">
         <div className="splash-img-container2">
-                fsfdsfsdfdsfsdfdsfds
+        <div className="img-text-container2">
+              <h2>Share your home.</h2>
+
+              <div className="host-link-container">
+                <NavLink className='host-link' to='/api/spots'>Try hosting</NavLink>
+              </div>
+
+            </div>
+              <div className="inner-img-container"></div>
           </div>
 
         </div>
