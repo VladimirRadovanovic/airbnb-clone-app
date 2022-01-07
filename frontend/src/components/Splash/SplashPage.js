@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import './SplashPage.css'
+import CreateSpotFormModal from "../CreateSpotForm";
 
-function SplashPage(){
+function SplashPage({isLoaded}){
     return (
         <main className="main">
         <div className="black-box">
@@ -24,7 +25,8 @@ function SplashPage(){
               <h2>Share your home.</h2>
 
               <div className="host-link-container">
-                <button className='host-link' to='/api/spots'>Try hosting</button>
+                {/* <button className='host-link'>Try hosting</button> */}
+                <CreateSpotFormModal isLoaded={isLoaded} />
               </div>
 
             </div>

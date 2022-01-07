@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <SplashPage />
+      <SplashPage isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
 
