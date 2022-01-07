@@ -29,7 +29,7 @@ function LoginForm({setShowLoginModal}) {
   return (
     <>
     <div className="modal-login-header">
-    <span><button type='button' onClick={handleClick}><i className="fas fa-times"></i></button></span>
+    <span><button type='button' onClick={handleClick}>X</button></span>
     <div className="title-container">
     <h3>Log In</h3>
     </div>
