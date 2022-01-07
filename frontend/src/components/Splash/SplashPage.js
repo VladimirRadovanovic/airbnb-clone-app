@@ -6,7 +6,7 @@ function SplashPage(){
         <main className="main">
         <div className="black-box">
           <div className="splash-img-container">
-            {/* <img src={splashImg} /> */}
+
             <div className="img-text-container">
               <h2>Not sure where to go? Perfect.</h2>
 
@@ -32,7 +32,7 @@ function SplashPage(){
           </div>
 
         </div>
-        {/* <div className="white-box"></div> */}
+
       </main>
     )
 }

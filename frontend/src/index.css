@@ -24,17 +24,17 @@ img {
     margin: 0;
 }
 
-.black-box {
+/* .black-box {
     background-color: black;
     height: 1300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+
     padding-top: 50px;
 
-}
-.white-box {
+} */
+/* .white-box {
     background-color: white;
     height: 800px;
 }
@@ -49,22 +49,22 @@ img {
     border-radius: 25px;
     opacity: 0.9;
     color: white;
-    /* font-family: 'Be Vietnam Pro', sans-serif; */
+
     font-family: 'Rubik', sans-serif;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     font-size: 31px;
-    /* z-index: -1; */
-
-}
 
 
+} */
 
 
 
 
 
+
+/* 
 .explore-spots-link {
     display: flex;
     justify-content: center;
@@ -72,7 +72,7 @@ img {
     width: 155px;
     height: 55px;
     padding: 10px;
-    /* text-align: center; */
+
     border-radius: 30px;
     color: white;
     font-weight: bold;
@@ -88,21 +88,16 @@ img {
     display: flex;
     width: 155px;
     height: 55px;
-    /* padding: 10px; */
+
 
     background-color: white;
     border-radius: 30px;
     align-items: center;
     justify-content: center;
     transition: 0.1s;
-    /* text-align: center; */
+
 }
-/* .explore-spots-link span {
-    width: 125px;
-    height: 45px;
-    border-radius: 15px;
-    text-align: center;
-} */
+
 
 .spots-link-container:hover {
     background-color: rgb(241, 241, 241);
@@ -135,8 +130,7 @@ h2 {
 
     margin-top: -385px;
 
-    /* display: flex;
-    align-items: center; */
+
 
 }
 
@@ -170,7 +164,7 @@ h2 {
     display: flex;
     width: 155px;
     height: 55px;
-    /* padding: 10px; */
+
 
     background-color: black;
     border-radius: 30px;
@@ -190,7 +184,7 @@ h2 {
     width: 155px;
     height: 55px;
     padding: 10px;
-    /* text-align: center; */
+
     border-radius: 30px;
     color: white;
     font-weight: bold;
@@ -199,4 +193,4 @@ h2 {
     text-decoration: none;
     font-family: 'Rubik', sans-serif;
 
-}
+} */
