@@ -36,3 +36,18 @@ export function Modal({ onClose, children }) {
     modalNode
   );
 }
+
+export function SignupModal({ onClose, children }) {
+  const modalNode = useContext(ModalContext);
+  if (!modalNode) return null;
+
+  return ReactDOM.createPortal(
+    <div id="modal">
+      <div id="modal-background" onClick={onClose} />
+      <div id="signup-modal-content">
+        {children}
+      </div>
+    </div>,
+    modalNode
+  );
+}

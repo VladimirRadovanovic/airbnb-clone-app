@@ -4,7 +4,7 @@ import * as sessionActions from '../../store/session';
 import LoginFormModal from "../LoginFormModal";
 import LoginForm from "../LoginFormModal/LoginForm";
 import SignupForm from "../SignupFormModal/SignupForm";
-import { Modal } from '../../context/Modal';
+import { Modal, SignupModal } from '../../context/Modal';
 import whiteLogo from '../../images/white-logo.png'
 import profilePlaceholderPic from '../../images/profile-placeholder.png'
 import profilePic from '../../images/t.jpeg'
@@ -95,9 +95,9 @@ function ProfileButton({ user }) {
             </Modal>
           )}
           {showSignupModal && (
-            <Modal onClose={() => setShowSignupModal(false)}>
+            <SignupModal onClose={() => setShowSignupModal(false)}>
               <SignupForm setShowSignupModal={setShowSignupModal} />
-            </Modal>
+            </SignupModal>
           )}
         </>
       )

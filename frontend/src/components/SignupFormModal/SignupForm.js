@@ -46,7 +46,7 @@ function SignupForm({setShowSignupModal}) {
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
-          <div className="input-container">
+          <div className="signup-input-container">
           {/* <label>
           Email
           </label> */}
