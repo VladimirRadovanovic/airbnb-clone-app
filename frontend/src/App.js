@@ -4,7 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import splashImg from '../src/images/splash-img3.jpg'
+import { NavLink } from "react-router-dom";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -16,12 +17,22 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <div className="black-box">
-        <div className="splash-img-container">
-          <img src={splashImg} />
+      <main className="main">
+        <div className="black-box">
+          <div className="splash-img-container">
+            {/* <img src={splashImg} /> */}
+            <div className="img-text-container">
+              <h2>Not sure where to go? Perfect.</h2>
+
+              <div className="spots-link-container">
+                <NavLink className='explore-spots-link' to='/api/spots'>I'm flexible</NavLink>
+              </div>
+
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="white-box"></div>
+        <div className="white-box"></div>
+      </main>
       {isLoaded && (
         <Switch>
 
