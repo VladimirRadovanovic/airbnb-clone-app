@@ -89,3 +89,8 @@ span button {
     font-size: 22px;
     font-family: arial, sans-serif;
 }
+ul {
+    list-style: none;
+    padding-bottom: 10px;
+    color: red;
+}
