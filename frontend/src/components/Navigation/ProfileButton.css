@@ -95,3 +95,9 @@
     padding: 0;
 
 }
+
+.demo-button-container {
+    border-top: 1px solid lightgray;
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important;
+}
