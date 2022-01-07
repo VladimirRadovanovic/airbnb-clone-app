@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import './LoginForm.css'
 
-function LoginForm({setShowLoginModal}) {
+function LoginForm({ setShowLoginModal }) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -28,45 +28,45 @@ function LoginForm({setShowLoginModal}) {
 
   return (
     <>
-    <div className="modal-login-header">
-    <span><button type='button' onClick={handleClick}>X</button></span>
-    <div className="title-container">
-    <h3>Log In</h3>
-    </div>
+      <div className="modal-login-header">
+        <span><button type='button' onClick={handleClick}>X</button></span>
+        <div className="title-container">
+          <h3>Log In</h3>
         </div>
-    <div className="login-form-container">
-    <form className="login-form" onSubmit={handleSubmit}>
-      <span className="welcome-span">Welcome to EarthBnB</span>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <div className="input-container">
-      {/* <label>
+      </div>
+      <div className="login-form-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <span className="welcome-span">Welcome to EarthBnB</span>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="input-container">
+            {/* <label>
         Username or Email
         </label> */}
-        <input
-        placeholder="Username or Email"
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      {/* <label>
+            <input
+              placeholder="Username or Email"
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+            {/* <label>
         Password
         </label> */}
-        <input
-        placeholder="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        </div>
-      <button type="submit">Continue</button>
-    </form>
-    </div>
+            <input
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Continue</button>
+        </form>
+      </div>
     </>
   );
 }
