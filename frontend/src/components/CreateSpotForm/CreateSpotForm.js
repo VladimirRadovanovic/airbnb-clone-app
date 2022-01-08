@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import NumberFormat from 'react-number-format';
+import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
+import { items } from "../DropdownCombobox/utils";
 
 
 import './CreateSpot.css';
@@ -13,7 +15,7 @@ function CreateSpotForm({ setShowModal }) {
     const [title, setTitle] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
-    const [state, setState] = useState("");
+    const [state, setState] = useState('');
     const [zipCode, setZipCode] = useState("");
     const [country, setCountry] = useState("");
     const [price, setPrice] = useState("");
@@ -22,7 +24,7 @@ function CreateSpotForm({ setShowModal }) {
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
 
-    console.log(price, 'price')
+    console.log(state, 'price')
 
 
     const handleClick = () => {
@@ -90,13 +92,13 @@ function CreateSpotForm({ setShowModal }) {
                         {/* <label>
             Confirm Password
             </label> */}
-                        <input
+                        {/* <input
                             placeholder="State"
                             type="text"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                             required
-                        />
+                        /> */}
                         <input
                             placeholder="Zip code"
                             type='text'
@@ -119,12 +121,12 @@ function CreateSpotForm({ setShowModal }) {
                             thousandSeparator={true}
                             prefix="$"
                             className="some"
-                            inputmode="numeric"
+                            inputMode="numeric"
                             decimalScale={2}
                             fixedDecimalScale={true}
                             allowNegative={false}
                         />
-
+                        <DropdownCombobox state={state} setState={setState} />
                         <div className="num-rooms-container">
                             <input
                                 placeholder="Bedrooms"
