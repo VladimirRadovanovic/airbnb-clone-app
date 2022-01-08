@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import NumberFormat from 'react-number-format';
+
 
 import './CreateSpot.css';
 
@@ -20,13 +22,15 @@ function CreateSpotForm({ setShowModal }) {
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
 
+    console.log(price, 'price')
 
-    const normalizePrice = (value) => {
-        // console.log(value.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'), 'value')
-        let myValue = value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
-        console.log(myValue)
-        return value
-    }
+
+    // const normalizePrice = (value) => {
+    //     // console.log(value.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'), 'value')
+    //     let myValue = value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+    //     console.log(myValue)
+    //     return value
+    // }
 
     const handleClick = () => {
         setShowModal(false)
@@ -114,7 +118,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setCountry(e.target.value)}
                             required
                         />
-                        <input
+                        {/* <input
                             placeholder="Price per night"
                             type='text'
                             // pattern="(\d{3})([\.])(\d{2})"
@@ -125,24 +129,36 @@ function CreateSpotForm({ setShowModal }) {
                                 setPrice(e.target.value)
                             }}
                             required
+                        /> */}
+                        <NumberFormat
+                            placeholder='Price per night'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            thousandSeparator={true}
+                            prefix="$"
+                            className="some"
+                            inputmode="numeric"
+                            decimalScale={2}
+                            fixedDecimalScale={true}
                         />
+
                         <div className="num-rooms-container">
-                        <input
-                            placeholder="Bedrooms"
-                            type='number'
-                            value={bedrooms}
-                            onChange={(e) => setBedrooms(e.target.value)}
-                            min={0}
-                            required
-                        />
-                        <input
-                            placeholder="Bathrooms"
-                            type='number'
-                            value={bathrooms}
-                            onChange={(e) => setBathrooms(e.target.value)}
-                            min={0}
-                            required
-                        />
+                            <input
+                                placeholder="Bedrooms"
+                                type='number'
+                                value={bedrooms}
+                                onChange={(e) => setBedrooms(e.target.value)}
+                                min={0}
+                                required
+                            />
+                            <input
+                                placeholder="Bathrooms"
+                                type='number'
+                                value={bathrooms}
+                                onChange={(e) => setBathrooms(e.target.value)}
+                                min={0}
+                                required
+                            />
                         </div>
                         <input
                             placeholder="Description"
