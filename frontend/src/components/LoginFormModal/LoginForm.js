@@ -31,7 +31,7 @@ function LoginForm({ setShowLoginModal }) {
       <div className="modal-login-header">
         <span><button type='button' onClick={handleClick}>X</button></span>
         <div className="title-container">
-          <h3>Log In</h3>
+          <h3>Log in</h3>
         </div>
       </div>
       <div className="login-form-container">
