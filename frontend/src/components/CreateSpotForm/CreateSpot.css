@@ -60,7 +60,7 @@ nav .host-link {
     /* background-color: rgb(163, 163, 163); */
 }
 
-.host-link-white {
+nav .host-link-white {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,4 +94,25 @@ nav .host-link-white {
 
 nav .host-link-white:hover {
     background-color: rgb(241, 241, 241);
+}
+
+
+.host-link-white {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 155px;
+    height: 55px;
+    padding: 10px;
+    /* text-align: center; */
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    background-color: black;
+    border: none;
 }
