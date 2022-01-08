@@ -93,12 +93,14 @@ function Navigation({ isLoaded }) {
             <NavLink className='logo-link' exact to="/"><img className='logo-img' src={logo} alt='logo'></img><span className={logoText}>EarthBnB</span></NavLink>
 
           </li>
-          <li>
-            <CreateSpotFormModal hostLink={hostLink} />
-          </li>
-          <li>
 
+          <li className='li-container'>
+
+            <CreateSpotFormModal hostLink={hostLink} />
+            <div>
             {isLoaded && <ProfileButton user={sessionUser} />}
+
+            </div>
           </li>
         </ul>
       </nav>

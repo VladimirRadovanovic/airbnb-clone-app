@@ -53,7 +53,8 @@
 
 nav .host-link {
     height: 38px;
-    margin-left: 280%;
+    /* margin-left: 1000px; */
+    /* margin-right: 1000px; */
     font-family: arial, sans-serif;
     /* font-weight: lighter; */
     font-size: 14px;
@@ -83,7 +84,8 @@ nav .host-link-white {
 
 nav .host-link-white {
     height: 38px;
-    margin-left: 280%;
+    /* margin-left: 1000px; */
+    /* margin-right: 1000px; */
     font-family: arial, sans-serif;
     /* font-weight: lighter; */
     font-size: 14px;
