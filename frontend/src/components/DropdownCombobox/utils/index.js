@@ -15,7 +15,7 @@ const items = [
 ]
 
 const menuStyles = {
-  maxHeight: 80,
+  maxHeight: 100,
   // width: 350,
   overflowY: 'scroll',
   backgroundColor: '#eee',

@@ -99,6 +99,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setState(e.target.value)}
                             required
                         /> */}
+                        <DropdownCombobox state={state} setState={setState} />
                         <input
                             placeholder="Zip code"
                             type='text'
@@ -126,7 +127,7 @@ function CreateSpotForm({ setShowModal }) {
                             fixedDecimalScale={true}
                             allowNegative={false}
                         />
-                        <DropdownCombobox state={state} setState={setState} />
+
                         <div className="num-rooms-container">
                             <input
                                 placeholder="Bedrooms"
