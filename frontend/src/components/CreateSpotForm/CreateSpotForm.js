@@ -25,13 +25,6 @@ function CreateSpotForm({ setShowModal }) {
     console.log(price, 'price')
 
 
-    // const normalizePrice = (value) => {
-    //     // console.log(value.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'), 'value')
-    //     let myValue = value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
-    //     console.log(myValue)
-    //     return value
-    // }
-
     const handleClick = () => {
         setShowModal(false)
     }
@@ -118,18 +111,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setCountry(e.target.value)}
                             required
                         />
-                        {/* <input
-                            placeholder="Price per night"
-                            type='text'
-                            // pattern="(\d{3})([\.])(\d{2})"
-                            value={price}
-                            onChange={(e) => {
-                                let value = e.target.value
-                                e.target.value = normalizePrice(value)
-                                setPrice(e.target.value)
-                            }}
-                            required
-                        /> */}
+
                         <NumberFormat
                             placeholder='Price per night'
                             value={price}
@@ -140,6 +122,7 @@ function CreateSpotForm({ setShowModal }) {
                             inputmode="numeric"
                             decimalScale={2}
                             fixedDecimalScale={true}
+                            allowNegative={false}
                         />
 
                         <div className="num-rooms-container">
