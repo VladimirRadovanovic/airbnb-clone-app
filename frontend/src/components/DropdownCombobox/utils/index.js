@@ -26,7 +26,7 @@ const menuStyles = {
 
 }
 
-const comboboxStyles = {display: 'inline-block'}
+const comboboxStyles = {display: 'block', width: 371}
 
 // const comboboxWrapperStyles = {
 //   display: 'inline-flex',

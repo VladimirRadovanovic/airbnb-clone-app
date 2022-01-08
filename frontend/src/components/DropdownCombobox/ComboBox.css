@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-#downshift-1-menu li{
+/* #downshift-1-menu li{
     padding-left: 10px;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -11,7 +11,28 @@
 
 #downshift-1-menu {
     border-radius: 6px;
-    /* margin-left: 10px; */
-    width: 371px;
+
+    width: 371px!important;
     margin-top: -2px;
+}
+
+#downshift-69-menu {
+    border-radius: 6px;
+
+    width: 371px!important;
+    margin-top: -2px;
+} */
+
+.combobox-container ul {
+    border-radius: 6px;
+    /* margin-left: 10px; */
+    width: 371px!important;
+    margin-top: -2px;
+}
+
+.combobox-container ul li {
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 16px;
 }
