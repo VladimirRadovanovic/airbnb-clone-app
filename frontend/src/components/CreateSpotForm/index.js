@@ -14,13 +14,11 @@ function CreateSpotFormModal({ isLoaded }) {
     return (
         <>
             <button className='host-link' onClick={() => setShowModal(true)}>Try hosting</button>
-            {sessionUser ? ( showModal && (
+            {sessionUser ? (showModal && (
                     <CreateSpotModal onClose={() => setShowModal(false)}>
-                        <CreateSpotForm />
+                        <CreateSpotForm setShowModal={setShowModal} />
                     </CreateSpotModal>
-                )) : (  showModal && <LoginFormModal setShowModal={setShowModal} />
-
-            )
+                )) : (showModal && <LoginFormModal setShowModal={setShowModal} />)
 
     }
         </>
