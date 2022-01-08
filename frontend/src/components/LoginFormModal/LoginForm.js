@@ -4,15 +4,23 @@ import { useDispatch } from "react-redux";
 
 import './LoginForm.css'
 
-function LoginForm({ setShowLoginModal }) {
+function LoginForm({ setShowLoginModal, setShowModal }) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
+  // console.log(setShowLoginModal, 'login modal')
+  // console.log(setShowModal, 'modal')
+
 
   const handleClick = () => {
-    setShowLoginModal(false)
+    if (setShowLoginModal) {
+      return setShowLoginModal(false)
+    }
+    if (setShowModal) {
+      return setShowModal(false)
+    }
   }
 
   const handleSubmit = (e) => {

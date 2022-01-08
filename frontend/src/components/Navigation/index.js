@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import whiteLogo from '../../images/white-logo.png'
 import redLogo from '../../images/red-logo.png'
+import CreateSpotFormModal from '../CreateSpotForm';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
