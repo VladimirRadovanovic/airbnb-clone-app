@@ -9,19 +9,25 @@ import './CreateSpot.css'
 function CreateSpotFormModal({ isLoaded }) {
     const [showModal, setShowModal] = useState(false);
     console.log(showModal, 'spotin*****')
-  const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
+
+    let y = window.scrollY
+
+
+
 
 
     return (
         <>
-            <button className='host-link' onClick={() => setShowModal(true)}>Try hosting</button>
+            {y === 0 ? <button className='host-link' onClick={() => setShowModal(true)}>Try hosting</button> :
+                <button className='host-link-white' onClick={() => setShowModal(true)}>Try hosting</button>}
             {sessionUser ? (showModal && (
-                    <CreateSpotModal onClose={() => setShowModal(false)}>
-                        <CreateSpotForm setShowModal={setShowModal} />
-                    </CreateSpotModal>
-                )) : (showModal && <LoginFormModal setShowModal={setShowModal} />)
+                <CreateSpotModal onClose={() => setShowModal(false)}>
+                    <CreateSpotForm setShowModal={setShowModal} />
+                </CreateSpotModal>
+            )) : (showModal && <LoginFormModal setShowModal={setShowModal} />)
 
-    }
+            }
         </>
     );
 }

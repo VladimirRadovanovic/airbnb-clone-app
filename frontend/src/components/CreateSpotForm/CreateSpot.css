@@ -14,7 +14,7 @@
     text-decoration: none;
     font-family: 'Rubik', sans-serif;
     cursor: pointer;
-    background-color: black;
+    background-color: transparent;
     border: none;
 
 }
@@ -57,4 +57,41 @@ nav .host-link {
     font-family: arial, sans-serif;
     /* font-weight: lighter; */
     font-size: 14px;
+    /* background-color: rgb(163, 163, 163); */
+}
+
+.host-link-white {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 155px;
+    height: 55px;
+    padding: 10px;
+    /* text-align: center; */
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    /* background-color: black; */
+    border: none;
+
+}
+
+nav .host-link-white {
+    height: 38px;
+    margin-left: 280%;
+    font-family: arial, sans-serif;
+    /* font-weight: lighter; */
+    font-size: 14px;
+    background-color: inherit;
+    color: rgb(107, 107, 107);
+    transition: 0.1s;
+}
+
+nav .host-link-white:hover {
+    background-color: rgb(241, 241, 241);
 }

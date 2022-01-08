@@ -14,6 +14,7 @@ function Navigation({ isLoaded }) {
   const [navClass, setNavClass] = useState('nav')
   const [logo, setLogo] = useState(whiteLogo)
   const [logoText, setLogoText] = useState('logo-text')
+  const [hostLink, setHostLink] = useState('host-link')
 
 
 
@@ -66,6 +67,7 @@ function Navigation({ isLoaded }) {
       setNavClass('nav')
       setLogo(whiteLogo)
       setLogoText('logo-text')
+      setHostLink('host-link')
       return
 
     } else {
@@ -75,6 +77,7 @@ function Navigation({ isLoaded }) {
       setNavClass('nav-white')
       setLogo(redLogo)
       setLogoText('logo-text-red')
+      setHostLink('host-link-white')
 
       return
     }
@@ -91,7 +94,7 @@ function Navigation({ isLoaded }) {
 
           </li>
           <li>
-            <CreateSpotFormModal />
+            <CreateSpotFormModal hostLink={hostLink} />
           </li>
           <li>
 
