@@ -91,6 +91,9 @@ function Navigation({ isLoaded }) {
 
           </li>
           <li>
+            <CreateSpotFormModal />
+          </li>
+          <li>
 
             {isLoaded && <ProfileButton user={sessionUser} />}
           </li>

@@ -50,3 +50,11 @@
     padding-top: 4px!important;
     height: 50px!important;
 }
+
+nav .host-link {
+    height: 38px;
+    margin-left: 280%;
+    font-family: arial, sans-serif;
+    /* font-weight: lighter; */
+    font-size: 14px;
+}
