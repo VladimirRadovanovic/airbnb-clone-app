@@ -8,10 +8,16 @@ import './CreateSpot.css';
 function CreateSpotForm({ setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [title, setTitle] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [zipCode, setZipCode] = useState("");
+    const [country, setCountry] = useState("");
+    const [price, setPrice] = useState("");
+    const [bedrooms, setBedrooms] = useState(0);
+    const [bathrooms, setBathrooms] = useState(0);
+    const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
 
     const handleClick = () => {
@@ -20,15 +26,15 @@ function CreateSpotForm({ setShowModal }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (password === confirmPassword) {
-            setErrors([]);
-            return dispatch(sessionActions.signup({ email, username, password }))
-                .catch(async (res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
-        }
-        return setErrors(['Confirm Password field must be the same as the Password field']);
+        // if (password === confirmPassword) {
+        //     setErrors([]);
+        //     return dispatch(sessionActions.signup({ email, username, password }))
+        //         .catch(async (res) => {
+        //             const data = await res.json();
+        //             if (data && data.errors) setErrors(data.errors);
+        //         });
+        // }
+        // return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
     return (
@@ -52,8 +58,8 @@ function CreateSpotForm({ setShowModal }) {
                         <input
                             placeholder="Title"
                             type="text"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                             required
                         />
                         {/* <label>
@@ -62,8 +68,8 @@ function CreateSpotForm({ setShowModal }) {
                         <input
                             placeholder="Address"
                             type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
                             required
                         />
                         {/* <label>
@@ -72,8 +78,8 @@ function CreateSpotForm({ setShowModal }) {
                         <input
                             placeholder="City"
                             type="text"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
                             required
                         />
                         {/* <label>
@@ -82,40 +88,54 @@ function CreateSpotForm({ setShowModal }) {
                         <input
                             placeholder="State"
                             type="text"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
                             required
                         />
                         <input
                             placeholder="Zip code"
                             type='text'
+                            value={zipCode}
+                            onChange={(e) => setZipCode(e.target.value)}
                             required
                         />
                         <input
                             placeholder="Country"
                             type='text'
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
                             required
                         />
                         <input
                             placeholder="Price"
                             type='text'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
                             required
                         />
                         <div className="num-rooms-container">
                         <input
                             placeholder="Bedrooms"
                             type='number'
+                            value={bedrooms}
+                            onChange={(e) => setBedrooms(e.target.value)}
+                            min={0}
                             required
                         />
                         <input
                             placeholder="Bathrooms"
                             type='number'
+                            value={bathrooms}
+                            onChange={(e) => setBathrooms(e.target.value)}
+                            min={0}
                             required
                         />
                         </div>
                         <input
                             placeholder="Description"
                             type='text'
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                             required
                         />
                     </div>
