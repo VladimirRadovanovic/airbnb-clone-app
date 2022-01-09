@@ -53,9 +53,9 @@
     line-height: 25px;
     font-size: 18px;
     background: linear-gradient(
-        90deg, #5c0280 0%, #ff30b3 135%);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
+        90deg, #5c0280 0%, #ff30b3 135%)!important;
+        -webkit-text-fill-color: transparent!important;
+        -webkit-background-clip: text!important;
 }
 
 .spots-link-container {
