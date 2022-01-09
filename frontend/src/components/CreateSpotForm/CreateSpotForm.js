@@ -19,8 +19,8 @@ function CreateSpotForm({ setShowModal }) {
     const [zipCode, setZipCode] = useState("");
     const [country, setCountry] = useState("");
     const [price, setPrice] = useState("");
-    const [bedrooms, setBedrooms] = useState(0);
-    const [bathrooms, setBathrooms] = useState(0);
+    const [bedrooms, setBedrooms] = useState('');
+    const [bathrooms, setBathrooms] = useState('');
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
 
@@ -83,7 +83,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setCity(e.target.value)}
                             required
                         />
- 
+
                         {/* <input
                             placeholder="State"
                             type="text"
