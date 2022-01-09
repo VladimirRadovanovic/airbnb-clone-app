@@ -13,11 +13,11 @@ const router = express.Router();
 
 // add validation for listings create/update. Use the sam one!!
 
+// create listing route
+router.post('/new', requireAuth, asyncHandler(async (req, res) => {
 
-router.post('/new', requireAuth, asyncHandler(async(req, res) => {
-    console.log('inRoute***********')
     const { id } = req.user;
-    const {
+    let {
         title,
         address,
         city,
@@ -34,7 +34,7 @@ router.post('/new', requireAuth, asyncHandler(async(req, res) => {
     //     title,
     //     address,
     //     city,
-    //     state,
+    //     state[0],
     //     zipCode,
     //     country,
     //     Number(price.slice(1)),
@@ -42,6 +42,26 @@ router.post('/new', requireAuth, asyncHandler(async(req, res) => {
     //     bathrooms,
     //     description,
     //     id)
+
+    price = Number(price.slice(1))
+    state = state[0]
+
+    const listing = Listing.build({
+        title,
+        address,
+        city,
+        state,
+        zipCode,
+        country,
+        price,
+        bedrooms,
+        bathrooms,
+        description,
+        hostId: id
+    })
+
+    await listing.save()
+    return res.json({listing})
 }))
 
 
