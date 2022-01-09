@@ -14,7 +14,7 @@
     text-decoration: none;
     font-family: 'Rubik', sans-serif;
     cursor: pointer;
-    background-color: black;
+    background-color: transparent;
     border: none;
 
 }
@@ -49,4 +49,102 @@
 .create-listing-button {
     padding-top: 4px!important;
     height: 50px!important;
+}
+
+nav .host-link {
+    height: 38px;
+    /* margin-left: 1000px; */
+    /* margin-right: 1000px; */
+    font-family: arial, sans-serif;
+    /* font-weight: lighter; */
+    font-size: 14px;
+    /* background-color: rgb(163, 163, 163); */
+}
+
+nav .host-link-white {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 155px;
+    height: 55px;
+    padding: 10px;
+    /* text-align: center; */
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    /* background-color: black; */
+    border: none;
+
+}
+
+nav .host-link-white {
+    height: 38px;
+    /* margin-left: 1000px; */
+    /* margin-right: 1000px; */
+    font-family: arial, sans-serif;
+    /* font-weight: lighter; */
+    font-size: 14px;
+    background-color: inherit;
+    color: rgb(107, 107, 107);
+    transition: 0.1s;
+}
+
+nav .host-link-white:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+
+div > .host-link-white {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 155px;
+    height: 55px!important;
+    padding: 10px;
+    /* text-align: center; */
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    background-color: black;
+    border: none;
+    transition: 0.1s;
+}
+
+.host-link-white:hover {
+    background-color: rgb(46, 46, 46);
+
+}
+/* .foo {
+    border: 1px solid black;
+    height: 50px;
+    width: 150px;
+} */
+
+
+.combobox-container {
+    width: 100%;
+}
+
+#downshift-1-menu li{
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 16px;
+}
+
+#downshift-1-menu {
+    border-radius: 6px;
+    /* margin-left: 10px; */
+    width: 371px!important;
+    margin-top: -2px;
 }

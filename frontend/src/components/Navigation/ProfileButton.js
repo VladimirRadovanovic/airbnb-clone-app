@@ -17,6 +17,7 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  console.log(showLoginModal, 'loginModal******')
   const [showSignupModal, setShowSignupModal] = useState(false);
 
 

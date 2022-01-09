@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import whiteLogo from '../../images/white-logo.png'
 import redLogo from '../../images/red-logo.png'
+import CreateSpotFormModal from '../CreateSpotForm';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -13,6 +14,7 @@ function Navigation({ isLoaded }) {
   const [navClass, setNavClass] = useState('nav')
   const [logo, setLogo] = useState(whiteLogo)
   const [logoText, setLogoText] = useState('logo-text')
+  const [hostLink, setHostLink] = useState('host-link')
 
 
 
@@ -65,6 +67,7 @@ function Navigation({ isLoaded }) {
       setNavClass('nav')
       setLogo(whiteLogo)
       setLogoText('logo-text')
+      setHostLink('host-link')
       return
 
     } else {
@@ -74,6 +77,7 @@ function Navigation({ isLoaded }) {
       setNavClass('nav-white')
       setLogo(redLogo)
       setLogoText('logo-text-red')
+      setHostLink('host-link-white')
 
       return
     }
@@ -89,9 +93,14 @@ function Navigation({ isLoaded }) {
             <NavLink className='logo-link' exact to="/"><img className='logo-img' src={logo} alt='logo'></img><span className={logoText}>EarthBnB</span></NavLink>
 
           </li>
-          <li>
 
+          <li className='li-container'>
+
+            <CreateSpotFormModal hostLink={hostLink} />
+            <div>
             {isLoaded && <ProfileButton user={sessionUser} />}
+
+            </div>
           </li>
         </ul>
       </nav>

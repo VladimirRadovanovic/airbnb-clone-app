@@ -64,7 +64,7 @@ img {
 
 
 
-/* 
+/*
 .explore-spots-link {
     display: flex;
     justify-content: center;
@@ -194,3 +194,21 @@ h2 {
     font-family: 'Rubik', sans-serif;
 
 } */
+
+.combobox-container {
+    width: 100%;
+}
+
+#downshift-1-menu li{
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 16px;
+}
+
+#downshift-1-menu {
+    border-radius: 6px;
+    /* margin-left: 10px; */
+    width: 371px!important;
+    margin-top: -2px;
+}
