@@ -102,7 +102,7 @@ h2 {
     background: linear-gradient(
         180deg, #ffffff 0%, #dadada 135%);
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     height: 740px;
     width: 85%;
     border-radius: 25px;

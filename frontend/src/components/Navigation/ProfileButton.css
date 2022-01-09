@@ -40,7 +40,7 @@
     list-style: none;
     background-color: white;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: flex-start;
     flex-direction: column;
     border: 1px solid lightgray;
