@@ -22,9 +22,11 @@ function UserProfile({ user }) {
                     <h4>Email: {user.email}</h4>
                 </div>
             </div>
+            <div className="nav-link-container">
             <NavLink exact to='/api/user/profile'>Listings</NavLink>
             <NavLink to='/api/user/profile/bookings'>Bookings</NavLink>
             <NavLink to='/api/user/profile/reviews'>Reviews</NavLink>
+            </div>
             <Switch>
                 <Route exact path='/api/user/profile'>
                     <UserListings user={user} />
