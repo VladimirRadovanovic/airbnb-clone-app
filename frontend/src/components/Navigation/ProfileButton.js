@@ -70,7 +70,7 @@ function ProfileButton({ user }) {
                 <div className="dropdown-user-info">{user.username}</div>
                 <div className="dropdown-user-info">{user.email}</div>
                   <div className="user-profile-link-container">
-                    <NavLink className='profile-link' to='/api/user/profile' >User profile</NavLink>
+                    <NavLink className='profile-link' to='/api/user/profile' >Profile</NavLink>
                   </div>
                 <span className="logout-container">
                   <div>

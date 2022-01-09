@@ -53,7 +53,7 @@ const listingValidator = [
     .isLength({min:3, max: 100 })
     .withMessage('Input for country should be between 3 and 100 characters long.'),
     check('price')
-    .isInt({min: 5, max: 100000})
+    .isNumeric({min: 5, max: 100000})
     .withMessage('Price must be between $5.00 and $100,000.00')
     .exists({checkFalsy: true})
     .withMessage('Please enter price per night.'),
