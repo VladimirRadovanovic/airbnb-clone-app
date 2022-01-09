@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserListings } from "../../../store/Listings/sessionListings";
+import listingImg from '../../../images/splash-img4.jpg'
 
 
 import './UserListings.css'
@@ -11,7 +12,7 @@ function UserListings() {
 
     useEffect(() => {
         dispatch(getUserListings())
-    },[dispatch])
+    }, [dispatch])
 
     const listings = useSelector(state => state.sessionListings)
     const sessionListingsList = []
@@ -25,11 +26,36 @@ function UserListings() {
                 <ul className="listings-list">
                     {sessionListingsList.map(listing => (
                         <li className="listings-list-item" key={listing.id}>
-                            <p>{listing?.title}</p>
-                            <p>{listing?.address}</p>
-                            <p>{listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
-                            {/* <p>${listing.price} / night</p> */}
-
+                            <div className="listing-container">
+                                <div className="listing-image-container">
+                                    <div className="main-image-container">
+                                    <img className="main-image" src={listingImg} alt='listing image' />
+                                    </div>
+                                    <div className="side-images-container">
+                                    <img className="side-image side-image-1" src={listingImg} alt='listing image' />
+                                    <img className="side-image side-image-2" src={listingImg} alt='listing image' />
+                                    <img className="side-image side-image-3" src={listingImg} alt='listing image' />
+                                    <img className="side-image side-image-4" src={listingImg} alt='listing image' />
+                                    </div>
+                                </div>
+                                <div className="listing-data-container">
+                                    <p>{listing?.title}</p>
+                                    <p>{listing?.address}</p>
+                                    <p>{listing?.city}</p>
+                                    <p>{listing?.state ? listing.state : 'N/A'}</p>
+                                    <p>{listing?.zipCode}</p>
+                                    <p>{listing?.country}</p>
+                                    <p>{listing?.bedrooms}</p>
+                                    <p>{listing?.bathrooms}</p>
+                                    <p>{listing?.description}</p>
+                                    <p>{listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
+                                    {/* <p>${listing.price} / night</p> */}
+                                </div>
+                                <div className="listing-button-container">
+                                    <button>Update listing</button>
+                                    <button>Remove listing</button>
+                                </div>
+                            </div>
                         </li>
                     ))}
                 </ul>

@@ -23,9 +23,9 @@ function UserProfile({ user }) {
                 </div>
             </div>
             <div className="nav-link-container">
-            <NavLink exact to='/api/user/profile'>Listings</NavLink>
-            <NavLink to='/api/user/profile/bookings'>Bookings</NavLink>
-            <NavLink to='/api/user/profile/reviews'>Reviews</NavLink>
+            <NavLink exact to='/api/user/profile'>Your listings</NavLink>
+            <NavLink to='/api/user/profile/bookings'>Your bookings</NavLink>
+            <NavLink to='/api/user/profile/reviews'>Your reviews</NavLink>
             </div>
             <Switch>
                 <Route exact path='/api/user/profile'>
