@@ -32,10 +32,10 @@ function UserProfile({ user }) {
                     <UserListings user={user} />
                 </Route>
                 <Route path='/api/user/profile/bookings'>
-                    <h1>dasdasd</h1>
+                    <h1>To do bookings</h1>
                 </Route>
                 <Route path='/api/user/profile/reviews'>
-                    <h1>aaaaaaaaa</h1>
+                    <h1>To do reviews</h1>
                 </Route>
             </Switch>
         </main>

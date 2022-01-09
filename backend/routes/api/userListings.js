@@ -102,7 +102,20 @@ router.post('/new',listingValidator, requireAuth, asyncHandler(async (req, res) 
     })
 
     await spot.save()
-    return res.json({spot})
+    return res.json({ spot })
+}))
+
+// get user listings route
+
+router.get('/', requireAuth, asyncHandler(async(req, res) => {
+    const {id} = req.user
+    const spots = await Spot.findAll({
+        where: {
+            hostId: id
+        }
+    })
+
+    return res.json({ spots })
 }))
 
 

@@ -19,12 +19,12 @@ const getListings = (listings) => {
 }
 
 export const getUserListings = () => async(dispatch) => {
-    const response = await csrfFetch('api/user/listings')
+    const response = await csrfFetch('/api/user/listings')
 
     const userListings = await response.json()
 
     if (userListings.spots) {
-        dispatch(userListings.spots)
+        dispatch(getListings(userListings.spots))
     }
     return response
 }
@@ -59,7 +59,7 @@ const sessionListingsReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_USER_LISTINGS:
             newState= {...state}
-            action.listings.array.forEach(listing => {
+            action.listings.forEach(listing => {
                 newState[listing.id] = listing
             });
             return newState

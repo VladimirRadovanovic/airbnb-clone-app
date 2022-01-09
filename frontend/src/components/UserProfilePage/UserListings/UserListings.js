@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { getUserListings } from "../../../store/Listings/sessionListings";
 
 
 import './UserListings.css'
@@ -23,7 +24,7 @@ function UserListings() {
             <div className="list-container">
                 <ul className="listings-list">
                     {sessionListingsList.map(listing => (
-                        <li className="listings-list-item">
+                        <li className="listings-list-item" key={listing.id}>
                             <p>{listing?.title}</p>
                             <p>{listing?.address}</p>
                             <p>{listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
