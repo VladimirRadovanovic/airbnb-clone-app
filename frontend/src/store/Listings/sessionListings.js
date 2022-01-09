@@ -10,7 +10,14 @@ const addListing = (spot) => {
     }
 }
 
-export const createListing = (data) => async(dispatch) => {
+export const createListing = (data) => async (dispatch) => {
+    // price = Number(price.slice(1))
+    data.price = Number(data.price.slice(1))
+
+
+    data.state = data.state[0]
+
+
     const response = await csrfFetch('/api/listings/new', {
         method: 'POST',
         body: JSON.stringify(data)
@@ -18,7 +25,7 @@ export const createListing = (data) => async(dispatch) => {
 
     const listingData = await response.json()
 
-    if(listingData.spot) {
+    if (listingData.spot) {
         dispatch(addListing(listingData.spot))
     }
     return response
@@ -27,9 +34,9 @@ export const createListing = (data) => async(dispatch) => {
 
 const sessionListingsReducer = (state = {}, action) => {
     let newState = {}
-    switch(action.type) {
+    switch (action.type) {
         case CREATE_LISTING:
-            newState = {...state, [action.spot.id]: action.spot}
+            newState = { ...state, [action.spot.id]: action.spot }
             return newState
         default:
             return state
