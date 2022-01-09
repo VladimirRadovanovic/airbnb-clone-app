@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import NumberFormat from 'react-number-format';
 import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
@@ -8,11 +8,13 @@ import { items } from "../DropdownCombobox/utils";
 import { createListing } from "../../store/Listings/sessionListings";
 
 
+
 import './CreateSpot.css';
 
 
 function CreateSpotForm({ setShowModal, spot }) {
     const dispatch = useDispatch();
+    const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState(spot?.title || "");
     const [address, setAddress] = useState(spot?.address || "");
@@ -63,8 +65,8 @@ function CreateSpotForm({ setShowModal, spot }) {
             setBathrooms('')
             setDescription('')
         }
-        console.log(spot)
-        return dispatch(createListing(spot)).then(() => reset()).then(() => setShowModal(false)).catch(
+
+        return dispatch(createListing(spot)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
             async(res) => {
                 const data = await res.json()
                 if (data && data.errors) setErrors(data.errors)
