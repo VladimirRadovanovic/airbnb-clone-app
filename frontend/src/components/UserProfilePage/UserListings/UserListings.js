@@ -49,7 +49,7 @@ function UserListings() {
                                     <p>{listing?.bathrooms}</p>
                                     <p>{listing?.description}</p>
                                     {/* <p>Created on: {listing?.createdAt.slice(0, 10)}</p> */}
-                                    <p>Created on: {listing?.createdAt ? new Date(listing.createdAt).toDateString(): null}</p>
+                                    <p>Created on: {listing?.createdAt && new Date(listing.createdAt).toDateString()}</p>
                                     <p>{listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
                                     {/* <p>${listing.price} / night</p> */}
                                 </div>
