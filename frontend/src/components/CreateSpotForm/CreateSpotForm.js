@@ -5,6 +5,7 @@ import * as sessionActions from "../../store/session";
 import NumberFormat from 'react-number-format';
 import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
 import { items } from "../DropdownCombobox/utils";
+import { createListing } from "../../store/Listings/sessionListings";
 
 
 import './CreateSpot.css';
@@ -63,7 +64,7 @@ function CreateSpotForm({ setShowModal, spot }) {
             setDescription('')
         }
         console.log(spot)
-        return dispatch(createSpot(spot)).then(() => reset()).then(() => setShowModal(false)).catch(
+        return dispatch(createListing(spot)).then(() => reset()).then(() => setShowModal(false)).catch(
             async(res) => {
                 const data = await res.json()
                 if (data && data.errors) setErrors(data.errors)

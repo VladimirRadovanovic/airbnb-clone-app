@@ -16,12 +16,12 @@ export const createListing = (data) => async(dispatch) => {
         body: JSON.stringify(data)
     })
 
-    const listingData = await response.json()
+    // const listingData = await response.json()
 
-    if(listingData.spot) {
-        dispatch(addListing(listingData.spot))
-    }
-    return response
+    // if(listingData.spot) {
+    //     dispatch(addListing(listingData.spot))
+    // }
+    // return response
 }
 
 
