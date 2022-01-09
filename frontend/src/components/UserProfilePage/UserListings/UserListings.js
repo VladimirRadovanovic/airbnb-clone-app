@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 import './UserListings.css'
@@ -6,6 +7,10 @@ import './UserListings.css'
 
 function UserListings() {
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUserListings())
+    },[dispatch])
 
     const listings = useSelector(state => state.sessionListings)
     const sessionListingsList = []
@@ -19,9 +24,9 @@ function UserListings() {
                 <ul className="listings-list">
                     {sessionListingsList.map(listing => (
                         <li className="listings-list-item">
-                            <p>{listing.title}</p>
-                            <p>{listing.address}</p>
-                            <p>{listing.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
+                            <p>{listing?.title}</p>
+                            <p>{listing?.address}</p>
+                            <p>{listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
                             {/* <p>${listing.price} / night</p> */}
 
                         </li>

@@ -2,12 +2,31 @@ import csrfFetch from "../csrf";
 
 
 const CREATE_LISTING = 'sessionListings/create_listing'
+const GET_USER_LISTINGS = 'sessionListings/get_user_listings'
 
 const addListing = (spot) => {
     return {
         type: CREATE_LISTING,
         spot
     }
+}
+
+const getListings = (listings) => {
+    return {
+        type: GET_USER_LISTINGS,
+        listings
+    }
+}
+
+export const getUserListings = () => async(dispatch) => {
+    const response = await csrfFetch('api/user/listings')
+
+    const userListings = await response.json()
+
+    if (userListings.spots) {
+        dispatch(userListings.spots)
+    }
+    return response
 }
 
 export const createListing = (data) => async (dispatch) => {
@@ -21,7 +40,7 @@ export const createListing = (data) => async (dispatch) => {
     }
 
 
-    const response = await csrfFetch('/api/listings/new', {
+    const response = await csrfFetch('/api/user/listings/new', {
         method: 'POST',
         body: JSON.stringify(data)
     })
@@ -38,6 +57,12 @@ export const createListing = (data) => async (dispatch) => {
 const sessionListingsReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
+        case GET_USER_LISTINGS:
+            newState= {...state}
+            action.listings.array.forEach(listing => {
+                newState[listing.id] = listing
+            });
+            return newState
         case CREATE_LISTING:
             newState = { ...state, [action.spot.id]: action.spot }
             return newState
