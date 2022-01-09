@@ -54,14 +54,14 @@
 }
 
 
-.profile-dropdown button {
+.profile-dropdown button, a {
     background: none!important;
     border: none;
     font-family: arial, sans-serif;
     color: rgb(107, 107, 107);
     width: 100%;
     text-align: start;
-
+    text-decoration: none;
     cursor: pointer;
     padding: 7px 8px;
     font-size: 15px;
@@ -97,8 +97,25 @@
 
 }
 
+.user-profile-link-container {
+    border-top: 1px solid lightgray;
+    border-radius: none!important;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 15px;
+    /* font-weight: bolder; */
+    width: 100%;
+
+
+}
+
 .demo-button-container {
     border-top: 1px solid lightgray;
     border-top-left-radius: 0!important;
     border-top-right-radius: 0!important;
+}
+
+.profile-link {
+    width: 100%;
+    display: block;
 }

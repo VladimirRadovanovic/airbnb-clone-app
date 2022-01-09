@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import LoginFormModal from "../LoginFormModal";
+import { NavLink } from "react-router-dom";
+
 import LoginForm from "../LoginFormModal/LoginForm";
 import SignupForm from "../SignupFormModal/SignupForm";
 import { Modal, SignupModal } from '../../context/Modal';
-import whiteLogo from '../../images/white-logo.png'
+
 import profilePlaceholderPic from '../../images/profile-placeholder.png'
 import profilePic from '../../images/t.jpeg'
 import './ProfileButton.css';
@@ -46,7 +47,7 @@ function ProfileButton({ user }) {
   };
 
   function handleDemo() {
-    dispatch(sessionActions.login({credential:'Demo-lition', password:'password'}))
+    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
   }
 
   return (
@@ -56,23 +57,25 @@ function ProfileButton({ user }) {
           <button className="profile-button" onClick={openMenu}>
             <i className="fas fa-bars bars" />
             <div className="profile-img-container">
-            <img className="profile-img" src={user ? profilePic : profilePlaceholderPic} alt='profile picture' />
+              <img className="profile-img" src={user ? profilePic : profilePlaceholderPic} alt='profile picture' />
 
             </div>
           </button>
           {showMenu && (
             <div className="dropdown-container">
-            <div className="profile-dropdown">
-              <div className="dropdown-user-info">{user.username}</div>
-              <div className="dropdown-user-info">{user.email}</div>
-              <span className="logout-container">
+              <div className="profile-dropdown">
+                <div className="dropdown-user-info">{user.username}</div>
+                <div className="dropdown-user-info">{user.email}</div>
+                  <div className="user-profile-link-container">
+                    <NavLink className='profile-link' to='/api/user/profile' >User profile</NavLink>
+                  </div>
+                <span className="logout-container">
+                  <div>
+                    <button className="logout-button" onClick={logout}>Log Out</button>
+                  </div>
 
-              <div>
-                <button className="logout-button" onClick={logout}>Log Out</button>
+                </span>
               </div>
-
-              </span>
-            </div>
             </div>
           )}
         </>
@@ -81,7 +84,7 @@ function ProfileButton({ user }) {
           <button className="profile-button" onClick={openMenu}>
             <i className="fas fa-bars bars" />
             <div className="profile-img-container">
-            <img className="profile-img" src={profilePlaceholderPic} alt='profile picture' />
+              <img className="profile-img" src={profilePlaceholderPic} alt='profile picture' />
 
             </div>
 
