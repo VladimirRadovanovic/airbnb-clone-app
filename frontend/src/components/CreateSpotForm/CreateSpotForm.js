@@ -59,9 +59,7 @@ function CreateSpotForm({ setShowModal }) {
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                     <div className="spot-input-container">
-                        {/* <label>
-            Email
-            </label> */}
+
                         <input
                             placeholder="Title"
                             type="text"
@@ -69,9 +67,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setTitle(e.target.value)}
                             required
                         />
-                        {/* <label>
-            Username
-            </label> */}
+
                         <input
                             placeholder="Address"
                             type="text"
@@ -79,9 +75,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setAddress(e.target.value)}
                             required
                         />
-                        {/* <label>
-            Password
-            </label> */}
+
                         <input
                             placeholder="City"
                             type="text"
@@ -89,9 +83,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setCity(e.target.value)}
                             required
                         />
-                        {/* <label>
-            Confirm Password
-            </label> */}
+ 
                         {/* <input
                             placeholder="State"
                             type="text"
