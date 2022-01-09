@@ -27,6 +27,7 @@ function UserListings() {
                     {sessionListingsList.map(listing => (
                         <li className="listings-list-item" key={listing.id}>
                             <div className="listing-container">
+                                    <h2>{listing?.title}</h2>
                                 <div className="listing-image-container">
                                     <div className="main-image-container">
                                     <img className="main-image" src={listingImg} alt='listing image' />
@@ -39,7 +40,6 @@ function UserListings() {
                                     </div>
                                 </div>
                                 <div className="listing-data-container">
-                                    <p>{listing?.title}</p>
                                     <p>{listing?.address}</p>
                                     <p>{listing?.city}</p>
                                     <p>{listing?.state ? listing.state : 'N/A'}</p>
@@ -48,6 +48,8 @@ function UserListings() {
                                     <p>{listing?.bedrooms}</p>
                                     <p>{listing?.bathrooms}</p>
                                     <p>{listing?.description}</p>
+                                    {/* <p>Created on: {listing?.createdAt.slice(0, 10)}</p> */}
+                                    <p>Created on: {listing?.createdAt ? new Date(listing.createdAt).toDateString(): null}</p>
                                     <p>{listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
                                     {/* <p>${listing.price} / night</p> */}
                                 </div>
