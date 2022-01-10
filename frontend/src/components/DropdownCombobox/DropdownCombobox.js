@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
-import {useCombobox} from 'downshift'
-import {items, menuStyles, comboboxStyles, comboboxWrapperStyles} from './utils'
+import { useCombobox } from 'downshift'
+import { items, menuStyles, comboboxStyles, comboboxWrapperStyles } from './utils'
 import './ComboBox.css'
 
-function DropdownCombobox({state, setState}) {
+function DropdownCombobox({ state, setState }) {
   const [inputItems, setInputItems] = useState(items)
   const [comboState, setComboState] = useState(state)
 
@@ -29,11 +29,11 @@ function DropdownCombobox({state, setState}) {
     getItemProps,
   } = useCombobox({
     items: inputItems,
-    onInputValueChange: ({inputValue}) => {
+    onInputValueChange: ({ inputValue }) => {
       console.log(inputValue, 'inputValue')
       setInputItems(
         items.filter((item) =>
-        item.toLowerCase().startsWith(inputValue.toLowerCase()),
+          item.toLowerCase().startsWith(inputValue.toLowerCase()),
         ),
 
       )
@@ -44,7 +44,7 @@ function DropdownCombobox({state, setState}) {
     <div className='combobox-container'>
       {/* <label {...getLabelProps()}>Choose an element:</label> */}
       <div className='combobox-container' style={comboboxStyles} {...getComboboxProps()}>
-        <input {...getInputProps({ value: comboState || '',  placeholder: 'State' })} />
+        <input {...getInputProps({ value: comboState || '', placeholder: 'State' })} />
         {/* <button
           type="button"
           {...getToggleButtonProps()}
@@ -58,10 +58,10 @@ function DropdownCombobox({state, setState}) {
           inputItems.map((item, index) => (
             <li
               style={
-                highlightedIndex === index ? {backgroundColor: '#bde4ff'} : {}
+                highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}
               }
               key={`${item}${index}`}
-              {...getItemProps({item, index})}
+              {...getItemProps({ item, index })}
             >
               {item}
             </li>

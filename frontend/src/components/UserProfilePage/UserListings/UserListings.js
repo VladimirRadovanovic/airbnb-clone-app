@@ -19,6 +19,9 @@ function UserListings() {
     const [showUpdateModal, setShowUpdateModal] = useState(false)
     const [updateListing, setUpdateListing] = useState('')
 
+
+ 
+
     useEffect(() => {
         dispatch(getUserListings())
     }, [dispatch])
@@ -42,7 +45,10 @@ function UserListings() {
     }
 
     const handleUpdateListing = (e) => {
-        setShowUpdateModal(true)
+
+            setShowUpdateModal(true)
+
+
         const id = e.target.id;
         const listingId = Number(id.split('-')[1])
         setUpdateListing(listings[listingId])

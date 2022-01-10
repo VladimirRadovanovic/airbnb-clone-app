@@ -32,7 +32,13 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
 
 
     const handleClick = () => {
-        setShowModal(false)
+        if(setShowModal) {
+
+            setShowModal(false)
+        }
+        if(setShowUpdateModal) {
+            setShowUpdateModal(false)
+        }
     }
 
     const handleSubmit = (e) => {
