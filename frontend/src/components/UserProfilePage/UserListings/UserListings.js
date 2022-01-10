@@ -91,6 +91,7 @@ function UserListings() {
                                     <CreateSpotForm spot={updateListing} setShowUpdateModal={setShowUpdateModal} />
                                 </UpdateSpotModal>
                             )}
+                            
                                 </div>
                             </div>
                         </li>
