@@ -50,7 +50,7 @@ export const getUserListings = () => async(dispatch) => {
 }
 
 export const createListing = (data) => async (dispatch) => {
-    // price = Number(price.slice(1))
+
     data.price = Number(data.price.slice(1))
 
     if (data.state.length > 1 || data.state.length === 0) {

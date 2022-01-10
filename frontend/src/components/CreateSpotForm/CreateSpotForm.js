@@ -12,7 +12,7 @@ import { createListing } from "../../store/Listings/sessionListings";
 import './CreateSpot.css';
 
 
-function CreateSpotForm({ setShowModal, spot }) {
+function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
@@ -28,7 +28,7 @@ function CreateSpotForm({ setShowModal, spot }) {
     const [description, setDescription] = useState(spot?.description || "");
     const [errors, setErrors] = useState([]);
 
-    console.log(state, 'price')
+    // console.log(spot.state, 'state*********************')
 
 
     const handleClick = () => {
@@ -39,19 +39,6 @@ function CreateSpotForm({ setShowModal, spot }) {
         e.preventDefault();
 
         setErrors([])
-
-        const spot = {
-            title,
-            address,
-            city,
-            state,
-            zipCode,
-            country,
-            price,
-            bedrooms,
-            bathrooms,
-            description
-        }
 
         const reset = () => {
             setTitle('')
@@ -66,23 +53,32 @@ function CreateSpotForm({ setShowModal, spot }) {
             setDescription('')
         }
 
-        return dispatch(createListing(spot)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
-            async(res) => {
-                const data = await res.json()
-                if (data && data.errors) setErrors(data.errors)
+        if (!spot) {
 
+            const spot = {
+                title,
+                address,
+                city,
+                state,
+                zipCode,
+                country,
+                price,
+                bedrooms,
+                bathrooms,
+                description
             }
-        )
 
-        // if (password === confirmPassword) {
-        //     setErrors([]);
-        //     return dispatch(sessionActions.signup({ email, username, password }))
-        //         .catch(async (res) => {
-        //             const data = await res.json();
-        //             if (data && data.errors) setErrors(data.errors);
-        //         });
-        // }
-        // return setErrors(['Confirm Password field must be the same as the Password field']);
+
+            return dispatch(createListing(spot)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
+                async(res) => {
+                    const data = await res.json()
+                    if (data && data.errors) setErrors(data.errors)
+
+                }
+            )
+
+        }
+
     };
 
     return (
@@ -132,7 +128,7 @@ function CreateSpotForm({ setShowModal, spot }) {
                             onChange={(e) => setState(e.target.value)}
                             required
                         /> */}
-                        <DropdownCombobox state={state} setState={setState} />
+                        <DropdownCombobox state={spot?.state} setState={setState} />
                         <input
                             placeholder="Zip code"
                             type='text'
@@ -187,7 +183,8 @@ function CreateSpotForm({ setShowModal, spot }) {
                             required
                         />
                     </div>
-                    <button className="create-listing-button" type="submit">Create listing</button>
+                    <button className="create-listing-button" type="submit">{spot ? 'Update listing' : 'Create listing'}</button>
+
                 </form>
             </div>
         </>

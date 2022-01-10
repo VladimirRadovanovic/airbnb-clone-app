@@ -6,8 +6,13 @@ import './ComboBox.css'
 
 function DropdownCombobox({state, setState}) {
   const [inputItems, setInputItems] = useState(items)
-  console.log(inputItems)
+  console.log(inputItems, 'inputItems')
+  console.log(state, 'state')
+
+
+
   setState(inputItems)
+
   const {
     isOpen,
     getToggleButtonProps,
@@ -22,6 +27,7 @@ function DropdownCombobox({state, setState}) {
     onInputValueChange: ({inputValue}) => {
       setInputItems(
         items.filter((item) =>
+
           item.toLowerCase().startsWith(inputValue.toLowerCase()),
         ),
       )
@@ -31,7 +37,7 @@ function DropdownCombobox({state, setState}) {
     <div className='combobox-container'>
       {/* <label {...getLabelProps()}>Choose an element:</label> */}
       <div className='combobox-container' style={comboboxStyles} {...getComboboxProps()}>
-        <input placeholder='State' {...getInputProps()} />
+        <input {...getInputProps({ value: state, placeholder: 'State' })} />
         {/* <button
           type="button"
           {...getToggleButtonProps()}

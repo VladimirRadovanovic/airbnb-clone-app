@@ -1,15 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getUserListings, removeListing } from "../../../store/Listings/sessionListings";
 import listingImg from '../../../images/splash-img4.jpg'
+import { CreateSpotModal } from "../../../context/Modal";
+import CreateSpotForm from "../../CreateSpotForm/CreateSpotForm";
 
 
 
 import './UserListings.css'
+import CreateSpotFormModal from "../../CreateSpotForm";
 
 
 function UserListings() {
     const dispatch = useDispatch()
+    const [showUpdateModal, setShowUpdateModal] = useState(false)
 
     useEffect(() => {
         dispatch(getUserListings())
@@ -64,8 +68,13 @@ function UserListings() {
                                     </div>
                                 </div>
                                 <div className="listing-button-container">
-                                    <button className="update-listing-button">Update listing</button>
+                                    <button onClick={() => setShowUpdateModal(true)} id={`-${listing.id}`} className="update-listing-button">Update listing</button>
                                     <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
+                            {showUpdateModal && (
+                                <CreateSpotModal onClose={() => setShowUpdateModal(false)}>
+                                    <CreateSpotForm spot={listing} setShowUpdateModal={setShowUpdateModal} />
+                                </CreateSpotModal>
+                            )}
                                 </div>
                             </div>
                         </li>

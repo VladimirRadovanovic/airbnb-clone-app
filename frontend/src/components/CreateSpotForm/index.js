@@ -8,7 +8,7 @@ import './CreateSpot.css'
 
 function CreateSpotFormModal({ isLoaded }) {
     const [showModal, setShowModal] = useState(false);
-    console.log(showModal, 'spotin*****')
+    // console.log(showModal, 'spotin*****')
     const sessionUser = useSelector(state => state.session.user);
 
     let y = window.scrollY
