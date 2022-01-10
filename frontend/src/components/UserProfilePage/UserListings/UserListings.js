@@ -73,7 +73,7 @@ function UserListings() {
                                         <p><span>Bedrooms:</span> {listing?.bedrooms}</p>
                                         <p><span>Bathrooms:</span> {listing?.bathrooms}</p>
                                         {/* <p>Created on: {listing?.createdAt.slice(0, 10)}</p> */}
-                                        <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
+                                        <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + ' / night' : '$' + listing.price + '.00 / night'}</p>
                                         {/* <p>${listing.price} / night</p> */}
                                     </div>
                                 </div>
