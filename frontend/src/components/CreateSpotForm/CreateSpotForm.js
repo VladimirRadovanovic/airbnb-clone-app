@@ -86,7 +86,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
             <div className="modal-signup-header">
                 <span><button onClick={handleClick} type='button'>X</button></span>
                 <div className="title-container">
-                    <h3>Try Hosting</h3>
+                    {spot ? <h3>Update listing</h3> : <h3>Try Hosting</h3>}
                 </div>
             </div>
             <div className="signup-form-container">
@@ -109,12 +109,14 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                             placeholder="Address"
                             type="text"
                             value={address}
+                            disabled = {spot !== undefined}
                             onChange={(e) => setAddress(e.target.value)}
                             required
                         />
 
                         <input
                             placeholder="City"
+                            disabled = {spot !== undefined}
                             type="text"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
@@ -131,6 +133,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                         <DropdownCombobox state={spot?.state} setState={setState} />
                         <input
                             placeholder="Zip code"
+                            disabled = {spot !== undefined}
                             type='text'
                             value={zipCode}
                             onChange={(e) => setZipCode(e.target.value)}
@@ -138,6 +141,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                         />
                         <input
                             placeholder="Country"
+                            disabled = {spot !== undefined}
                             type='text'
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
