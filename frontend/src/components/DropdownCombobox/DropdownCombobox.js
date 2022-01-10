@@ -14,7 +14,13 @@ function DropdownCombobox({ state, setState }) {
   // if (state) able = true
   // else able = false
   useEffect(() => {
-    setState(inputItems)
+    if (comboState) {
+      setState(inputItems)
+
+    }
+    if(!comboState) {
+      setState([])
+    }
 
   }, [inputItems, comboState])
 
