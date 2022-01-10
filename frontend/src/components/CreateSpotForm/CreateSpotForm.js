@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import NumberFormat from 'react-number-format';
 import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
 import { items } from "../DropdownCombobox/utils";
+import { createListing, updateListing } from "../../store/Listings/sessionListings";
+
 
 
 import './CreateSpot.css';
 
 
-function CreateSpotForm({ setShowModal, spot }) {
+function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
     const dispatch = useDispatch();
+    const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState(spot?.title || "");
     const [address, setAddress] = useState(spot?.address || "");
@@ -25,7 +28,7 @@ function CreateSpotForm({ setShowModal, spot }) {
     const [description, setDescription] = useState(spot?.description || "");
     const [errors, setErrors] = useState([]);
 
-    console.log(state, 'price')
+    // console.log(spot.state, 'state*********************')
 
 
     const handleClick = () => {
@@ -36,19 +39,6 @@ function CreateSpotForm({ setShowModal, spot }) {
         e.preventDefault();
 
         setErrors([])
-
-        const spot = {
-            title,
-            address,
-            city,
-            state,
-            zipCode,
-            country,
-            price,
-            bedrooms,
-            bathrooms,
-            description
-        }
 
         const reset = () => {
             setTitle('')
@@ -62,24 +52,58 @@ function CreateSpotForm({ setShowModal, spot }) {
             setBathrooms('')
             setDescription('')
         }
-        console.log(spot)
-        return dispatch(createSpot(spot)).then(() => reset()).then(() => setShowModal(false)).catch(
-            async(res) => {
-                const data = await res.json()
-                if (data && data.errors) setErrors(data.errors)
 
+        if (!spot) {
+
+            const listing = {
+                title,
+                address,
+                city,
+                state,
+                zipCode,
+                country,
+                price,
+                bedrooms,
+                bathrooms,
+                description
             }
-        )
 
-        // if (password === confirmPassword) {
-        //     setErrors([]);
-        //     return dispatch(sessionActions.signup({ email, username, password }))
-        //         .catch(async (res) => {
-        //             const data = await res.json();
-        //             if (data && data.errors) setErrors(data.errors);
-        //         });
-        // }
-        // return setErrors(['Confirm Password field must be the same as the Password field']);
+
+            return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
+                async(res) => {
+                    const data = await res.json()
+                    if (data && data.errors) setErrors(data.errors)
+
+                }
+            )
+
+        }
+        else {
+            const listing = {
+                title,
+                address,
+                city,
+                state,
+                zipCode,
+                country,
+                price,
+                bedrooms,
+                bathrooms,
+                description,
+                id: spot.id
+            }
+            // dispatch(updateListing(listing)).then(() => setShowUpdateModal(false))
+
+            return dispatch(updateListing(listing)).then(() => setShowUpdateModal(false)).catch(
+                async(res) => {
+                    const data = await res.json()
+                    console.log(data, 'data sent back*******')
+                    if (data && data.errors) setErrors(data.errors)
+
+                }
+            )
+        }
+
     };
 
     return (
@@ -87,7 +111,7 @@ function CreateSpotForm({ setShowModal, spot }) {
             <div className="modal-signup-header">
                 <span><button onClick={handleClick} type='button'>X</button></span>
                 <div className="title-container">
-                    <h3>Try Hosting</h3>
+                    {spot ? <h3>Update listing</h3> : <h3>Try Hosting</h3>}
                 </div>
             </div>
             <div className="signup-form-container">
@@ -110,12 +134,14 @@ function CreateSpotForm({ setShowModal, spot }) {
                             placeholder="Address"
                             type="text"
                             value={address}
+                            // disabled = {spot !== undefined}
                             onChange={(e) => setAddress(e.target.value)}
                             required
                         />
 
                         <input
                             placeholder="City"
+                            // disabled = {spot !== undefined}
                             type="text"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
@@ -129,9 +155,10 @@ function CreateSpotForm({ setShowModal, spot }) {
                             onChange={(e) => setState(e.target.value)}
                             required
                         /> */}
-                        <DropdownCombobox state={state} setState={setState} />
+                        <DropdownCombobox state={spot?.state} setState={setState} />
                         <input
                             placeholder="Zip code"
+                            // disabled = {spot !== undefined}
                             type='text'
                             value={zipCode}
                             onChange={(e) => setZipCode(e.target.value)}
@@ -139,6 +166,7 @@ function CreateSpotForm({ setShowModal, spot }) {
                         />
                         <input
                             placeholder="Country"
+                            // disabled = {spot !== undefined}
                             type='text'
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
@@ -184,7 +212,8 @@ function CreateSpotForm({ setShowModal, spot }) {
                             required
                         />
                     </div>
-                    <button className="create-listing-button" type="submit">Create listing</button>
+                    <button className="create-listing-button" type="submit">{spot ? 'Update listing' : 'Create listing'}</button>
+
                 </form>
             </div>
         </>
