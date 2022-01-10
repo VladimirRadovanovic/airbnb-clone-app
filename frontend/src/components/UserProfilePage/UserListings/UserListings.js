@@ -22,9 +22,14 @@ function UserListings() {
         dispatch(getUserListings())
     }, [dispatch])
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     const listings = useSelector(state => state.sessionListings)
     const sessionListingsList = []
     for (let key in listings) {
+        listings[key].price = numberWithCommas(listings[key].price)
         sessionListingsList.push(listings[key])
     }
 
@@ -47,6 +52,7 @@ function UserListings() {
             <div className="list-container">
                 <ul className="listings-list">
                     {sessionListingsList.map(listing => (
+
                         <li className="listings-list-item" key={listing.id}>
                             <div className="listing-container">
                                 <div className="listing-image-container">
