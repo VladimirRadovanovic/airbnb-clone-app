@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import {useCombobox} from 'downshift'
 import {items, menuStyles, comboboxStyles, comboboxWrapperStyles} from './utils'
@@ -13,7 +13,10 @@ function DropdownCombobox({state, setState}) {
   // let able;
   // if (state) able = true
   // else able = false
-  setState(inputItems)
+  useEffect(() => {
+    setState(inputItems)
+
+  }, [inputItems])
 
   const {
     isOpen,

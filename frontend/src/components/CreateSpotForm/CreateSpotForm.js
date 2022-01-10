@@ -94,7 +94,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
             }
             // dispatch(updateListing(listing)).then(() => setShowUpdateModal(false))
 
-            return dispatch(updateListing(listing)).then(() => setShowUpdateModal(false)).catch(
+            return dispatch(updateListing(listing)).then(() => reset()).then(() => setShowUpdateModal(false)).catch(
                 async(res) => {
                     const data = await res.json()
                     console.log(data, 'data sent back*******')

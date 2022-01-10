@@ -4,11 +4,12 @@ import { getUserListings, removeListing } from "../../../store/Listings/sessionL
 import listingImg from '../../../images/splash-img4.jpg'
 import { UpdateSpotModal } from "../../../context/Modal";
 import CreateSpotForm from "../../CreateSpotForm/CreateSpotForm";
+import CreateSpotFormModal from "../../CreateSpotForm";
 
 
 
 import './UserListings.css'
-import CreateSpotFormModal from "../../CreateSpotForm";
+import { CreateSpotModal } from "../../../context/Modal";
 
 
 // listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'
@@ -91,7 +92,7 @@ function UserListings() {
                                     <CreateSpotForm spot={updateListing} setShowUpdateModal={setShowUpdateModal} />
                                 </UpdateSpotModal>
                             )}
-                            
+
                                 </div>
                             </div>
                         </li>
