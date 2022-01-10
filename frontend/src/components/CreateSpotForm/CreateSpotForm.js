@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 import NumberFormat from 'react-number-format';
 import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
 import { items } from "../DropdownCombobox/utils";
-import { createListing } from "../../store/Listings/sessionListings";
+import { createListing, updateListing } from "../../store/Listings/sessionListings";
 
 
 
@@ -55,7 +55,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
 
         if (!spot) {
 
-            const spot = {
+            const listing = {
                 title,
                 address,
                 city,
@@ -69,7 +69,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
             }
 
 
-            return dispatch(createListing(spot)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
+            return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
                 async(res) => {
                     const data = await res.json()
                     if (data && data.errors) setErrors(data.errors)
@@ -77,6 +77,28 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                 }
             )
 
+        }
+        else {
+            const listing = {
+                title,
+                address,
+                city,
+                state,
+                zipCode,
+                country,
+                price,
+                bedrooms,
+                bathrooms,
+                description
+            }
+            dispatch(updateListing(listing))
+            // return dispatch(updateListing(listing)).then(() => reset()).then(() => setShowModal(false)).catch(
+            //     async(res) => {
+            //         const data = await res.json()
+            //         if (data && data.errors) setErrors(data.errors)
+
+            //     }
+            // )
         }
 
     };

@@ -27,6 +27,10 @@ const getListings = (listings) => {
     }
 }
 
+export const updateListing = (data) => async(dispatch) => {
+    console.log('in update listing********', data)
+}
+
 export const removeListing = (id) => async(dispatch) => {
     const response = await csrfFetch('/api/user/listings/delete', {
         method: 'DELETE',
