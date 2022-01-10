@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getUserListings, removeListing } from "../../../store/Listings/sessionListings";
 import listingImg from '../../../images/splash-img4.jpg'
-import { CreateSpotModal } from "../../../context/Modal";
+import { UpdateSpotModal } from "../../../context/Modal";
 import CreateSpotForm from "../../CreateSpotForm/CreateSpotForm";
 
 
@@ -11,9 +11,12 @@ import './UserListings.css'
 import CreateSpotFormModal from "../../CreateSpotForm";
 
 
+// listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'
+
 function UserListings() {
     const dispatch = useDispatch()
     const [showUpdateModal, setShowUpdateModal] = useState(false)
+    const [updateListing, setUpdateListing] = useState('')
 
     useEffect(() => {
         dispatch(getUserListings())
@@ -30,6 +33,13 @@ function UserListings() {
         const listingId = Number(id.split('-')[1])
 
         dispatch(removeListing(listingId))
+    }
+
+    const handleUpdateListing = (e) => {
+        setShowUpdateModal(true)
+        const id = e.target.id;
+        const listingId = Number(id.split('-')[1])
+        setUpdateListing(listings[listingId])
     }
 
     return (
@@ -63,17 +73,17 @@ function UserListings() {
                                         <p><span>Bedrooms:</span> {listing?.bedrooms}</p>
                                         <p><span>Bathrooms:</span> {listing?.bathrooms}</p>
                                         {/* <p>Created on: {listing?.createdAt.slice(0, 10)}</p> */}
-                                        <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
+                                        <p><span>Price:</span> {listing?.price}</p>
                                         {/* <p>${listing.price} / night</p> */}
                                     </div>
                                 </div>
                                 <div className="listing-button-container">
-                                    <button onClick={() => setShowUpdateModal(true)} id={`-${listing.id}`} className="update-listing-button">Update listing</button>
+                                    <button onClick={handleUpdateListing} id={`-${listing.id}`} className="update-listing-button">Update listing</button>
                                     <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
                             {showUpdateModal && (
-                                <CreateSpotModal onClose={() => setShowUpdateModal(false)}>
-                                    <CreateSpotForm spot={listing} setShowUpdateModal={setShowUpdateModal} />
-                                </CreateSpotModal>
+                                <UpdateSpotModal onClose={() => setShowUpdateModal(false)}>
+                                    <CreateSpotForm spot={updateListing} setShowUpdateModal={setShowUpdateModal} />
+                                </UpdateSpotModal>
                             )}
                                 </div>
                             </div>

@@ -89,18 +89,19 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                 price,
                 bedrooms,
                 bathrooms,
-                description
+                description,
+                id: spot.id
             }
-            dispatch(updateListing(listing)).then(() => setShowUpdateModal(false))
+            // dispatch(updateListing(listing)).then(() => setShowUpdateModal(false))
 
-            // return dispatch(updateListing(listing)).then(() => setShowModal(false)).catch(
-            //     async(res) => {
-            //         const data = await res.json()
-            //         console.log(data, 'data sent back*******')
-            //         if (data && data.errors) setErrors(data.errors)
+            return dispatch(updateListing(listing)).then(() => setShowUpdateModal(false)).catch(
+                async(res) => {
+                    const data = await res.json()
+                    console.log(data, 'data sent back*******')
+                    if (data && data.errors) setErrors(data.errors)
 
-            //     }
-            // )
+                }
+            )
         }
 
     };
