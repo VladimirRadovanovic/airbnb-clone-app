@@ -8,7 +8,7 @@ function DropdownCombobox({ state, setState }) {
   const [inputItems, setInputItems] = useState(items)
   const [comboState, setComboState] = useState(state)
 
-  console.log(state, 'whyyyyyy*************')
+  // console.log(state, 'whyyyyyy*************')
 
   // let able;
   // if (state) able = true
@@ -18,7 +18,7 @@ function DropdownCombobox({ state, setState }) {
       setState(inputItems)
 
     }
-    if(!comboState) {
+    if (!comboState) {
       setState([])
     }
 

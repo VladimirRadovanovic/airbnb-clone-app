@@ -37,7 +37,13 @@ const getListings = (listings) => {
 
 export const updateListing = (data) => async(dispatch) => {
     console.log('in update listing********', data.price)
-    data.price = parseFloat(data.price.slice(1).split(',').join('')).toFixed(2)
+    if(data.price.startsWith('$')) {
+        data.price = parseFloat(data.price.slice(1).split(',').join('')).toFixed(2)
+
+    }else {
+        data.price = parseFloat(data.price.split(',').join('')).toFixed(2)
+
+    }
 
 
     if (data.state.length > 1 || data.state.length === 0) {
