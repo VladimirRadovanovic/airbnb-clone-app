@@ -118,6 +118,15 @@ router.get('/', requireAuth, asyncHandler(async(req, res) => {
     return res.json({ spots })
 }))
 
+router.delete('/delete', requireAuth, asyncHandler(async(req, res) => {
+    const { id } = req.body
+
+    const listing = await Spot.findByPk(id)
+
+    await listing.destroy()
+    return res.json({ message: 'Deleted' })
+}))
+
 
 
 module.exports = router

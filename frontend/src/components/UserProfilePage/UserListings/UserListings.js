@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getUserListings } from "../../../store/Listings/sessionListings";
+import { getUserListings, removeListing } from "../../../store/Listings/sessionListings";
 import listingImg from '../../../images/splash-img4.jpg'
+
 
 
 import './UserListings.css'
@@ -20,7 +21,7 @@ function UserListings() {
         sessionListingsList.push(listings[key])
     }
 
-    const handleRemoveListing = () => {
+    const handleRemoveListing = (e) => {
         const id = e.target.id;
         const listingId = Number(id.split('-')[1])
 
