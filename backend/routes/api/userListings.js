@@ -70,7 +70,7 @@ const listingValidator = [
 router.post('/new',listingValidator, requireAuth, asyncHandler(async (req, res) => {
 
     const { id } = req.user;
-    let {
+    const {
         title,
         address,
         city,
@@ -125,6 +125,40 @@ router.delete('/delete', requireAuth, asyncHandler(async(req, res) => {
 
     await listing.destroy()
     return res.json({ message: 'Deleted' })
+}))
+
+router.put('/update', listingValidator, requireAuth, asyncHandler(async(req, res) => {
+
+    const {
+        title,
+        address,
+        city,
+        state,
+        zipCode,
+        country,
+        price,
+        bedrooms,
+        bathrooms,
+        description,
+        id
+    } = req.body
+
+    const spot = await Spot.findByPk(id)
+
+    await spot.update({
+        title,
+        address,
+        city,
+        state,
+        zipCode,
+        country,
+        price,
+        bedrooms,
+        bathrooms,
+        description,
+    })
+
+    return res.json({spot})
 }))
 
 

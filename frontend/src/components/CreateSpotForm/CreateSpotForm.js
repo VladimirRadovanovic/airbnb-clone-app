@@ -91,10 +91,12 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                 bathrooms,
                 description
             }
-            dispatch(updateListing(listing))
-            // return dispatch(updateListing(listing)).then(() => reset()).then(() => setShowModal(false)).catch(
+            dispatch(updateListing(listing)).then(() => setShowUpdateModal(false))
+
+            // return dispatch(updateListing(listing)).then(() => setShowModal(false)).catch(
             //     async(res) => {
             //         const data = await res.json()
+            //         console.log(data, 'data sent back*******')
             //         if (data && data.errors) setErrors(data.errors)
 
             //     }

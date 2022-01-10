@@ -4,11 +4,19 @@ import csrfFetch from "../csrf";
 const CREATE_LISTING = 'sessionListings/create_listing'
 const GET_USER_LISTINGS = 'sessionListings/get_user_listings'
 const REMOVE_LISTING = 'sessionListings/remove_listing'
+const UPDATE_LISTING = 'sessionListings/update_listing'
 
 const deleteListing = (id) => {
     return {
         type: REMOVE_LISTING,
         id
+    }
+}
+
+const updateUserListing = (listing) => {
+    return {
+        type: UPDATE_LISTING,
+        listing
     }
 }
 
@@ -29,6 +37,23 @@ const getListings = (listings) => {
 
 export const updateListing = (data) => async(dispatch) => {
     console.log('in update listing********', data)
+    data.price = Number(data.price.slice(1))
+
+    if (data.state.length > 1 || data.state.length === 0) {
+        data.state = null
+    }else {
+        data.state = data.state[0]
+    }
+
+    const response = await csrfFetch('/api/user/listings/update', {
+        method: 'PUT',
+        body: JSON.stringify(data)
+    })
+    const updatedListing = await response.json()
+    if (updatedListing.spot) {
+        dispatch(updateUserListing(updatedListing.spot))
+    }
+    return response
 }
 
 export const removeListing = (id) => async(dispatch) => {
@@ -81,6 +106,12 @@ export const createListing = (data) => async (dispatch) => {
 const sessionListingsReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
+        case UPDATE_LISTING:
+            newState = {
+                ...state,
+                [action.listing.id]: action.listing
+            }
+            return newState
         case REMOVE_LISTING:
             newState = {...state}
             delete newState[action.id]
