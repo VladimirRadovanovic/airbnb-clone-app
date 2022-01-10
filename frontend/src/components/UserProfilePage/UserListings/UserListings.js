@@ -27,7 +27,6 @@ function UserListings() {
                     {sessionListingsList.map(listing => (
                         <li className="listings-list-item" key={listing.id}>
                             <div className="listing-container">
-                                    <h2>{listing?.title}</h2>
                                 <div className="listing-image-container">
                                     <div className="main-image-container">
                                     <img className="main-image" src={listingImg} alt='listing image' />
@@ -40,22 +39,25 @@ function UserListings() {
                                     </div>
                                 </div>
                                 <div className="listing-data-container">
-                                    <p>{listing?.address}</p>
-                                    <p>{listing?.city}</p>
-                                    <p>{listing?.state ? listing.state : 'N/A'}</p>
-                                    <p>{listing?.zipCode}</p>
-                                    <p>{listing?.country}</p>
-                                    <p>{listing?.bedrooms}</p>
-                                    <p>{listing?.bathrooms}</p>
-                                    <p>{listing?.description}</p>
+                                    <h2 className="title">{listing?.title}</h2>
+                                    <p className="description">{listing?.description}</p>
+                                    <p className="created-on"><span>Created on: </span> {listing?.createdAt && new Date(listing.createdAt).toDateString()}</p>
+                                    <div className="details-container">
+                                    <p><span>Address:</span> {listing?.address}</p>
+                                    <p><span>City:</span> {listing?.city}</p>
+                                    <p><span>State:</span> {listing?.state ? listing.state : 'N/A'}</p>
+                                    <p><span>Zip code:</span> {listing?.zipCode}</p>
+                                    <p><span>Country:</span> {listing?.country}</p>
+                                    <p><span>Bedrooms:</span> {listing?.bedrooms}</p>
+                                    <p><span>Bathrooms:</span> {listing?.bathrooms}</p>
                                     {/* <p>Created on: {listing?.createdAt.slice(0, 10)}</p> */}
-                                    <p>Created on: {listing?.createdAt && new Date(listing.createdAt).toDateString()}</p>
-                                    <p>{listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
+                                    <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'}</p>
                                     {/* <p>${listing.price} / night</p> */}
+                                    </div>
                                 </div>
                                 <div className="listing-button-container">
-                                    <button>Update listing</button>
-                                    <button>Remove listing</button>
+                                    <button className="update-listing-button">Update listing</button>
+                                    <button className="remove-listing-button">Remove listing</button>
                                 </div>
                             </div>
                         </li>
