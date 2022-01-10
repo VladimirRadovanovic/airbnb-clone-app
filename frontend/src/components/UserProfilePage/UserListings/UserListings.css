@@ -88,6 +88,7 @@
 
 .details-container {
     display: flex;
+    justify-content: space-evenly;
 }
 
 .details-container p {
@@ -95,6 +96,7 @@
     height: 70px;
     overflow-y: auto;
     overflow-wrap: break-word;
+
     /* hyphens: auto; */
 
 }

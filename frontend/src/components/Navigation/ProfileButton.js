@@ -67,8 +67,8 @@ function ProfileButton({ user }) {
           {showMenu && (
             <div className="dropdown-container">
               <div className="profile-dropdown">
-                <div className="dropdown-user-info">{user.username}</div>
-                <div className="dropdown-user-info">{user.email}</div>
+                {/* <div className="dropdown-user-info">{user.username}</div> */}
+                {/* <div className="dropdown-user-info">{user.email}</div> */}
                   <div className="user-profile-link-container">
                     <NavLink className='profile-link' to='/api/user/profile' >Profile</NavLink>
                   </div>
