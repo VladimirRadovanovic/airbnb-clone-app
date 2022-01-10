@@ -28,7 +28,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
     const [description, setDescription] = useState(spot?.description || "");
     const [errors, setErrors] = useState([]);
 
-    // console.log(spot.state, 'state*********************')
+    // console.log(price, 'price*********************')
 
 
     const handleClick = () => {
