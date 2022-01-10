@@ -4,11 +4,12 @@ import { getUserListings, removeListing } from "../../../store/Listings/sessionL
 import listingImg from '../../../images/splash-img4.jpg'
 import { UpdateSpotModal } from "../../../context/Modal";
 import CreateSpotForm from "../../CreateSpotForm/CreateSpotForm";
+import CreateSpotFormModal from "../../CreateSpotForm";
 
 
 
 import './UserListings.css'
-import CreateSpotFormModal from "../../CreateSpotForm";
+import { CreateSpotModal } from "../../../context/Modal";
 
 
 // listing?.price.includes('.') ? '$' + listing.price + '/ night' : '$' + listing.price + '.00 / night'
@@ -18,13 +19,21 @@ function UserListings() {
     const [showUpdateModal, setShowUpdateModal] = useState(false)
     const [updateListing, setUpdateListing] = useState('')
 
+
+ 
+
     useEffect(() => {
         dispatch(getUserListings())
     }, [dispatch])
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     const listings = useSelector(state => state.sessionListings)
     const sessionListingsList = []
     for (let key in listings) {
+        listings[key].price = numberWithCommas(listings[key].price)
         sessionListingsList.push(listings[key])
     }
 
@@ -36,7 +45,10 @@ function UserListings() {
     }
 
     const handleUpdateListing = (e) => {
-        setShowUpdateModal(true)
+
+            setShowUpdateModal(true)
+
+
         const id = e.target.id;
         const listingId = Number(id.split('-')[1])
         setUpdateListing(listings[listingId])
@@ -47,6 +59,7 @@ function UserListings() {
             <div className="list-container">
                 <ul className="listings-list">
                     {sessionListingsList.map(listing => (
+
                         <li className="listings-list-item" key={listing.id}>
                             <div className="listing-container">
                                 <div className="listing-image-container">
@@ -73,7 +86,7 @@ function UserListings() {
                                         <p><span>Bedrooms:</span> {listing?.bedrooms}</p>
                                         <p><span>Bathrooms:</span> {listing?.bathrooms}</p>
                                         {/* <p>Created on: {listing?.createdAt.slice(0, 10)}</p> */}
-                                        <p><span>Price:</span> {listing?.price}</p>
+                                        <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + ' / night' : '$' + listing.price + '.00 / night'}</p>
                                         {/* <p>${listing.price} / night</p> */}
                                     </div>
                                 </div>
@@ -85,6 +98,7 @@ function UserListings() {
                                     <CreateSpotForm spot={updateListing} setShowUpdateModal={setShowUpdateModal} />
                                 </UpdateSpotModal>
                             )}
+
                                 </div>
                             </div>
                         </li>
