@@ -3,6 +3,15 @@ import csrfFetch from "../csrf";
 
 const CREATE_LISTING = 'sessionListings/create_listing'
 const GET_USER_LISTINGS = 'sessionListings/get_user_listings'
+const REMOVE_LISTING = 'sessionListings/remove_listing'
+
+const deleteListing = (id) => {
+    return {
+        type: REMOVE_LISTING,
+        id
+    }
+}
+
 
 const addListing = (spot) => {
     return {
@@ -15,6 +24,17 @@ const getListings = (listings) => {
     return {
         type: GET_USER_LISTINGS,
         listings
+    }
+}
+
+export const removeListing = (id) => async(dispatch) => {
+    const response = await csrfFetch('/api/user/listings/delete', {
+        method: 'DELETE',
+        body: JSON.stringify({ id })
+    })
+    const data = await response.json()
+    if (data.message === 'Deleted') {
+        dispatch(deleteListing(id))
     }
 }
 
@@ -57,6 +77,10 @@ export const createListing = (data) => async (dispatch) => {
 const sessionListingsReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
+        case REMOVE_LISTING:
+            newState = {...state}
+            delete newState[action.id]
+            return newState
         case GET_USER_LISTINGS:
             newState= {...state}
             action.listings.forEach(listing => {
