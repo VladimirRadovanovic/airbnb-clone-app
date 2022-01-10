@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -19,7 +19,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
     const [title, setTitle] = useState(spot?.title || "");
     const [address, setAddress] = useState(spot?.address || "");
     const [city, setCity] = useState(spot?.city || "");
-    const [state, setState] = useState(spot?.state || '');
+    let [state, setState] = useState(spot?.state || '');
     const [zipCode, setZipCode] = useState(spot?.zipCode || "");
     const [country, setCountry] = useState(spot?.country || "");
     const [price, setPrice] = useState(spot?.price || "");
@@ -29,7 +29,12 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
     const [errors, setErrors] = useState([]);
 
     // console.log(price, 'price*********************')
+    // useEffect(() => {
 
+    //     if (state?.length > 1) {
+    //         setState(spot?.state)
+    //     }
+    // }, [state])
 
     const handleClick = () => {
         if(setShowModal) {
@@ -73,6 +78,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                 bathrooms,
                 description
             }
+            console.log(state, 'in the if state*******')
 
 
             return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
@@ -85,7 +91,10 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
 
         }
         else {
-            const listing = {
+            if (state.length > 1) {
+                state = [spot.state]
+            }
+            let listing = {
                 title,
                 address,
                 city,
@@ -98,6 +107,8 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                 description,
                 id: spot.id
             }
+
+            console.log(state, 'in the else state')
             // dispatch(updateListing(listing)).then(() => setShowUpdateModal(false))
 
             return dispatch(updateListing(listing)).then(() => reset()).then(() => setShowUpdateModal(false)).catch(

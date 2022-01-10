@@ -16,7 +16,7 @@ function DropdownCombobox({ state, setState }) {
   useEffect(() => {
     setState(inputItems)
 
-  }, [inputItems])
+  }, [inputItems, comboState])
 
   const {
     isOpen,
