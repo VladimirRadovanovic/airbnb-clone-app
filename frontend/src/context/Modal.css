@@ -28,9 +28,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 24px 3px rgb(0 0 0 / 14%);
-    border: 1px solid lightgray;
-    /* border: 1px solid black; */
+
+
+
   }
 
 
@@ -44,29 +44,28 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 24px 3px rgb(0 0 0 / 14%);
-    border: 1px solid lightgray;
 
 
-    /* border: 1px solid black; */
+
   }
 
   #spot-modal-content {
     position: absolute;
+    top: 110px;
     background-color:white;
     width: 450px;
-    height: 815px;
+
+    height: 810px;
+
     border-radius: 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 70px;
-    box-shadow: 0 10px 24px 3px rgb(0 0 0 / 14%);
-    border: 1px solid lightgray;
+
+    /* margin-top: 75px; */
 
 
-    /* border: 1px solid black; */
   }
 
   /* #update-spot-modal-content {

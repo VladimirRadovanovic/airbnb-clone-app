@@ -5,6 +5,7 @@ const CREATE_LISTING = 'sessionListings/create_listing'
 const GET_USER_LISTINGS = 'sessionListings/get_user_listings'
 const REMOVE_LISTING = 'sessionListings/remove_listing'
 const UPDATE_LISTING = 'sessionListings/update_listing'
+const REMOVE_USER_LISTINGS = 'sessionListings/remove_user_listings'
 
 const deleteListing = (id) => {
     return {
@@ -35,8 +36,15 @@ const getListings = (listings) => {
     }
 }
 
+export const removeUserListings = () => {
+    return {
+        type: REMOVE_USER_LISTINGS
+    }
+}
+
+
 export const updateListing = (data) => async(dispatch) => {
-    console.log('in update listing********', data.price)
+
     if(data.price.startsWith('$')) {
         data.price = parseFloat(data.price.slice(1).split(',').join('')).toFixed(2)
 
@@ -86,11 +94,9 @@ export const getUserListings = () => async(dispatch) => {
 }
 
 export const createListing = (data) => async (dispatch) => {
-    console.log(data.price, 'pre parsing*****')
+
     data.price = parseFloat(data.price.slice(1).split(',').join('')).toFixed(2)
     // data.price = parseFloat(data.price.slice(1)).toFixed(2)
-
-    console.log(data.price, 'in func price post pasrsing*************')
 
     if (data.state.length > 1 || data.state.length === 0) {
         data.state = null
@@ -116,6 +122,8 @@ export const createListing = (data) => async (dispatch) => {
 const sessionListingsReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
+        case REMOVE_USER_LISTINGS:
+            return newState
         case UPDATE_LISTING:
             newState = {
                 ...state,

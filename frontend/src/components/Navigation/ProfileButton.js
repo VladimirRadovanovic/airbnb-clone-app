@@ -11,6 +11,7 @@ import { Modal, SignupModal } from '../../context/Modal';
 import profilePlaceholderPic from '../../images/profile-placeholder.png'
 import profilePic from '../../images/t.jpeg'
 import './ProfileButton.css';
+import { removeUserListings } from "../../store/Listings/sessionListings";
 
 
 
@@ -20,7 +21,6 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  console.log(showLoginModal, 'loginModal******')
   const [showSignupModal, setShowSignupModal] = useState(false);
 
 
@@ -44,6 +44,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    dispatch(removeUserListings())
     history.push('/')
     setShowLoginModal(false)
     setShowSignupModal(false)
@@ -67,8 +68,6 @@ function ProfileButton({ user }) {
           {showMenu && (
             <div className="dropdown-container">
               <div className="profile-dropdown">
-                {/* <div className="dropdown-user-info">{user.username}</div> */}
-                {/* <div className="dropdown-user-info">{user.email}</div> */}
                   <div className="user-profile-link-container">
                     <NavLink className='profile-link' to='/api/user/profile' >Profile</NavLink>
                   </div>

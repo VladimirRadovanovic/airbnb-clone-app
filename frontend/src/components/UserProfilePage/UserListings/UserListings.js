@@ -6,7 +6,12 @@ import { UpdateSpotModal } from "../../../context/Modal";
 import CreateSpotForm from "../../CreateSpotForm/CreateSpotForm";
 import CreateSpotFormModal from "../../CreateSpotForm";
 
-// import CreateSpotFormModal from "../../CreateSpotForm";
+
+
+import UpdateSpotForm from "../../UpdateSpotForm/UpdateSpotForm";
+
+import UpdateFormModal from "../../UpdateSpotForm";
+import { removeInAllListings } from "../../../store/Listings/allListings";
 
 
 
@@ -21,10 +26,7 @@ function UserListings() {
     const [showUpdateModal, setShowUpdateModal] = useState(false)
     const [updateListing, setUpdateListing] = useState('')
 
-    console.log(showUpdateModal, '!!!!!!!!!!!show the update modal in the user listing')
 
-
-    console.log('times listing modal')
 
     useEffect(() => {
         dispatch(getUserListings())
@@ -46,11 +48,12 @@ function UserListings() {
         const listingId = Number(id.split('-')[1])
 
         dispatch(removeListing(listingId))
+        dispatch(removeInAllListings(listingId))
     }
 
     const handleUpdateListing = (e) => {
 
-            setShowUpdateModal(true)
+        setShowUpdateModal(true)
 
 
         const id = e.target.id;
@@ -89,19 +92,16 @@ function UserListings() {
                                         <p><span>Country:</span> {listing?.country}</p>
                                         <p><span>Bedrooms:</span> {listing?.bedrooms}</p>
                                         <p><span>Bathrooms:</span> {listing?.bathrooms}</p>
-                                        {/* <p>Created on: {listing?.createdAt.slice(0, 10)}</p> */}
+
                                         <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + ' / night' : '$' + listing.price + '.00 / night'}</p>
-                                        {/* <p>${listing.price} / night</p> */}
+
                                     </div>
                                 </div>
                                 <div className="listing-button-container">
-                                    <button onClick={handleUpdateListing} id={`update-${listing.id}`} className="update-listing-button">Update listing</button>
+
+                                    <UpdateFormModal spotId={listing.id} />
                                     <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
-                            {showUpdateModal && (
-                                <UpdateSpotModal onClose={() => setShowUpdateModal(false)}>
-                                    <CreateSpotForm spot={updateListing} setShowUpdateModal={setShowUpdateModal} />
-                                </UpdateSpotModal>
-                            )}
+
 
                                 </div>
                             </div>

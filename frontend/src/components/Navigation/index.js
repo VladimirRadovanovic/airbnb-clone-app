@@ -40,7 +40,7 @@ function Navigation({ isLoaded }) {
 
     if (y === 0) {
       document.addEventListener('scroll', onScroll)
-      // setX((prevState) => prevState + 1 )
+
     }
 
 

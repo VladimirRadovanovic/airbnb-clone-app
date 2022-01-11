@@ -6,27 +6,26 @@ import NumberFormat from 'react-number-format';
 import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
 import { items } from "../DropdownCombobox/utils";
 import { createListing, updateListing } from "../../store/Listings/sessionListings";
-import { createInAllListings } from "../../store/Listings/allListings";
 
 
 
-import './CreateSpot.css';
+// import './CreateSpot.css';
 
 
-function CreateSpotForm({ setShowModal }) {
+function UpdateSpotForm({ spot, setShowUpdateModal }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
-    const [title, setTitle] = useState( "");
-    const [address, setAddress] = useState( "");
-    const [city, setCity] = useState( "");
-    let [state, setState] = useState( '');
-    const [zipCode, setZipCode] = useState( "");
-    const [country, setCountry] = useState( "");
-    const [price, setPrice] = useState( "");
-    const [bedrooms, setBedrooms] = useState( '');
-    const [bathrooms, setBathrooms] = useState( '');
-    const [description, setDescription] = useState( "");
+    const [title, setTitle] = useState(spot?.title || "");
+    const [address, setAddress] = useState(spot?.address || "");
+    const [city, setCity] = useState(spot?.city || "");
+    let [state, setState] = useState(spot?.state || '');
+    const [zipCode, setZipCode] = useState(spot?.zipCode || "");
+    const [country, setCountry] = useState(spot?.country || "");
+    const [price, setPrice] = useState(spot?.price || "");
+    const [bedrooms, setBedrooms] = useState(spot?.bedrooms || '');
+    const [bathrooms, setBathrooms] = useState(spot?.bathrooms || '');
+    const [description, setDescription] = useState(spot?.description || "");
     const [errors, setErrors] = useState([]);
 
 
@@ -41,8 +40,7 @@ function CreateSpotForm({ setShowModal }) {
 
     const handleClick = () => {
 
-
-            setShowModal(false)
+            setShowUpdateModal(false)
 
     }
 
@@ -65,11 +63,10 @@ function CreateSpotForm({ setShowModal }) {
         }
 
 
-
-
-
+            if (state.length > 1) {
+                state = [spot.state]
             }
-            const listing = {
+            let listing = {
                 title,
                 address,
                 city,
@@ -79,22 +76,21 @@ function CreateSpotForm({ setShowModal }) {
                 price,
                 bedrooms,
                 bathrooms,
-                description
+                description,
+                id: spot.id
             }
 
 
 
-            return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
+
+            return dispatch(updateListing(listing)).then(() => reset()).then(() => setShowUpdateModal(false)).catch(
                 async(res) => {
                     const data = await res.json()
+
                     if (data && data.errors) setErrors(data.errors)
 
                 }
-            ).finally(() => {
-                // console.log(data?.spot, 'in finally************')
-                // if (data.spot) dispatch(createInAllListings(listing))
-            })
-
+            )
 
 
     };
@@ -107,12 +103,12 @@ function CreateSpotForm({ setShowModal }) {
             <div className="modal-signup-header">
                 <span><button onClick={handleClick} type='button'>X</button></span>
                 <div className="title-container">
-                    <h3>Try Hosting</h3>
+                     <h3>Update listing</h3>
                 </div>
             </div>
             <div className="signup-form-container">
                 <form className="signup-form" onSubmit={handleSubmit}>
-                    {/* <span className="welcome-span">Welcome to EarthBnB</span> */}
+
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
@@ -130,14 +126,14 @@ function CreateSpotForm({ setShowModal }) {
                             placeholder="Address"
                             type="text"
                             value={address}
-                            // disabled = {spot !== undefined}
+
                             onChange={(e) => setAddress(e.target.value)}
                             required
                         />
 
                         <input
                             placeholder="City"
-                            // disabled = {spot !== undefined}
+
                             type="text"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
@@ -145,9 +141,7 @@ function CreateSpotForm({ setShowModal }) {
                         />
 
 
-
-                        <DropdownCombobox  stateSetter={stateSetter} />
-
+                        <DropdownCombobox state={spot?.state} stateSetter={stateSetter} />
                         <input
                             placeholder="Zip code"
                             // disabled = {spot !== undefined}
@@ -204,7 +198,7 @@ function CreateSpotForm({ setShowModal }) {
                             required
                         />
                     </div>
-                    <button className="create-listing-button" type="submit">Create listing</button>
+                    <button className="create-listing-button" type="submit">Update listing</button>
 
                 </form>
             </div>
@@ -213,4 +207,4 @@ function CreateSpotForm({ setShowModal }) {
 }
 
 
-export default CreateSpotForm;
+export default UpdateSpotForm;
