@@ -115,7 +115,10 @@ export const createListing = (data) => async (dispatch) => {
 
     const listingData = await response.json()
 
+
     if (listingData.spot) {
+        listingData.spot.user = listingData.user
+        console.log(listingData.spot, '**********listing data spot*************')
         dispatch(addListing(listingData.spot))
         dispatch(createInAllListings(listingData.spot))
     }

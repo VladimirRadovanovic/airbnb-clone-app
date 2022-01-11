@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 const { Op } = require("sequelize");
-const { Spot } = require('../../db/models');
+const { Spot, User } = require('../../db/models');
 
 
 const router = express.Router();
@@ -87,6 +87,8 @@ router.post('/new',listingValidator, requireAuth, asyncHandler(async (req, res) 
     // price = Number(price.slice(1))
     // state = state[0]
 
+    const user = await User.findByPk(id)
+
     const spot = Spot.build({
         title,
         address,
@@ -102,7 +104,9 @@ router.post('/new',listingValidator, requireAuth, asyncHandler(async (req, res) 
     })
 
     await spot.save()
-    return res.json({ spot })
+    // spot.user = user
+
+    return res.json({ spot, user })
 }))
 
 // get user listings route
