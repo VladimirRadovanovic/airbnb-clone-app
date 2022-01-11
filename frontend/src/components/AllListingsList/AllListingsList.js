@@ -42,12 +42,13 @@ function AllListingsList({user}) {
                             <img className="all-listings-img" src={placeholderImg} alt='listing photo' />
                             </div>
                             <div className="all-listings-data-container">
-                            <p>{listing.title}</p>
-                            <p>{listing.bedrooms}</p>
-                            <p>{listing.bathrooms}</p>
+                            <span className="data">{listing.city}, {listing.state ? listing.state : listing.country}</span>
+                            {/* <span>{listing.state}</span> */}
+                            <span className="price">${listing.price} / night</span>
                             </div>
-
+                            <div className="view-listings-container">
                             <NavLink to={`/api/listings/${listing.id}`}>View listing</NavLink>
+                            </div>
                             </li>
                     ))}
                 </ul>
