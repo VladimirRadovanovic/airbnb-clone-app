@@ -4,7 +4,7 @@ import { useCombobox } from 'downshift'
 import { items, menuStyles, comboboxStyles, comboboxWrapperStyles } from './utils'
 import './ComboBox.css'
 
-function DropdownCombobox({ state, setState }) {
+function DropdownCombobox({ state, stateSetter }) {
   const [inputItems, setInputItems] = useState(items)
   const [comboState, setComboState] = useState(state)
 
@@ -14,11 +14,11 @@ function DropdownCombobox({ state, setState }) {
 
   useEffect(() => {
     if (comboState) {
-       setState(inputItems)
+       stateSetter(inputItems)
 
     }
     if (!comboState) {
-       setState([])
+       stateSetter([])
     }
 
   }, [inputItems, comboState])
