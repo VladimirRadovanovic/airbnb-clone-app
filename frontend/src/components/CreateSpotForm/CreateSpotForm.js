@@ -66,9 +66,6 @@ function CreateSpotForm({ setShowModal }) {
 
 
 
-
-
-            }
             const listing = {
                 title,
                 address,
@@ -145,9 +142,7 @@ function CreateSpotForm({ setShowModal }) {
                         />
 
 
-
                         <DropdownCombobox  stateSetter={stateSetter} />
-
                         <input
                             placeholder="Zip code"
                             // disabled = {spot !== undefined}
