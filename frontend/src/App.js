@@ -30,7 +30,7 @@ function App() {
             <UserProfile user={sessionUser} />
           </Route>
           <Route path='/api/listings/all'>
-            <AllListingsList />
+            <AllListingsList user={sessionUser} />
           </Route>
 
         </Switch>

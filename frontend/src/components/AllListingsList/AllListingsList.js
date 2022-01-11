@@ -5,10 +5,10 @@ import { useEffect } from "react";
 import './AllListingsList.css'
 import { getAllListings } from "../../store/Listings/allListings";
 
-function AllListingsList() {
+function AllListingsList({user}) {
     const dispatch = useDispatch()
 
-    const user = useSelector(state => state.session.user);
+    // const user = useSelector(state => state.session.user);
 
     const listings = useSelector((state) => state.listings)
 
