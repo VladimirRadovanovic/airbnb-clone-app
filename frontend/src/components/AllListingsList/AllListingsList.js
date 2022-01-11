@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import placeholderImg from '../../images/splash-img4.jpg'
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import './AllListingsList.css'
 import { getAllListings } from "../../store/Listings/allListings";
 
 function AllListingsList({user}) {
     const dispatch = useDispatch()
+
 
     // const user = useSelector(state => state.session.user);
 
@@ -30,19 +32,30 @@ function AllListingsList({user}) {
     return (
         <>
 
-            <div>
+            <main className="main-container">
+                <div className="left-container">
                 <ul className="all-listings-list">
                     {listingsList.map(listing => (
-                        <li key={listing.id}>
-                            <img src={placeholderImg} alt='listing photo' />
+                        <li className="all-listings-list-item" key={listing.id}>
+
+                            <div className="all-listings-img-container">
+                            <img className="all-listings-img" src={placeholderImg} alt='listing photo' />
+                            </div>
+                            <div className="all-listings-data-container">
                             <p>{listing.title}</p>
                             <p>{listing.bedrooms}</p>
                             <p>{listing.bathrooms}</p>
-                            <button id={`listing-${listing.id}`}>View listing</button>
-                        </li>
+                            </div>
+
+                            <NavLink to={`/api/listings/${listing.id}`}>View listing</NavLink>
+                            </li>
                     ))}
                 </ul>
-            </div>
+                </div>
+                <div className="right-container">
+
+                </div>
+            </main>
         </>
     )
 
