@@ -93,7 +93,7 @@ function UserListings() {
                                         <p><span>Bedrooms:</span> {listing?.bedrooms}</p>
                                         <p><span>Bathrooms:</span> {listing?.bathrooms}</p>
 
-                                        <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + ' / night' : '$' + listing.price + '.00 / night'}</p>
+                                        <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing?.price + ' / night' : '$' + listing?.price + '.00 / night'}</p>
 
                                     </div>
                                 </div>
