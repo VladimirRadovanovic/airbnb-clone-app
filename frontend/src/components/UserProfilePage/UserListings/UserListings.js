@@ -99,8 +99,8 @@ function UserListings() {
                                 </div>
                                 <div className="listing-button-container">
 
-                                    <UpdateFormModal spotId={listing.id} />
-                                    <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
+                                    <UpdateFormModal spotId={listing?.id} />
+                                    <button onClick={handleRemoveListing} id={`remove-${listing?.id}`} className="remove-listing-button">Remove listing</button>
 
 
                                 </div>

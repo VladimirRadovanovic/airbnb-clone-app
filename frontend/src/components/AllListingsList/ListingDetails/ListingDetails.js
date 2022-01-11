@@ -57,7 +57,7 @@ function ListingDetails() {
                 <div className="listing-button-container">
 
 
-                    <button id={`book-${listing.id}`} className="remove-listing-button">Remove listing</button>
+                    <button id={`book-${listing?.id}`} className="remove-listing-button">Remove listing</button>
 
 
                 </div>
