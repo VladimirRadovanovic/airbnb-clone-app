@@ -29,7 +29,10 @@
 
 .all-listings-img {
     width: 100%;
-    height: 200px;
+    height: 250px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+
 }
 .price {
     padding-left: 35px;
@@ -45,10 +48,11 @@
 .all-listings-data-container {
     display: inline-flex;
     justify-content: space-between;
-    width: 20%;
+    width: 100%;
+    padding-top: 13px;
 }
 .all-listings-list-item {
-    width: 17%;
+    width: 19%;
     display: inline-block;
     padding: 15px;
 }
@@ -66,7 +70,7 @@
 
 .view-listings-container {
     display: inline-flex;
-    width: 20%;
+    width: 100%;
     justify-content: center;
 }
 
@@ -75,8 +79,11 @@
     /* flex-direction: column; */
     justify-content: flex-start;
     flex-wrap: wrap;
-    width: 100%;
-    margin-left: 105px!important;
+    /* width: 100%; */
+    max-width: 100vw;
+    margin-left: 60px!important;
+    margin-top: 50px;
+    /* overflow-x: hidden; */
 }
 
 /* .left-container {
