@@ -35,9 +35,9 @@ function ListingDetails() {
                     </div>
                 </div>
                 <div className="listing-data-container">
+                    <p className="created-on detail-created-on"><span>Created on: </span> {listing?.createdAt && new Date(listing.createdAt).toDateString()}</p>
                     <h2 className="title">{listing?.title}</h2>
                     <p className="description">{listing?.description}</p>
-                    <p className="created-on"><span>Created on: </span> {listing?.createdAt && new Date(listing.createdAt).toDateString()}</p>
                     <div className="details-container">
                         <p><span>Address:</span> {listing?.address}</p>
                         <p><span>City:</span> {listing?.city}</p>
