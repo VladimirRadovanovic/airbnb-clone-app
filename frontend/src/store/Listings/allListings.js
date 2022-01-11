@@ -2,6 +2,7 @@
 const GET_ALL_LISTINGS = 'allListings/get_all_listings'
 const CREATE_IN_ALL = 'allListings/create_in_all'
 const REMOVE_IN_ALL = 'allListings/remove_in_all'
+const UPDATE_IN_ALL_LISTINGS = 'allListings/update_in_all_listings'
 
 const getListings = (listings) => {
     return {
@@ -25,6 +26,13 @@ export const removeInAllListings = (listingId) => {
     }
 }
 
+export const updateInAllListings = (listing) => {
+    return {
+        type: UPDATE_IN_ALL_LISTINGS,
+        listing
+    }
+}
+
 
 export const getAllListings = () => async(dispatch) => {
     const response = await fetch('/api/listings/all')
@@ -41,6 +49,12 @@ export const getAllListings = () => async(dispatch) => {
 const allListingsReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
+        case UPDATE_IN_ALL_LISTINGS:
+            newState = {
+                ...state,
+                [action.listing.id]: action.listing
+            }
+            return newState
         case REMOVE_IN_ALL:
             newState = {...state}
             delete newState[action.listingId]

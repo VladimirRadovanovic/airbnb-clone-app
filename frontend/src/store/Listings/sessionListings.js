@@ -1,5 +1,6 @@
 import csrfFetch from "../csrf";
 import { createInAllListings } from "./allListings";
+import { updateInAllListings } from "./allListings";
 
 
 const CREATE_LISTING = 'sessionListings/create_listing'
@@ -68,6 +69,7 @@ export const updateListing = (data) => async(dispatch) => {
     const updatedListing = await response.json()
     if (updatedListing.spot) {
         dispatch(updateUserListing(updatedListing.spot))
+        dispatch(updateInAllListings(updatedListing.spot))
     }
     return response
 }
