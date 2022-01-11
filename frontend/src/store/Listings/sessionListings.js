@@ -5,6 +5,7 @@ const CREATE_LISTING = 'sessionListings/create_listing'
 const GET_USER_LISTINGS = 'sessionListings/get_user_listings'
 const REMOVE_LISTING = 'sessionListings/remove_listing'
 const UPDATE_LISTING = 'sessionListings/update_listing'
+const REMOVE_USER_LISTINGS = 'sessionListings/remove_user_listings'
 
 const deleteListing = (id) => {
     return {
@@ -34,6 +35,13 @@ const getListings = (listings) => {
         listings
     }
 }
+
+export const removeUserListings = () => {
+    return {
+        type: REMOVE_USER_LISTINGS
+    }
+}
+
 
 export const updateListing = (data) => async(dispatch) => {
     console.log('in update listing********', data.price)
@@ -116,6 +124,8 @@ export const createListing = (data) => async (dispatch) => {
 const sessionListingsReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
+        case REMOVE_USER_LISTINGS:
+            return newState
         case UPDATE_LISTING:
             newState = {
                 ...state,
