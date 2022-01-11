@@ -239,7 +239,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                             required
                         />
                     </div>
-                    <button className="create-listing-button" type="submit">Update listing'</button>
+                    <button className="create-listing-button" type="submit">Update listing</button>
 
                 </form>
             </div>

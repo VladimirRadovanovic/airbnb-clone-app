@@ -33,7 +33,7 @@ function UpdateFormModal({spotId}) {
   // changed EventModal to UpdateEventModal should alow me to do styling for this modal
     return (
       <>
-        <button className='update-listing-button' id={`update-${spotId}`} onClick={handleClick}>Update</button>
+        <button className='update-listing-button' id={`update-${spotId}`} onClick={handleClick}>Update listing</button>
         {showUpdateModal && (
           <UpdateSpotModal onClose={() => setShowUpdateModal(false)}>
             <UpdateSpotForm spot={spot} setShowUpdateModal={setShowUpdateModal} showUpdateModal={showUpdateModal}/>
