@@ -47,6 +47,7 @@
 
   #spot-modal-content {
     position: absolute;
+    top: 110px;
     background-color:white;
     width: 450px;
     height: 810px;
@@ -55,7 +56,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 75px;
+    /* margin-top: 75px; */
 
   }
 
