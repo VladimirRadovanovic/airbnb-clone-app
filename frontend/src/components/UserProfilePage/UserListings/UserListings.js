@@ -11,6 +11,7 @@ import CreateSpotFormModal from "../../CreateSpotForm";
 import UpdateSpotForm from "../../UpdateSpotForm/UpdateSpotForm";
 
 import UpdateFormModal from "../../UpdateSpotForm";
+import { removeInAllListings } from "../../../store/Listings/allListings";
 
 
 
@@ -25,10 +26,7 @@ function UserListings() {
     const [showUpdateModal, setShowUpdateModal] = useState(false)
     const [updateListing, setUpdateListing] = useState('')
 
-    console.log(showUpdateModal, '!!!!!!!!!!!show the update modal in the user listing')
 
-
-    console.log('times listing modal')
 
     useEffect(() => {
         dispatch(getUserListings())
@@ -50,6 +48,7 @@ function UserListings() {
         const listingId = Number(id.split('-')[1])
 
         dispatch(removeListing(listingId))
+        dispatch(removeInAllListings(listingId))
     }
 
     const handleUpdateListing = (e) => {

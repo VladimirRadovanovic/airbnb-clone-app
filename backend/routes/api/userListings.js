@@ -143,20 +143,7 @@ router.put('/update', listingValidator, asyncHandler(async(req, res) => {
         id
     } = req.body
 
-    console.log(
-        'inRoute**********************',
-        title,
-        address,
-        city,
-        state,
-        zipCode,
-        country,
-        price,
-        bedrooms,
-        bathrooms,
-        description,
-        id
-    )
+
 
     const spot = await Spot.findByPk(id)
 

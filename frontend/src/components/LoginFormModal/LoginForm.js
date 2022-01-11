@@ -10,8 +10,7 @@ function LoginForm({ setShowLoginModal, setShowModal }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  // console.log(setShowLoginModal, 'login modal')
-  // console.log(setShowModal, 'modal')
+
 
 
   const handleClick = () => {

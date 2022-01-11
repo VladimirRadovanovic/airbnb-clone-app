@@ -6,6 +6,7 @@ import NumberFormat from 'react-number-format';
 import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
 import { items } from "../DropdownCombobox/utils";
 import { createListing, updateListing } from "../../store/Listings/sessionListings";
+import { createInAllListings } from "../../store/Listings/allListings";
 
 
 
@@ -28,7 +29,7 @@ function CreateSpotForm({ setShowModal }) {
     const [description, setDescription] = useState( "");
     const [errors, setErrors] = useState([]);
 
-    // console.log(price, 'price*********************')
+
     // useEffect(() => {
 
     //     if (state?.length > 1) {
@@ -36,7 +37,7 @@ function CreateSpotForm({ setShowModal }) {
     //     }
     // }, [state])
 
-    console.log('how many times is this rendering?????????????')
+
 
     const handleClick = () => {
 
@@ -77,7 +78,7 @@ function CreateSpotForm({ setShowModal }) {
                 bathrooms,
                 description
             }
-            console.log(state, 'in the if state*******')
+
 
 
             return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
@@ -86,7 +87,10 @@ function CreateSpotForm({ setShowModal }) {
                     if (data && data.errors) setErrors(data.errors)
 
                 }
-            )
+            ).finally(() => {
+                // console.log(data?.spot, 'in finally************')
+                // if (data.spot) dispatch(createInAllListings(listing))
+            })
 
 
 
@@ -137,7 +141,7 @@ function CreateSpotForm({ setShowModal }) {
                             required
                         />
 
- 
+
                         <DropdownCombobox  stateSetter={stateSetter} />
                         <input
                             placeholder="Zip code"

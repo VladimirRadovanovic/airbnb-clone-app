@@ -15,7 +15,7 @@ function CreateSpotFormModal({ isLoaded }) {
     let y = window.scrollY
 
 
- console.log('times spot modal')
+
 
 
     return (

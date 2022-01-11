@@ -8,8 +8,7 @@ function DropdownCombobox({ state, stateSetter }) {
   const [inputItems, setInputItems] = useState(items)
   const [comboState, setComboState] = useState(state)
 
-  console.log(inputItems, 'whyyyyyy*************')
-  console.log(comboState, 'combo state')
+
 
 
 
@@ -36,7 +35,7 @@ function DropdownCombobox({ state, stateSetter }) {
   } = useCombobox({
     items: inputItems,
     onInputValueChange: ({ inputValue }) => {
-      console.log(inputValue, 'inputValue')
+
       setInputItems(
         items.filter((item) =>
           item.toLowerCase().startsWith(inputValue.toLowerCase()),

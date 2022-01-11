@@ -14,7 +14,6 @@ import { createListing, updateListing } from "../../store/Listings/sessionListin
 
 function UpdateSpotForm({ spot, setShowUpdateModal }) {
     const dispatch = useDispatch();
-    console.log(spot, 'in update spot form')
     const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState(spot?.title || "");
@@ -29,7 +28,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
     const [description, setDescription] = useState(spot?.description || "");
     const [errors, setErrors] = useState([]);
 
-    // console.log(price, 'price*********************')
+
     // useEffect(() => {
 
     //     if (state?.length > 1) {
@@ -37,7 +36,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
     //     }
     // }, [state])
 
-    console.log('how many times is this rendering?????????????')
+
 
     const handleClick = () => {
 
@@ -87,7 +86,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
             return dispatch(updateListing(listing)).then(() => reset()).then(() => setShowUpdateModal(false)).catch(
                 async(res) => {
                     const data = await res.json()
-                    console.log(data, 'data sent back*******')
+
                     if (data && data.errors) setErrors(data.errors)
 
                 }

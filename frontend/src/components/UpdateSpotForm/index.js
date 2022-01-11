@@ -26,7 +26,7 @@ function UpdateFormModal({spotId}) {
         setShowUpdateModal(true)
         const spotId = e.target.id;
         const id = Number(spotId.split('-')[1])
-        console.log(id, 'eventId********************')
+
 
       setSpot(spots[id])
     }
