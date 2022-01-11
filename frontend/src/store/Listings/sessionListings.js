@@ -1,4 +1,5 @@
 import csrfFetch from "../csrf";
+import { createInAllListings } from "./allListings";
 
 
 const CREATE_LISTING = 'sessionListings/create_listing'
@@ -114,6 +115,7 @@ export const createListing = (data) => async (dispatch) => {
 
     if (listingData.spot) {
         dispatch(addListing(listingData.spot))
+        dispatch(createInAllListings(listingData.spot))
     }
     return response
 }
