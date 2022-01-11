@@ -4,22 +4,27 @@ import { useCombobox } from 'downshift'
 import { items, menuStyles, comboboxStyles, comboboxWrapperStyles } from './utils'
 import './ComboBox.css'
 
-function DropdownCombobox({ state, setState }) {
+function DropdownCombobox({ state, stateSetter }) {
   const [inputItems, setInputItems] = useState(items)
   const [comboState, setComboState] = useState(state)
 
-  // console.log(state, 'whyyyyyy*************')
+  console.log(inputItems, 'whyyyyyy*************')
+  console.log(comboState, 'combo state')
 
   // let able;
   // if (state) able = true
   // else able = false
+
+  // this is causing the modal to render twice and overlap causing the background to be darker
+
+
   useEffect(() => {
     if (comboState) {
-      setState(inputItems)
+       stateSetter(inputItems)
 
     }
     if (!comboState) {
-      setState([])
+       stateSetter([])
     }
 
   }, [inputItems, comboState])

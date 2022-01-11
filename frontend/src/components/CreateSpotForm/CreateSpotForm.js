@@ -36,6 +36,8 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
     //     }
     // }, [state])
 
+    console.log('how many times is this rendering?????????????')
+
     const handleClick = () => {
         if(setShowModal) {
 
@@ -91,6 +93,10 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
 
         }
         else {
+            if(setShowModal) {
+                setShowModal(false)
+
+            }
             if (state.length > 1) {
                 state = [spot.state]
             }
@@ -122,6 +128,9 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
         }
 
     };
+    const stateSetter = (x) => {
+        setState(x)
+    }
 
     return (
         <>
@@ -172,7 +181,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                             onChange={(e) => setState(e.target.value)}
                             required
                         /> */}
-                        <DropdownCombobox state={spot?.state} setState={setState} />
+                        <DropdownCombobox state={spot?.state} stateSetter={stateSetter} />
                         <input
                             placeholder="Zip code"
                             // disabled = {spot !== undefined}

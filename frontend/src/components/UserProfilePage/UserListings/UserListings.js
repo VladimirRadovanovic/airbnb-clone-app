@@ -6,6 +6,8 @@ import { UpdateSpotModal } from "../../../context/Modal";
 import CreateSpotForm from "../../CreateSpotForm/CreateSpotForm";
 import CreateSpotFormModal from "../../CreateSpotForm";
 
+// import CreateSpotFormModal from "../../CreateSpotForm";
+
 
 
 import './UserListings.css'
@@ -19,8 +21,10 @@ function UserListings() {
     const [showUpdateModal, setShowUpdateModal] = useState(false)
     const [updateListing, setUpdateListing] = useState('')
 
+    console.log(showUpdateModal, '!!!!!!!!!!!show the update modal in the user listing')
 
- 
+
+    console.log('times listing modal')
 
     useEffect(() => {
         dispatch(getUserListings())
@@ -91,7 +95,7 @@ function UserListings() {
                                     </div>
                                 </div>
                                 <div className="listing-button-container">
-                                    <button onClick={handleUpdateListing} id={`-${listing.id}`} className="update-listing-button">Update listing</button>
+                                    <button onClick={handleUpdateListing} id={`update-${listing.id}`} className="update-listing-button">Update listing</button>
                                     <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
                             {showUpdateModal && (
                                 <UpdateSpotModal onClose={() => setShowUpdateModal(false)}>
