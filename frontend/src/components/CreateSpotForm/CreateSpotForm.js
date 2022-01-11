@@ -39,13 +39,10 @@ function CreateSpotForm({ setShowModal }) {
     console.log('how many times is this rendering?????????????')
 
     const handleClick = () => {
-        // if(setShowModal) {
+
 
             setShowModal(false)
-        // }
-        // if(setShowUpdateModal) {
-        //     setShowUpdateModal(false)
-        // }
+
     }
 
     const handleSubmit = (e) => {
@@ -66,7 +63,7 @@ function CreateSpotForm({ setShowModal }) {
             setDescription('')
         }
 
-        // if (!spot) {
+
 
             const listing = {
                 title,
@@ -91,41 +88,7 @@ function CreateSpotForm({ setShowModal }) {
                 }
             )
 
-            // }
-        // else {
-        //     if(setShowModal) {
-        //         setShowModal(false)
 
-        //     }
-        //     if (state.length > 1) {
-        //         state = [spot.state]
-        //     }
-        //     let listing = {
-        //         title,
-        //         address,
-        //         city,
-        //         state,
-        //         zipCode,
-        //         country,
-        //         price,
-        //         bedrooms,
-        //         bathrooms,
-        //         description,
-        //         id: spot.id
-        //     }
-
-        //     console.log(state, 'in the else state')
-        //     // dispatch(updateListing(listing)).then(() => setShowUpdateModal(false))
-
-        //     return dispatch(updateListing(listing)).then(() => reset()).then(() => setShowUpdateModal(false)).catch(
-        //         async(res) => {
-        //             const data = await res.json()
-        //             console.log(data, 'data sent back*******')
-        //             if (data && data.errors) setErrors(data.errors)
-
-        //         }
-        //     )
-        // }
 
     };
     const stateSetter = (x) => {
@@ -174,13 +137,7 @@ function CreateSpotForm({ setShowModal }) {
                             required
                         />
 
-                        {/* <input
-                            placeholder="State"
-                            type="text"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                            required
-                        /> */}
+ 
                         <DropdownCombobox  stateSetter={stateSetter} />
                         <input
                             placeholder="Zip code"

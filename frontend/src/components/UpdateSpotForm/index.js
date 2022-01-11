@@ -30,7 +30,7 @@ function UpdateFormModal({spotId}) {
 
       setSpot(spots[id])
     }
-  // changed EventModal to UpdateEventModal should alow me to do styling for this modal
+
     return (
       <>
         <button className='update-listing-button' id={`update-${spotId}`} onClick={handleClick}>Update listing</button>

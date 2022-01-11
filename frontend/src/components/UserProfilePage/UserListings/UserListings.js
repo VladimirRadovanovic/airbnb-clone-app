@@ -6,7 +6,7 @@ import { UpdateSpotModal } from "../../../context/Modal";
 import CreateSpotForm from "../../CreateSpotForm/CreateSpotForm";
 import CreateSpotFormModal from "../../CreateSpotForm";
 
-// import CreateSpotFormModal from "../../CreateSpotForm";
+
 
 import UpdateSpotForm from "../../UpdateSpotForm/UpdateSpotForm";
 
@@ -93,20 +93,16 @@ function UserListings() {
                                         <p><span>Country:</span> {listing?.country}</p>
                                         <p><span>Bedrooms:</span> {listing?.bedrooms}</p>
                                         <p><span>Bathrooms:</span> {listing?.bathrooms}</p>
-                                        {/* <p>Created on: {listing?.createdAt.slice(0, 10)}</p> */}
+
                                         <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + ' / night' : '$' + listing.price + '.00 / night'}</p>
-                                        {/* <p>${listing.price} / night</p> */}
+
                                     </div>
                                 </div>
                                 <div className="listing-button-container">
-                                    {/* <button onClick={handleUpdateListing} id={`update-${listing.id}`} className="update-listing-button">Update listing</button> */}
-                                    <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
-                                    {/* {showUpdateModal && (
-                                <UpdateSpotModal onClose={() => setShowUpdateModal(false)}>
-                                    <UpdateSpotForm spot={updateListing} setShowUpdateModal={setShowUpdateModal} />
-                                </UpdateSpotModal>
-                            )} */}
+
                                     <UpdateFormModal spotId={listing.id} />
+                                    <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
+
 
                                 </div>
                             </div>

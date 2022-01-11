@@ -40,13 +40,9 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
     console.log('how many times is this rendering?????????????')
 
     const handleClick = () => {
-        // if(setShowModal) {
 
-        //     setShowModal(false)
-        // }
-        // if(setShowUpdateModal) {
             setShowUpdateModal(false)
-        // }
+
     }
 
     const handleSubmit = (e) => {
@@ -67,37 +63,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
             setDescription('')
         }
 
-        // if (!spot) {
 
-        //     const listing = {
-        //         title,
-        //         address,
-        //         city,
-        //         state,
-        //         zipCode,
-        //         country,
-        //         price,
-        //         bedrooms,
-        //         bathrooms,
-        //         description
-        //     }
-        //     console.log(state, 'in the if state*******')
-
-
-        //     return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
-        //         async(res) => {
-        //             const data = await res.json()
-        //             if (data && data.errors) setErrors(data.errors)
-
-        //         }
-        //     )
-
-        // }
-        // else {
-            // if(setShowModal) {
-            //     setShowModal(false)
-
-            // }
             if (state.length > 1) {
                 state = [spot.state]
             }
@@ -115,8 +81,8 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                 id: spot.id
             }
 
-            console.log(state, 'in the else state')
-            // dispatch(updateListing(listing)).then(() => setShowUpdateModal(false))
+
+
 
             return dispatch(updateListing(listing)).then(() => reset()).then(() => setShowUpdateModal(false)).catch(
                 async(res) => {
@@ -126,7 +92,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
 
                 }
             )
-        // }
+
 
     };
     const stateSetter = (x) => {
@@ -143,7 +109,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
             </div>
             <div className="signup-form-container">
                 <form className="signup-form" onSubmit={handleSubmit}>
-                    {/* <span className="welcome-span">Welcome to EarthBnB</span> */}
+
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
@@ -161,27 +127,21 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                             placeholder="Address"
                             type="text"
                             value={address}
-                            // disabled = {spot !== undefined}
+
                             onChange={(e) => setAddress(e.target.value)}
                             required
                         />
 
                         <input
                             placeholder="City"
-                            // disabled = {spot !== undefined}
+
                             type="text"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             required
                         />
 
-                        {/* <input
-                            placeholder="State"
-                            type="text"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                            required
-                        /> */}
+
                         <DropdownCombobox state={spot?.state} stateSetter={stateSetter} />
                         <input
                             placeholder="Zip code"

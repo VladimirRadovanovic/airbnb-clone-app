@@ -28,7 +28,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid black; */
+
   }
 
 
@@ -42,7 +42,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid black; */
+
   }
 
   #spot-modal-content {
@@ -56,7 +56,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 75px;
-    /* border: 1px solid black; */
+
   }
 
   /* #update-spot-modal-content {
