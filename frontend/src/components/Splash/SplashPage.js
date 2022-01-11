@@ -12,7 +12,7 @@ function SplashPage({isLoaded}){
               <h2>Not sure where to go? Perfect.</h2>
 
               <div className="spots-link-container">
-                <NavLink className='explore-spots-link' to='/api/spots'>I'm flexible</NavLink>
+                <NavLink className='explore-spots-link' to='/api/listings/all'>I'm flexible</NavLink>
               </div>
 
             </div>
