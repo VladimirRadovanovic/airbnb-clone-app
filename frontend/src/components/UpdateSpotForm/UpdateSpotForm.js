@@ -77,7 +77,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                 bedrooms,
                 bathrooms,
                 description,
-                id: spot.id
+                spotId: spot.id
             }
 
 

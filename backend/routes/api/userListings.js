@@ -131,7 +131,8 @@ router.delete('/delete', requireAuth, asyncHandler(async(req, res) => {
     return res.json({ message: 'Deleted' })
 }))
 
-router.put('/update', listingValidator, asyncHandler(async(req, res) => {
+router.put('/update',requireAuth, listingValidator, asyncHandler(async(req, res) => {
+    const { id } = req.user
 
     const {
         title,
@@ -144,12 +145,15 @@ router.put('/update', listingValidator, asyncHandler(async(req, res) => {
         bedrooms,
         bathrooms,
         description,
-        id
+        spotId
     } = req.body
 
 
 
-    const spot = await Spot.findByPk(id)
+    const spot = await Spot.findByPk(spotId)
+    const user = await User.findByPk(id)
+
+    console.log(user, 'user in update ********************')
 
     await spot.update({
         title,
@@ -164,7 +168,7 @@ router.put('/update', listingValidator, asyncHandler(async(req, res) => {
         description,
     })
 
-    return res.json({spot})
+    return res.json({spot, user})
 }))
 
 
