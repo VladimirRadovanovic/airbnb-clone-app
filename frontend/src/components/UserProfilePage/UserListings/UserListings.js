@@ -8,6 +8,10 @@ import CreateSpotFormModal from "../../CreateSpotForm";
 
 // import CreateSpotFormModal from "../../CreateSpotForm";
 
+import UpdateSpotForm from "../../UpdateSpotForm/UpdateSpotForm";
+
+import UpdateFormModal from "../../UpdateSpotForm";
+
 
 
 import './UserListings.css'
@@ -50,7 +54,7 @@ function UserListings() {
 
     const handleUpdateListing = (e) => {
 
-            setShowUpdateModal(true)
+        setShowUpdateModal(true)
 
 
         const id = e.target.id;
@@ -95,13 +99,14 @@ function UserListings() {
                                     </div>
                                 </div>
                                 <div className="listing-button-container">
-                                    <button onClick={handleUpdateListing} id={`update-${listing.id}`} className="update-listing-button">Update listing</button>
+                                    {/* <button onClick={handleUpdateListing} id={`update-${listing.id}`} className="update-listing-button">Update listing</button> */}
                                     <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
-                            {showUpdateModal && (
+                                    {/* {showUpdateModal && (
                                 <UpdateSpotModal onClose={() => setShowUpdateModal(false)}>
-                                    <CreateSpotForm spot={updateListing} setShowUpdateModal={setShowUpdateModal} />
+                                    <UpdateSpotForm spot={updateListing} setShowUpdateModal={setShowUpdateModal} />
                                 </UpdateSpotModal>
-                            )}
+                            )} */}
+                                    <UpdateFormModal spotId={listing.id} />
 
                                 </div>
                             </div>
