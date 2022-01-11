@@ -1,5 +1,25 @@
 .single-listing-container {
     padding-top: 50px;
-    padding-right: 60px;
-    padding-left: 60px;
+    padding-right: 80px;
+    padding-left: 80px;
+}
+
+.listing-detail-img-container {
+    height: 600px;
+}
+
+.detail-main-img-container {
+    height: 100%;
+}
+
+.detail-main-img {
+    height: 100%;
+}
+
+.detail-side-img-container {
+    height: 100%;
+}
+
+.detail-side-img {
+    height: 49.7%;
 }

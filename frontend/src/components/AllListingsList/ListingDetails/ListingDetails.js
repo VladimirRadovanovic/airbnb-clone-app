@@ -14,27 +14,24 @@ function ListingDetails() {
     const listings = useSelector((state) => state.listings)
 
     const { id } = useParams()
-    const listing = listings[id]
+    let listing = listings[id]
+
 
     return (
         <>
 
-            {/* <p>{listing.title}</p>
-            <p>${listing.price} / night</p>
-            <p>{listing.address}</p>
-            <p>{listing.city}</p>
-            <p>{listing.state}</p> */}
+
             <div className="single-listing-container">
             <div className="listing-container">
-                <div className="listing-image-container">
-                    <div className="main-image-container">
-                        <img className="main-image" src={listingImg} alt='listing image' />
+                <div className="listing-image-container listing-detail-img-container">
+                    <div className="main-image-container detail-main-img-container">
+                        <img className="main-image detail-main-img" src={listingImg} alt='listing image' />
                     </div>
-                    <div className="side-images-container">
-                        <img className="side-image side-image-1" src={listingImg} alt='listing image' />
-                        <img className="side-image side-image-2" src={listingImg} alt='listing image' />
-                        <img className="side-image side-image-3" src={listingImg} alt='listing image' />
-                        <img className="side-image side-image-4" src={listingImg} alt='listing image' />
+                    <div className="side-images-container detail-side-img-container">
+                        <img className="side-image side-image-1 detail-side-img" src={listingImg} alt='listing image' />
+                        <img className="side-image side-image-2 detail-side-img" src={listingImg} alt='listing image' />
+                        <img className="side-image side-image-3 detail-side-img" src={listingImg} alt='listing image' />
+                        <img className="side-image side-image-4 detail-side-img" src={listingImg} alt='listing image' />
                     </div>
                 </div>
                 <div className="listing-data-container">
