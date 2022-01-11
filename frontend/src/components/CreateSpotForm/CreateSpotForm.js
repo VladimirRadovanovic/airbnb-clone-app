@@ -67,7 +67,10 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
         }
 
         if (!spot) {
+            if(setShowUpdateModal) {
+                setShowUpdateModal(false)
 
+            }
             const listing = {
                 title,
                 address,
@@ -181,7 +184,7 @@ function CreateSpotForm({ setShowModal, spot, setShowUpdateModal }) {
                             onChange={(e) => setState(e.target.value)}
                             required
                         /> */}
-                        <DropdownCombobox state={spot?.state} stateSetter={stateSetter} />
+                        <DropdownCombobox state={spot?.state} setState={setState} />
                         <input
                             placeholder="Zip code"
                             // disabled = {spot !== undefined}
