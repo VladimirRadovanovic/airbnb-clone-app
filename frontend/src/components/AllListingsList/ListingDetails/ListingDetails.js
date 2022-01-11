@@ -39,6 +39,7 @@ function ListingDetails() {
                     <h2 className="title">{listing?.title}</h2>
                     <p className="description">{listing?.description}</p>
                     <div className="details-container">
+                    <p><span>Hosted by:</span> {listing?.User.username}</p>
                         <p><span>Address:</span> {listing?.address}</p>
                         <p><span>City:</span> {listing?.city}</p>
                         <p><span>State:</span> {listing?.state ? listing.state : 'N/A'}</p>
