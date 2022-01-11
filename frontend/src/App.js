@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import { NavLink } from "react-router-dom";
 import SplashPage from "./components/Splash/SplashPage";
 import UserProfile from "./components/UserProfilePage/UserProfile";
+import AllListingsList from "./components/AllListingsList/AllListingsList";
 
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path='/api/user/profile'>
             <UserProfile user={sessionUser} />
+          </Route>
+          <Route path='/api/listings/all'>
+            <AllListingsList />
           </Route>
 
         </Switch>

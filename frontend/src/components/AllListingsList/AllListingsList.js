@@ -3,6 +3,7 @@ import placeholderImg from '../../images/splash-img4.jpg'
 import { useEffect } from "react";
 
 import './AllListingsList.css'
+import { getAllListings } from "../../store/Listings/allListings";
 
 function AllListingsList() {
     const dispatch = useDispatch()
