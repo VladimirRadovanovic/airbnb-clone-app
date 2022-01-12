@@ -9,7 +9,7 @@ const { Spot, User } = require('../../db/models');
 
 const router = express.Router();
 
-
+// include model Image with this probably
 router.get('/all', asyncHandler(async(req, res) => {
     const listings = await Spot.findAll({
         include: {

@@ -109,10 +109,31 @@ export const createListing = (data) => async (dispatch) => {
         data.state = data.state[0]
     }
 
+    const formData = new FormData();
+    formData.append('title', data.title)
+    formData.append('address', data.address)
+    formData.append('city', data.city)
+    formData.append('state', data.state)
+    formData.append('zipCode', data.zipCode)
+    formData.append('country', data.country)
+    formData.append('price', data.price)
+    formData.append('bedrooms', data.bedrooms)
+    formData.append('bathrooms', data.bathrooms)
+    formData.append('description', data.description)
+
+    if (data.images && data.images.length !== 0) {
+        for (var i = 0; i < data.images.length; i++) {
+          formData.append("images", data.images[i]);
+        }
+      }
+
 
     const response = await csrfFetch('/api/user/listings/new', {
         method: 'POST',
-        body: JSON.stringify(data)
+        headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: formData,
     })
 
     const listingData = await response.json()
@@ -120,6 +141,7 @@ export const createListing = (data) => async (dispatch) => {
 
     if (listingData.spot) {
         listingData.spot.User = listingData.user
+        listingData.spot.Images = listingData.images
         console.log(listingData.spot, '**********listing data spot*************')
         dispatch(addListing(listingData.spot))
         dispatch(createInAllListings(listingData.spot))

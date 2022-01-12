@@ -17,16 +17,17 @@ function CreateSpotForm({ setShowModal }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
-    const [title, setTitle] = useState( "");
-    const [address, setAddress] = useState( "");
-    const [city, setCity] = useState( "");
-    let [state, setState] = useState( '');
-    const [zipCode, setZipCode] = useState( "");
-    const [country, setCountry] = useState( "");
-    const [price, setPrice] = useState( "");
-    const [bedrooms, setBedrooms] = useState( '');
-    const [bathrooms, setBathrooms] = useState( '');
-    const [description, setDescription] = useState( "");
+    const [title, setTitle] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    let [state, setState] = useState('');
+    const [zipCode, setZipCode] = useState("");
+    const [country, setCountry] = useState("");
+    const [price, setPrice] = useState("");
+    const [bedrooms, setBedrooms] = useState('');
+    const [bathrooms, setBathrooms] = useState('');
+    const [description, setDescription] = useState("");
+    const [images, setImages] = useState([]);
     const [errors, setErrors] = useState([]);
 
 
@@ -42,7 +43,7 @@ function CreateSpotForm({ setShowModal }) {
     const handleClick = () => {
 
 
-            setShowModal(false)
+        setShowModal(false)
 
     }
 
@@ -62,35 +63,37 @@ function CreateSpotForm({ setShowModal }) {
             setBedrooms('')
             setBathrooms('')
             setDescription('')
+            setImages([])
         }
 
 
 
-            const listing = {
-                title,
-                address,
-                city,
-                state,
-                zipCode,
-                country,
-                price,
-                bedrooms,
-                bathrooms,
-                description
+        const listing = {
+            title,
+            address,
+            city,
+            state,
+            zipCode,
+            country,
+            price,
+            bedrooms,
+            bathrooms,
+            description,
+            images
+        }
+
+
+
+        return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
+            async (res) => {
+                const data = await res.json()
+                if (data && data.errors) setErrors(data.errors)
+
             }
-
-
-
-            return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
-                async(res) => {
-                    const data = await res.json()
-                    if (data && data.errors) setErrors(data.errors)
-
-                }
-            ).finally(() => {
-                // console.log(data?.spot, 'in finally************')
-                // if (data.spot) dispatch(createInAllListings(listing))
-            })
+        ).finally(() => {
+            // console.log(data?.spot, 'in finally************')
+            // if (data.spot) dispatch(createInAllListings(listing))
+        })
 
 
 
@@ -98,6 +101,11 @@ function CreateSpotForm({ setShowModal }) {
     const stateSetter = (x) => {
         setState(x)
     }
+
+    const updateFiles = (e) => {
+        const files = e.target.files;
+        setImages(files);
+    };
 
     return (
         <>
@@ -142,7 +150,7 @@ function CreateSpotForm({ setShowModal }) {
                         />
 
 
-                        <DropdownCombobox  stateSetter={stateSetter} />
+                        <DropdownCombobox stateSetter={stateSetter} />
                         <input
                             placeholder="Zip code *"
                             // disabled = {spot !== undefined}
@@ -198,6 +206,10 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setDescription(e.target.value)}
                             required
                         />
+                        <input
+                            type="file"
+                            multiple
+                            onChange={updateFiles} />
                     </div>
                     <button className="create-listing-button" type="submit">Create listing</button>
 
