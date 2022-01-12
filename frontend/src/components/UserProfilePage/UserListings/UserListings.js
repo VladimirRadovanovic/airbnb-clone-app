@@ -71,13 +71,13 @@ function UserListings() {
                             <div className="listing-container">
                                 <div className="listing-image-container">
                                     <div className="main-image-container">
-                                        <img className="main-image" src={listingImg} alt='listing image' />
+                                        <img className="main-image" src={listing?.Images[0].imageUrl ? listing?.Images[0].imageUrl : listingImg} alt='listing image' />
                                     </div>
                                     <div className="side-images-container">
-                                        <img className="side-image side-image-1" src={listingImg} alt='listing image' />
-                                        <img className="side-image side-image-2" src={listingImg} alt='listing image' />
-                                        <img className="side-image side-image-3" src={listingImg} alt='listing image' />
-                                        <img className="side-image side-image-4" src={listingImg} alt='listing image' />
+                                        <img className="side-image side-image-1" src={listing?.Images[1].imageUrl ? listing?.Images[1].imageUrl : listingImg} alt='listing image' />
+                                        <img className="side-image side-image-2" src={listing?.Images[2].imageUrl ? listing?.Images[2].imageUrl : listingImg} alt='listing image' />
+                                        <img className="side-image side-image-3" src={listing?.Images[3].imageUrl ? listing?.Images[3].imageUrl : listingImg} alt='listing image' />
+                                        <img className="side-image side-image-4" src={listing?.Images[4].imageUrl ? listing?.Images[4].imageUrl : listingImg} alt='listing image' />
                                     </div>
                                 </div>
                                 <div className="listing-data-container">
