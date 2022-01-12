@@ -69,6 +69,7 @@ export const updateListing = (data) => async(dispatch) => {
     const updatedListing = await response.json()
     if (updatedListing.spot) {
         updatedListing.spot.User = updatedListing.user
+        updatedListing.spot.Images = updatedListing.images
         dispatch(updateUserListing(updatedListing.spot))
         dispatch(updateInAllListings(updatedListing.spot))
     }

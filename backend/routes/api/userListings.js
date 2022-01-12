@@ -138,14 +138,14 @@ router.post('/new',
             for (let i = 0; i < listingImagesUrl.length; i++) {
                 let listingImageUrl = listingImagesUrl[i]
                 if (!listingImageUrl) listingImageUrl === null
-                    const image = await Image.build({
+                const image = await Image.build({
                     imageUrl: listingImageUrl,
                     spotId: spot.id
                 })
                 await image.save()
             }
             console.log(spot.id, '**********spot id*********************')
-              images = await Image.findAll({
+            images = await Image.findAll({
                 where: {
                     spotId: spot.id
                 }
@@ -169,13 +169,18 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
         where: {
             hostId: id,
         },
-        include: {
-            model: User,
-            // as: 'user'
-        }
+        include: [
+            {
+                model: User,
+                // as: 'user'
+            },
+            {
+                model: Image
+            }
+        ]
     })
 
-
+    console.log(spots, '***********in get spots with Include*************')
 
 
     return res.json({ spots })
@@ -211,6 +216,11 @@ router.put('/update', requireAuth, listingValidator, asyncHandler(async (req, re
 
     const spot = await Spot.findByPk(spotId)
     const user = await User.findByPk(id)
+    const images = await Image.findAll({
+        where: {
+            spotId
+        }
+    })
 
     console.log(user, 'user in update ********************')
 
@@ -227,7 +237,7 @@ router.put('/update', requireAuth, listingValidator, asyncHandler(async (req, re
         description,
     })
 
-    return res.json({ spot, user })
+    return res.json({ spot, user, images })
 }))
 
 
