@@ -28,6 +28,10 @@ const validateSignup = [
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
+      // check('file')
+      // .exists({ checkFalsy: true })
+      // .withMessage('Please upload a profile image.'),
+
     handleValidationErrors
   ];
 
@@ -38,9 +42,15 @@ router.post(
     validateSignup,
     asyncHandler(async (req, res) => {
       const { email, password, username } = req.body;
-      const profileImgUrl = await singlePublicFileUpload(req.file);
+        let profileImgUrl = null
+        if (req.file) {
+          profileImgUrl = await singlePublicFileUpload(req.file);
+
+        }
+        // if (!profileImgUrl) profileImgUrl = null
+
+
       //posobly add an if (!profileImgUrl) set to null so you don't send undefined to the db
-      if (!profileImgUrl) profileImgUrl = null
       console.log(profileImgUrl, '**********profile img url*********************')
       const user = await User.signup({ email, username, password, profileImgUrl });
 
