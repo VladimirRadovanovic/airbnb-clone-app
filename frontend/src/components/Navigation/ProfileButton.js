@@ -10,6 +10,7 @@ import { Modal, SignupModal } from '../../context/Modal';
 
 import profilePlaceholderPic from '../../images/profile-placeholder.png'
 import profilePic from '../../images/t.jpeg'
+import ninja from '../../images/ninja.png'
 import './ProfileButton.css';
 import { removeUserListings } from "../../store/Listings/sessionListings";
 
@@ -63,7 +64,7 @@ function ProfileButton({ user }) {
           <button className="profile-button" onClick={openMenu}>
             <i className="fas fa-bars bars" />
             <div className="profile-img-container">
-              <img className="profile-img" src={user ? user.profileImgUrl ? user.profileImgUrl : profilePlaceholderPic : profilePlaceholderPic} alt='profile picture' />
+              <img className="profile-img" src={user ? user.profileImgUrl ? user.profileImgUrl : ninja : profilePlaceholderPic} alt='profile picture' />
 
             </div>
           </button>
