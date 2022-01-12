@@ -87,9 +87,9 @@ router.post('/new',
             bathrooms,
             description
         } = req.body
-            //could be req.file
-            console.log(req.files, 'files multiple!!!!!!!!!!')
-            console.log(req.file, 'file Single!!!!!!!!!!')
+        //could be req.file
+        console.log(req.files, 'files multiple!!!!!!!!!!')
+        console.log(req.file, 'file Single!!!!!!!!!!')
         const listingImagesUrl = await multiplePublicFileUpload(req.files)
 
 
@@ -114,21 +114,49 @@ router.post('/new',
 
         await spot.save()
         // spot.user = user
+        // let images = null;
+        // listingImagesUrl.forEach(async(listingImageUrl) => {
+        //     if (!listingImageUrl) listingImageUrl === null
+        //     const image = await Image.build({
+        //         imageUrl: listingImageUrl,
+        //         spotId: spot.id
+        //     })
+        //     await image.save()
+        // }).then(async() => {
+        //     console.log(spot.id, '**********spot id*********************')
+        //     const listingId = spot.id
+        //      images = await Image.findAll({
+        //         where: {
+        //             spotId: listingId
+        //         }
+        //     })
 
-        listingImagesUrl.forEach(listingImageUrl => {
-            if (!listingImageUrl) listingImageUrl === null
-            const image = await Image.build({
-                imageUrl: listingImageUrl,
-                spotId: spot.id
-            })
-            await image.save()
-        })
-        // i thing i will have to include the images with the spot
-        const images = await Image.findAll({
-            where: {
-                spotId: spot.id
+        // })
+        let images = null
+        const imageBuilder = async (listingImagesUrl) => {
+
+            for (let i = 0; i < listingImagesUrl.length; i++) {
+                let listingImageUrl = listingImagesUrl[i]
+                if (!listingImageUrl) listingImageUrl === null
+                    const image = await Image.build({
+                    imageUrl: listingImageUrl,
+                    spotId: spot.id
+                })
+                await image.save()
             }
-        })
+            console.log(spot.id, '**********spot id*********************')
+              images = await Image.findAll({
+                where: {
+                    spotId: spot.id
+                }
+            })
+        }
+
+        await imageBuilder(listingImagesUrl)
+
+        // i thing i will have to include the images with the spot
+
+        console.log(images, '***************images***********************')
         return res.json({ spot, user, images })
     }))
 
