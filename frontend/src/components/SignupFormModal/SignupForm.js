@@ -13,17 +13,24 @@ function SignupForm({setShowSignupModal}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
   const handleClick = () => {
     setShowSignupModal(false)
   }
 
+  // i did not add the reset function that had it in the example
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ email, username, password, image }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -87,6 +94,7 @@ function SignupForm({setShowSignupModal}) {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          <input type="file" onChange={updateFile} />
           </div>
           <button type="submit">Continue</button>
         </form>
