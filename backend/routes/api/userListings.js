@@ -134,10 +134,14 @@ router.post('/new',
         // })
         let images = null
         const imageBuilder = async (listingImagesUrl) => {
-
-            for (let i = 0; i < listingImagesUrl.length; i++) {
+            // listingImagesUrl.length
+            console.log(listingImagesUrl, '********listingImages url multiple************')
+            for (let i = 0; i < 5; i++) {
                 let listingImageUrl = listingImagesUrl[i]
+                console.log(listingImageUrl, '*******single url pre if*****')
                 if (!listingImageUrl) listingImageUrl === null
+                console.log(listingImageUrl, '*******single url post!!!! if*****')
+
                 const image = await Image.build({
                     imageUrl: listingImageUrl,
                     spotId: spot.id

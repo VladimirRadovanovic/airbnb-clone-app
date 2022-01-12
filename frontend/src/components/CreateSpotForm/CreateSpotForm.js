@@ -29,7 +29,7 @@ function CreateSpotForm({ setShowModal }) {
     const [description, setDescription] = useState("");
     const [images, setImages] = useState([]);
     const [errors, setErrors] = useState([]);
-
+    console.log(images.length, '*****images in state with prevState******')
 
     // useEffect(() => {
 
@@ -51,6 +51,9 @@ function CreateSpotForm({ setShowModal }) {
         e.preventDefault();
 
         setErrors([])
+        if (images.length !== 5) {
+            return setErrors(['Please select five images by holding down the shift key when selecting.'])
+        }
 
         const reset = () => {
             setTitle('')
@@ -103,8 +106,15 @@ function CreateSpotForm({ setShowModal }) {
     }
 
     const updateFiles = (e) => {
+        // const imagesArr =[]
+        // console.log(imagesArr, 'i*******magesARR*****************')
         const files = e.target.files;
-        setImages(files);
+        // if (imagesArr.length === 5) {
+            setImages(files);
+        // }
+        // else {
+        //     imagesArr.push(files)
+        // }
     };
 
     return (
@@ -208,6 +218,7 @@ function CreateSpotForm({ setShowModal }) {
                         />
                         <input
                             type="file"
+                            name="filefield"
                             multiple
                             onChange={updateFiles} />
                     </div>
