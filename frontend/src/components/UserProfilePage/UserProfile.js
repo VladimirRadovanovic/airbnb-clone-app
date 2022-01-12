@@ -6,6 +6,7 @@ import { NavLink, Route, Switch } from "react-router-dom";
 
 import UserListings from "./UserListings/UserListings";
 import './UserProfile.css'
+import profilePlaceholderPic from '../../images/profile-placeholder.png'
 
 
 function UserProfile({ user }) {
@@ -15,7 +16,7 @@ function UserProfile({ user }) {
         <main className="user-profile-container">
             <div className="user-info-container">
                 <div className="user-image-container">
-                    <img className="user-image" src={profileImg} alt='user profile image' />
+                    <img className="user-image" src={user ? user.profileImgUrl ? user.profileImgUrl : profilePlaceholderPic : profilePlaceholderPic} alt='user profile image' />
                 </div>
                 <div className="user-about-container">
                     <h4>Name: {user.username}</h4>
