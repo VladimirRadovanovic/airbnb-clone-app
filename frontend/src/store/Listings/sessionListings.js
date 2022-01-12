@@ -1,4 +1,6 @@
 import csrfFetch from "../csrf";
+import { createInAllListings } from "./allListings";
+import { updateInAllListings } from "./allListings";
 
 
 const CREATE_LISTING = 'sessionListings/create_listing'
@@ -66,7 +68,9 @@ export const updateListing = (data) => async(dispatch) => {
     })
     const updatedListing = await response.json()
     if (updatedListing.spot) {
+        updatedListing.spot.User = updatedListing.user
         dispatch(updateUserListing(updatedListing.spot))
+        dispatch(updateInAllListings(updatedListing.spot))
     }
     return response
 }
@@ -88,6 +92,7 @@ export const getUserListings = () => async(dispatch) => {
     const userListings = await response.json()
 
     if (userListings.spots) {
+        console.log(userListings.spots[0].User, 'spots listings******************')
         dispatch(getListings(userListings.spots))
     }
     return response
@@ -112,8 +117,12 @@ export const createListing = (data) => async (dispatch) => {
 
     const listingData = await response.json()
 
+
     if (listingData.spot) {
+        listingData.spot.User = listingData.user
+        console.log(listingData.spot, '**********listing data spot*************')
         dispatch(addListing(listingData.spot))
+        dispatch(createInAllListings(listingData.spot))
     }
     return response
 }

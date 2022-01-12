@@ -93,14 +93,14 @@ function UserListings() {
                                         <p><span>Bedrooms:</span> {listing?.bedrooms}</p>
                                         <p><span>Bathrooms:</span> {listing?.bathrooms}</p>
 
-                                        <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing.price + ' / night' : '$' + listing.price + '.00 / night'}</p>
+                                        <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing?.price + ' / night' : '$' + listing?.price + '.00 / night'}</p>
 
                                     </div>
                                 </div>
                                 <div className="listing-button-container">
 
-                                    <UpdateFormModal spotId={listing.id} />
-                                    <button onClick={handleRemoveListing} id={`remove-${listing.id}`} className="remove-listing-button">Remove listing</button>
+                                    <UpdateFormModal spotId={listing?.id} />
+                                    <button onClick={handleRemoveListing} id={`remove-${listing?.id}`} className="remove-listing-button">Remove listing</button>
 
 
                                 </div>
