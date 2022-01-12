@@ -115,7 +115,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                     <div className="spot-input-container">
 
                         <input
-                            placeholder="Title"
+                            placeholder="Title *"
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
@@ -123,7 +123,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                         />
 
                         <input
-                            placeholder="Address"
+                            placeholder="Address *"
                             type="text"
                             value={address}
 
@@ -132,7 +132,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                         />
 
                         <input
-                            placeholder="City"
+                            placeholder="City *"
 
                             type="text"
                             value={city}
@@ -143,7 +143,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
 
                         <DropdownCombobox state={spot?.state} stateSetter={stateSetter} />
                         <input
-                            placeholder="Zip code"
+                            placeholder="Zip code *"
                             // disabled = {spot !== undefined}
                             type='text'
                             value={zipCode}
@@ -151,7 +151,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                             required
                         />
                         <input
-                            placeholder="Country"
+                            placeholder="Country *"
                             // disabled = {spot !== undefined}
                             type='text'
                             value={country}
@@ -160,7 +160,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                         />
 
                         <NumberFormat
-                            placeholder='Price per night'
+                            placeholder='Price per night *'
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             thousandSeparator={true}
@@ -174,7 +174,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
 
                         <div className="num-rooms-container">
                             <input
-                                placeholder="Bedrooms"
+                                placeholder="Bedrooms *"
                                 type='number'
                                 value={bedrooms}
                                 onChange={(e) => setBedrooms(e.target.value)}
@@ -182,7 +182,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                                 required
                             />
                             <input
-                                placeholder="Bathrooms"
+                                placeholder="Bathrooms *"
                                 type='number'
                                 value={bathrooms}
                                 onChange={(e) => setBathrooms(e.target.value)}
@@ -191,7 +191,7 @@ function UpdateSpotForm({ spot, setShowUpdateModal }) {
                             />
                         </div>
                         <input
-                            placeholder="Description"
+                            placeholder="Description *"
                             type='text'
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}

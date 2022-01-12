@@ -58,7 +58,7 @@ function SignupForm({setShowSignupModal}) {
           Email
           </label> */}
           <input
-            placeholder="Email"
+            placeholder="Email *"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -68,7 +68,7 @@ function SignupForm({setShowSignupModal}) {
           Username
           </label> */}
           <input
-            placeholder="Username"
+            placeholder="Username *"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -78,7 +78,7 @@ function SignupForm({setShowSignupModal}) {
           Password
           </label> */}
           <input
-            placeholder="Password"
+            placeholder="Password *"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -88,7 +88,7 @@ function SignupForm({setShowSignupModal}) {
           Confirm Password
           </label> */}
           <input
-            placeholder="Confirm password"
+            placeholder="Confirm password *"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
