@@ -13,17 +13,24 @@ function SignupForm({setShowSignupModal}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
   const handleClick = () => {
     setShowSignupModal(false)
   }
 
+  // i did not add the reset function that had it in the example
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ email, username, password, image }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -51,7 +58,7 @@ function SignupForm({setShowSignupModal}) {
           Email
           </label> */}
           <input
-            placeholder="Email"
+            placeholder="Email *"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -61,7 +68,7 @@ function SignupForm({setShowSignupModal}) {
           Username
           </label> */}
           <input
-            placeholder="Username"
+            placeholder="Username *"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -71,7 +78,7 @@ function SignupForm({setShowSignupModal}) {
           Password
           </label> */}
           <input
-            placeholder="Password"
+            placeholder="Password *"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -81,12 +88,13 @@ function SignupForm({setShowSignupModal}) {
           Confirm Password
           </label> */}
           <input
-            placeholder="Confirm password"
+            placeholder="Confirm password *"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          <input type="file" onChange={updateFile} />
           </div>
           <button type="submit">Continue</button>
         </form>

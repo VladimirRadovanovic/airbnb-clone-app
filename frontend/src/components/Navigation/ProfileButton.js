@@ -54,6 +54,8 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
   }
 
+
+
   return (
     <>
       {user ? (
@@ -61,7 +63,7 @@ function ProfileButton({ user }) {
           <button className="profile-button" onClick={openMenu}>
             <i className="fas fa-bars bars" />
             <div className="profile-img-container">
-              <img className="profile-img" src={user ? profilePic : profilePlaceholderPic} alt='profile picture' />
+              <img className="profile-img" src={user ? user.profileImgUrl ? user.profileImgUrl : profilePlaceholderPic : profilePlaceholderPic} alt='profile picture' />
 
             </div>
           </button>

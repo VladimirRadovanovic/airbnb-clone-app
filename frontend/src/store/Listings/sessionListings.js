@@ -92,7 +92,7 @@ export const getUserListings = () => async(dispatch) => {
     const userListings = await response.json()
 
     if (userListings.spots) {
-        console.log(userListings.spots[0].User, 'spots listings******************')
+
         dispatch(getListings(userListings.spots))
     }
     return response

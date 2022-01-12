@@ -4,6 +4,7 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { singlePublicFileUpload, singleMulterUpload} = require('../../awsS3')
 const { User } = require('../../db/models');
 
 
@@ -27,16 +28,31 @@ const validateSignup = [
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
+      // check('file')
+      // .exists({ checkFalsy: true })
+      // .withMessage('Please upload a profile image.'),
+
     handleValidationErrors
   ];
 
 // Sign up
 router.post(
     '/',
+    singleMulterUpload("image"),
     validateSignup,
     asyncHandler(async (req, res) => {
       const { email, password, username } = req.body;
-      const user = await User.signup({ email, username, password });
+        let profileImgUrl = null
+        if (req.file) {
+          profileImgUrl = await singlePublicFileUpload(req.file);
+
+        }
+        // if (!profileImgUrl) profileImgUrl = null
+
+
+      //posobly add an if (!profileImgUrl) set to null so you don't send undefined to the db
+      console.log(profileImgUrl, '**********profile img url*********************')
+      const user = await User.signup({ email, username, password, profileImgUrl });
 
       await setTokenCookie(res, user);
 
