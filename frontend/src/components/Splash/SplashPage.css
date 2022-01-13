@@ -19,8 +19,8 @@
     background-image: url('../../images/splash-img4.jpg');
     background-size: cover;
     margin-top: 30px;
-
-    background-position-y: -70px;
+    background-position: center;
+    /* background-position-y: -70px; */
     border-radius: 25px;
     opacity: 0.9;
     color: white;
