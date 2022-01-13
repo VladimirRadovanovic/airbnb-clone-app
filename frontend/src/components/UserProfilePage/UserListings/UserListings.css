@@ -7,7 +7,14 @@
     width: 69%!important;
 }
 
+#main-image-container-profile {
+    width: 50%!important;
+}
+
 .side-image-container {
+    width: 50%!important;
+}
+#side-image-container-profile {
     width: 50%!important;
 }
 .main-image {

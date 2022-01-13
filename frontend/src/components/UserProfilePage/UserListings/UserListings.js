@@ -70,10 +70,10 @@ function UserListings() {
                         <li className="listings-list-item" key={listing.id}>
                             <div className="listing-container">
                                 <div className="listing-image-container">
-                                    <div className="main-image-container">
+                                    <div className="main-image-container" id='main-image-container-profile'>
                                         <img className="main-image" src={listing?.Images[0].imageUrl ? listing?.Images[0].imageUrl : listingImg} alt='listing image' />
                                     </div>
-                                    <div className="side-images-container">
+                                    <div className="side-images-container" id='side-image-container-profile'>
                                         <img className="side-image side-image-1" src={listing?.Images[1].imageUrl ? listing?.Images[1].imageUrl : listingImg} alt='listing image' />
                                         <img className="side-image side-image-2" src={listing?.Images[2].imageUrl ? listing?.Images[2].imageUrl : listingImg} alt='listing image' />
                                         <img className="side-image side-image-3" src={listing?.Images[3].imageUrl ? listing?.Images[3].imageUrl : listingImg} alt='listing image' />
