@@ -134,3 +134,13 @@ ul {
     padding-left: 3px;
     font-family: arial, sans-serif;
 }
+
+.check-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.check-image {
+    height: 50px;
+}

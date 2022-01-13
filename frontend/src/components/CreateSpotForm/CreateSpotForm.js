@@ -8,6 +8,7 @@ import { items } from "../DropdownCombobox/utils";
 import { createListing, updateListing } from "../../store/Listings/sessionListings";
 import { createInAllListings } from "../../store/Listings/allListings";
 import upload from '../../images/upload.svg'
+import checkMark from '../../images/check.svg'
 
 
 
@@ -41,7 +42,7 @@ function CreateSpotForm({ setShowModal }) {
     // }, [state])
     useEffect(() => {
 
-        if (images.length > 0) {
+        if (images.length === 5) {
             setShowCheckMark(true)
         }
     }, [images])
@@ -230,7 +231,7 @@ function CreateSpotForm({ setShowModal }) {
                             name="filefield"
                             multiple
                             onChange={updateFiles} /> */}
-                            {showCheckMark ? <span>Uploaded</span> :
+                            {showCheckMark ? <div className="check-container"><img className="check-image" src={checkMark} alt='success' /></div> :
                         <div className="file-input-container">
                             <label className="image-upload-container">
                                 <div className="inside-container">
