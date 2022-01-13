@@ -41,7 +41,7 @@
     height: 80px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
 }
 
 #hosted-by-img-container {
@@ -71,4 +71,14 @@
 
 .listing-data-container {
     font-family: arial, sans-serif;
+}
+
+.hosted-by-data-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.in-details-description {
+    margin-top: 0px!important;
+    padding-top: 0px!important;
 }

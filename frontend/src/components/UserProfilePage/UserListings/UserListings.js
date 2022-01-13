@@ -83,7 +83,7 @@ function UserListings() {
                                 <div className="listing-data-container">
                                     <h2 className="title">{listing?.title}</h2>
                                     <p className="description">{listing?.description}</p>
-                                    <p className="created-on"><span>Created on: </span> {listing?.createdAt && new Date(listing.createdAt).toDateString()}</p>
+                                    <p className="created-on"><span>Created on: {listing?.createdAt && new Date(listing.createdAt).toDateString()}</span> </p>
                                     <div className="details-container">
                                         <p><span>Address:</span> {listing?.address}</p>
                                         <p><span>City:</span> {listing?.city}</p>

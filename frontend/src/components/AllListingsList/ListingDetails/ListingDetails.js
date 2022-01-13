@@ -36,16 +36,16 @@ function ListingDetails() {
                         </div>
                     </div>
                     <div className="listing-data-container">
-                        <p className="created-on detail-created-on"><span>Created on: </span> {listing?.createdAt && new Date(listing.createdAt).toDateString()}</p>
+                        <p className="created-on detail-created-on"><span>Created on: {listing?.createdAt && new Date(listing.createdAt).toDateString()}</span> </p>
                         <h2 className="title">{listing?.title}</h2>
-                        <p className="description">{listing?.description}</p>
                         <div className="details-container" id='in-details-container'>
                             <div className="hosted-by-container">
-                                <span>Hosted by: </span> {listing?.User.username}
+                                <span>Entire residential home hosted by: {listing?.User.username}</span>
                                 <div id='hosted-by-img-container'>
                                 <img className="profile-pic-in-details" src={listing?.User?.profileImgUrl ? listing?.User?.profileImgUrl : ninja } />
                                 </div>
                             </div>
+                        <div className="description" id='in-details-description'>{listing?.description}</div>
                             <div className="hosted-by-data-container">
                             <p><span>Address:</span> {listing?.address}</p>
                             <p><span>City:</span> {listing?.city}</p>
