@@ -9,6 +9,7 @@
     justify-content: space-between;
 }
 
+
 .right-container {
     background-color: lightpink;
     width: 38%;
@@ -90,3 +91,7 @@
     display: flex;
     justify-content: center;
 } */
+
+.main-container {
+    margin-bottom: 250px;
+}

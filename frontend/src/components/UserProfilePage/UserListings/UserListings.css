@@ -24,6 +24,7 @@
 }
 .listing-container {
     width: 100%;
+    /* margin-bottom: 300px; */
 }
 
 .listings-list-item {
@@ -40,6 +41,7 @@
 
 .listings-list {
     padding: 20px 30px;
+    margin-bottom: 300px;
 }
 
 .side-image-1 {
