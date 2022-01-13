@@ -52,7 +52,7 @@ Ensure PostgreSQL is installed and running
 2. Login to Heroku in your terminal by running:
     heroku login
 3. Add Heroku as a remote to your project's git repository:
-    heroku git:remote -a <name-of-Heroku-app>
+    heroku git: remote -a <name-of-Heroku-app>
 4. Push your project to Heroku:
     git push heroku master
 5. To migrate the production database, run:
