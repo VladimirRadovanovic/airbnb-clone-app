@@ -50,17 +50,17 @@ Ensure PostgreSQL is installed and running
 
 1. Configure JWT_SECRET, JWT_EXPIRES_IN, AWS_ACCESS_KEY_ID, S3_BUCKET_NAME=<the_name_of_your_bucket> and AWS_SECRET_ACCESS_KEY config vars on Heroku.
 2. Login to Heroku in your terminal by running:
-    heroku login
+    * heroku login
 3. Add Heroku as a remote to your project's git repository:
-    heroku git: remote -a <name-of-Heroku-app>
+    * heroku git: remote -a <name-of-Heroku-app>
 4. Push your project to Heroku:
-    git push heroku master
+    * git push heroku master
 5. To migrate the production database, run:
-    heroku run npm run sequelize db:migrate
+    * heroku run npm run sequelize db:migrate
 6. To seed the production database, run:
-    heroku run npm run sequelize db:seed:all
+    * heroku run npm run sequelize db:seed:all
 7. Open your site in the browser with:
-    heroku open
+    * heroku open
    
 ## Documentation links
    
