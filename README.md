@@ -61,7 +61,10 @@ Ensure PostgreSQL is installed and running
     heroku run npm run sequelize db:seed:all
 7. Open your site in the browser with:
     heroku open
-
-
+   
+## Documentation links
+   
+* [Database schema](https://github.com/VladimirRadovanovic/airbnb-clone-app/wiki/Database-Schema)
+* [Features](https://github.com/VladimirRadovanovic/airbnb-clone-app/wiki/Feature-List)
 
 
