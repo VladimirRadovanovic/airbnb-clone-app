@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ninja from '../../../images/ninja.png'
 
+
 import listingImg from '../../../images/splash-img4.jpg'
+import MyCalendar from "../../DatePicker/DatePicker";
 
 
 import './ListingDetails.css'
@@ -57,6 +59,9 @@ function ListingDetails() {
                             <p><span>Price:</span> {listing?.price.includes('.') ? '$' + listing?.price + ' / night' : '$' + listing?.price + '.00 / night'}</p>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <MyCalendar />
                     </div>
                     <div className="listing-button-container">
 
