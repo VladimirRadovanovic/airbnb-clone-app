@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import redLogo from '../../images/red-logo.png'
+import upload from '../../images/upload.svg'
 
 import './SignupForm.css';
 
@@ -94,7 +96,16 @@ function SignupForm({setShowSignupModal}) {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <input type="file" onChange={updateFile} />
+          <div className="file-input-container">
+          <label className="image-upload-container">
+            <div className="inside-container">
+          <input className="signup-image-upload" type="file" onChange={updateFile} />
+          <img className="upload-logo" src={upload} alt='upload icon'/>
+          <span className="upload-text">Upload photo</span>
+          </div>
+          </label>
+          </div>
+
           </div>
           <button type="submit">Continue</button>
         </form>
