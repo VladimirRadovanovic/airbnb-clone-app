@@ -80,7 +80,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     /* width: 100%; */
-    max-width: 100vw;
+    max-width: 100%;
     margin-left: 60px!important;
     margin-top: 50px;
     /* overflow-x: hidden; */

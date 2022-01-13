@@ -77,7 +77,7 @@
     background-color: rgb(241, 241, 241);
 }
 
-.login-button,
+/* .login-button, */
 .logout-button {
     font-weight: bolder;
 }
@@ -119,4 +119,8 @@
 .profile-link {
     width: 100%;
     display: block;
+}
+
+.demo-button {
+    font-weight: bolder;
 }

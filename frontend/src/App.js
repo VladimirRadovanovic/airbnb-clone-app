@@ -9,6 +9,7 @@ import SplashPage from "./components/Splash/SplashPage";
 import UserProfile from "./components/UserProfilePage/UserProfile";
 import AllListingsList from "./components/AllListingsList/AllListingsList";
 import ListingDetails from "./components/AllListingsList/ListingDetails/ListingDetails";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="main-page-container">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -39,7 +40,8 @@ function App() {
 
         </Switch>
       )}
-    </>
+      <Footer />
+    </div>
   );
 }
 

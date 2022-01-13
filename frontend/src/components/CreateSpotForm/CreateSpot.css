@@ -59,6 +59,7 @@ nav .host-link {
     /* font-weight: lighter; */
     font-size: 14px;
     /* background-color: rgb(163, 163, 163); */
+    /* overflow: hidden; */
 }
 
 nav .host-link-white {
@@ -79,6 +80,8 @@ nav .host-link-white {
     cursor: pointer;
     /* background-color: black; */
     border: none;
+    /* overflow: hidden; */
+
 
 }
 

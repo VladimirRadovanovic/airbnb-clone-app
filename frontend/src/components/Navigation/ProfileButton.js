@@ -98,7 +98,7 @@ function ProfileButton({ user }) {
             <div className="profile-dropdown">
               <div><button className="login-button" onClick={() => setShowLoginModal(true)}>Log In</button></div>
               <div><button onClick={() => setShowSignupModal(true)}>Sign Up</button></div>
-              <div ><div className="demo-button-container"><button onClick={handleDemo}>Demo</button></div></div>
+              <div ><div className="demo-button-container"><button className="demo-button" onClick={handleDemo}>Demo</button></div></div>
             </div>
 
           )}
