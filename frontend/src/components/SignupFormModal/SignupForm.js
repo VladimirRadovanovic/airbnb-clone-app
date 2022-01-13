@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import redLogo from '../../images/red-logo.png'
 import upload from '../../images/upload.svg'
+import checkMark from '../../images/check.svg'
+
 
 import './SignupForm.css';
 
 
-function SignupForm({setShowSignupModal}) {
+function SignupForm({ setShowSignupModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -16,7 +18,18 @@ function SignupForm({setShowSignupModal}) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [image, setImage] = useState(null);
+  const [showCheckMark, setShowCheckMark] = useState(false)
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    if (image) {
+      console.log(image, 'single image length*************')
+
+        setShowCheckMark(true)
+
+
+    }
+  }, [image])
 
   const handleClick = () => {
     setShowSignupModal(false)
@@ -56,55 +69,58 @@ function SignupForm({setShowSignupModal}) {
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
           <div className="signup-input-container">
-          {/* <label>
+            {/* <label>
           Email
           </label> */}
-          <input
-            placeholder="Email *"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          {/* <label>
+            <input
+              placeholder="Email *"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            {/* <label>
           Username
           </label> */}
-          <input
-            placeholder="Username *"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          {/* <label>
+            <input
+              placeholder="Username *"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            {/* <label>
           Password
           </label> */}
-          <input
-            placeholder="Password *"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          {/* <label>
+            <input
+              placeholder="Password *"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {/* <label>
           Confirm Password
           </label> */}
-          <input
-            placeholder="Confirm password *"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-          <div className="file-input-container">
-          <label className="image-upload-container">
-            <div className="inside-container">
-          <input className="signup-image-upload" type="file" onChange={updateFile} />
-          <img className="upload-logo" src={upload} alt='upload icon'/>
-          <span className="upload-text">Upload photo</span>
-          </div>
-          </label>
-          </div>
+            <input
+              placeholder="Confirm password *"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            {showCheckMark ? <div className="check-container"><img className="check-image" src={checkMark} alt='success' /></div> :
+
+            <div className="file-input-container">
+              <label className="image-upload-container">
+                <div className="inside-container">
+                  <input className="signup-image-upload" type="file" onChange={updateFile} />
+                  <img className="upload-logo" src={upload} alt='upload icon' />
+                  <span className="upload-text">Upload photo</span>
+                </div>
+              </label>
+            </div>
+            }
 
           </div>
           <button type="submit">Continue</button>
