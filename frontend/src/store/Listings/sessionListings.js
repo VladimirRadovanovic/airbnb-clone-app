@@ -128,7 +128,7 @@ export const createListing = (data) => async (dispatch) => {
         }
       }
 
-      console.log(data.images, 'images data')
+
 
 
     const response = await csrfFetch('/api/user/listings/new', {
@@ -145,8 +145,8 @@ export const createListing = (data) => async (dispatch) => {
     if (listingData.spot) {
         listingData.spot.User = listingData.user
         listingData.spot.Images = listingData.images
-        console.log(listingData.spot, '**********listing data spot*************')
-        console.log(listingData.spot.Images, 'images pre dipatch')
+
+
         dispatch(addListing(listingData.spot))
         dispatch(createInAllListings(listingData.spot))
     }
@@ -176,7 +176,7 @@ const sessionListingsReducer = (state = {}, action) => {
             });
             return newState
         case CREATE_LISTING:
-            console.log(action.spot, '************in the reducer***************')
+
             newState = { ...state, [action.spot.id]: action.spot }
             return newState
         default:

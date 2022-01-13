@@ -88,8 +88,8 @@ router.post('/new',
             description
         } = req.body
         //could be req.file
-        console.log(req.files, 'files multiple!!!!!!!!!!')
-        console.log(req.file, 'file Single!!!!!!!!!!')
+
+
         const listingImagesUrl = await multiplePublicFileUpload(req.files)
 
 
@@ -123,7 +123,7 @@ router.post('/new',
         //     })
         //     await image.save()
         // }).then(async() => {
-        //     console.log(spot.id, '**********spot id*********************')
+
         //     const listingId = spot.id
         //      images = await Image.findAll({
         //         where: {
@@ -135,12 +135,12 @@ router.post('/new',
         let images = null
         const imageBuilder = async (listingImagesUrl) => {
             // listingImagesUrl.length
-            console.log(listingImagesUrl, '********listingImages url multiple************')
+
             for (let i = 0; i < 5; i++) {
                 let listingImageUrl = listingImagesUrl[i]
-                console.log(listingImageUrl, '*******single url pre if*****')
+
                 if (!listingImageUrl) listingImageUrl === null
-                console.log(listingImageUrl, '*******single url post!!!! if*****')
+
 
                 const image = await Image.build({
                     imageUrl: listingImageUrl,
@@ -148,7 +148,7 @@ router.post('/new',
                 })
                 await image.save()
             }
-            console.log(spot.id, '**********spot id*********************')
+
             images = await Image.findAll({
                 where: {
                     spotId: spot.id
@@ -160,7 +160,7 @@ router.post('/new',
 
         // i thing i will have to include the images with the spot
 
-        console.log(images, '***************images***********************')
+
         return res.json({ spot, user, images })
     }))
 
@@ -184,7 +184,7 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
         ]
     })
 
-    console.log(spots, '***********in get spots with Include*************')
+
 
 
     return res.json({ spots })
@@ -226,7 +226,7 @@ router.put('/update', requireAuth, listingValidator, asyncHandler(async (req, re
         }
     })
 
-    console.log(user, 'user in update ********************')
+
 
     await spot.update({
         title,

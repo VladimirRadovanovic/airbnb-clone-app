@@ -51,7 +51,7 @@ router.post(
 
 
       //posobly add an if (!profileImgUrl) set to null so you don't send undefined to the db
-      console.log(profileImgUrl, '**********profile img url*********************')
+
       const user = await User.signup({ email, username, password, profileImgUrl });
 
       await setTokenCookie(res, user);

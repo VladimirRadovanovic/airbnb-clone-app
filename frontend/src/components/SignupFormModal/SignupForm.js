@@ -23,7 +23,7 @@ function SignupForm({ setShowSignupModal }) {
 
   useEffect(() => {
     if (image) {
-      console.log(image, 'single image length*************')
+
 
         setShowCheckMark(true)
 

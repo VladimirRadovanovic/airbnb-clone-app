@@ -32,7 +32,7 @@ function CreateSpotForm({ setShowModal }) {
     const [images, setImages] = useState([]);
     const [showCheckMark, setShowCheckMark] = useState(false)
     const [errors, setErrors] = useState([]);
-    console.log(images.length, '*****images in state with prevState******')
+
 
     // useEffect(() => {
 
@@ -102,10 +102,7 @@ function CreateSpotForm({ setShowModal }) {
                 if (data && data.errors) setErrors(data.errors)
 
             }
-        ).finally(() => {
-            // console.log(data?.spot, 'in finally************')
-            // if (data.spot) dispatch(createInAllListings(listing))
-        })
+        )
 
 
 
@@ -116,7 +113,7 @@ function CreateSpotForm({ setShowModal }) {
 
     const updateFiles = (e) => {
         // const imagesArr =[]
-        // console.log(imagesArr, 'i*******magesARR*****************')
+
         const files = e.target.files;
         // if (imagesArr.length === 5) {
         setImages(files);

@@ -12,7 +12,7 @@ const getListings = (listings) => {
 }
 
 export const createInAllListings = (listing) => {
-    console.log(listing, 'listing in create all******')
+
     return {
         type: CREATE_IN_ALL,
         listing
