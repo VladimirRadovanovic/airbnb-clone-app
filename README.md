@@ -41,8 +41,12 @@ Ensure PostgreSQL is installed and running
     1) Run npm run sequelize db:create
     2) Run npm run sequelize db:migrate
     3) Run npm run sequelize db:seed:all
+
+4. Instal packages
+    1) Cd into the backend directory and run npm install
+    1) Cd into the frontend directory and run npm install
     
-4. Start the development servers:
+5. Start the development servers:
     1) Run npm start in the backed directory
     2) Run npm start in the frontend directory
    
