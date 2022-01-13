@@ -7,6 +7,7 @@ import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
 import { items } from "../DropdownCombobox/utils";
 import { createListing, updateListing } from "../../store/Listings/sessionListings";
 import { createInAllListings } from "../../store/Listings/allListings";
+import upload from '../../images/upload.svg'
 
 
 
@@ -28,6 +29,7 @@ function CreateSpotForm({ setShowModal }) {
     const [bathrooms, setBathrooms] = useState('');
     const [description, setDescription] = useState("");
     const [images, setImages] = useState([]);
+    const [showCheckMark, setShowCheckMark] = useState(false)
     const [errors, setErrors] = useState([]);
     console.log(images.length, '*****images in state with prevState******')
 
@@ -37,6 +39,12 @@ function CreateSpotForm({ setShowModal }) {
     //         setState(spot?.state)
     //     }
     // }, [state])
+    useEffect(() => {
+
+        if (images.length > 0) {
+            setShowCheckMark(true)
+        }
+    }, [images])
 
 
 
@@ -110,7 +118,8 @@ function CreateSpotForm({ setShowModal }) {
         // console.log(imagesArr, 'i*******magesARR*****************')
         const files = e.target.files;
         // if (imagesArr.length === 5) {
-            setImages(files);
+        setImages(files);
+        // setShowCheckMark(true)
         // }
         // else {
         //     imagesArr.push(files)
@@ -216,11 +225,29 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setDescription(e.target.value)}
                             required
                         />
-                        <input
+                        {/* <input
                             type="file"
                             name="filefield"
                             multiple
-                            onChange={updateFiles} />
+                            onChange={updateFiles} /> */}
+                            {showCheckMark ? <span>Uploaded</span> :
+                        <div className="file-input-container">
+                            <label className="image-upload-container">
+                                <div className="inside-container">
+                                    <input
+                                    className="signup-image-upload"
+                                    type="file"
+                                    onChange={updateFiles}
+                                    multiple
+                                    name="filefield"
+                                     />
+                                    <img className="upload-logo" src={upload} alt='upload icon' />
+                                    <span className="upload-text">Upload five photos</span>
+                                </div>
+                            </label>
+                        </div>
+
+                            }
                     </div>
                     <button className="create-listing-button" type="submit">Create listing</button>
 
