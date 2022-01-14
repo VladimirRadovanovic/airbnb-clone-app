@@ -50,5 +50,17 @@ asyncHandler(async(req,res) => {
 }))
 
 
+router.get('/', requireAuth, asyncHandler(async (req, res) => {
+    const { id } = req.user
+    const bookings = await Booking.findAll({
+       where: {
+           userId: id
+       }
+    })
+
+    return res.json({bookings})
+}))
+
+
 
 module.exports = router

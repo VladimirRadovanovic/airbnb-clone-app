@@ -2,10 +2,11 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { DateRange } from 'react-date-range';
 
+import LoginFormModal from '../LoginFormModal';
 import { bookAStay } from '../../store/bookings/sessionBookings';
 
 // class MyComponent extends Component {
@@ -41,6 +42,8 @@ import { bookAStay } from '../../store/bookings/sessionBookings';
 function MyCalendar() {
     const dispatch = useDispatch()
     const history = useHistory()
+    const [showModal, setShowModal] = useState(false)
+    const sessionUser = useSelector(state => state.session.user);
     const [errors, setErrors] = useState([]);
 
     const [state, setState] = useState([
@@ -69,6 +72,8 @@ function MyCalendar() {
 
     console.log(state)
     const handleBooking = () => {
+
+        if (!sessionUser) return setShowModal(true)
         state[0].listingId = id
         console.log(state, 'use params id')
         return dispatch(bookAStay(state)).then(() => reset()).then(() => history.push('/api/user/profile')).catch(
@@ -92,6 +97,7 @@ function MyCalendar() {
                 rangeColors={['red']}
             />
             <button onClick={handleBooking}>Book a stay</button>
+            {showModal && <LoginFormModal setShowModal={setShowModal}/>}
         </div>
     )
 
