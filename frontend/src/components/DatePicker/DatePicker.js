@@ -8,6 +8,7 @@ import { DateRange } from 'react-date-range';
 
 import LoginFormModal from '../LoginFormModal';
 import { bookAStay } from '../../store/bookings/sessionBookings';
+import './DatePicker.css'
 
 // class MyComponent extends Component {
 //   handleSelect(ranges){
@@ -88,6 +89,7 @@ function MyCalendar() {
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
+            <div className='calendar-button-container'>
             <DateRange
                 editableDateInputs={true}
                 onChange={item => setState([item.selection])}
@@ -96,7 +98,8 @@ function MyCalendar() {
                 minDate={new Date()}
                 rangeColors={['red']}
             />
-            <button onClick={handleBooking}>Book a stay</button>
+            <button className='stay-button' onClick={handleBooking}>Book a stay</button>
+            </div>
             {showModal && <LoginFormModal setShowModal={setShowModal}/>}
         </div>
     )

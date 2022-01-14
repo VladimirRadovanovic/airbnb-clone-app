@@ -62,23 +62,23 @@ function UserBookings() {
                                 <div className="new-data-container">
                                     <div className="bookings-data-container">
                                         <div >
-                                            <li>Booked on: {booking?.createdAt && new Date(booking.createdAt).toDateString()}</li>
-                                            <li>Start date: {booking?.startDate && new Date(booking.startDate).toDateString()}</li>
-                                            <li>End date: {booking?.endDate && new Date(booking.endDate).toDateString()}</li>
-                                            <li>Hosted by: {booking?.listing?.User?.username}</li>
+                                            <li><span>Booked on: </span>{booking?.createdAt && new Date(booking.createdAt).toDateString()}</li>
+                                            <li><span>Start date: </span>{booking?.startDate && new Date(booking.startDate).toDateString()}</li>
+                                            <li><span>End date: </span>{booking?.endDate && new Date(booking.endDate).toDateString()}</li>
+                                            <li><span>Hosted by: </span>{booking?.listing?.User?.username}</li>
                                         </div>
                                         <div>
-                                            <li>Bathrooms: {booking?.listing?.bathrooms}</li>
-                                            <li>Bedrooms: {booking?.listing?.bedrooms}</li>
-                                            <li>Price: ${booking?.listing?.price} / night</li>
+                                            <li><span>Bathrooms: </span>{booking?.listing?.bathrooms}</li>
+                                            <li><span>Bedrooms: </span>{booking?.listing?.bedrooms}</li>
+                                            <li><span>Price: </span>${booking?.listing?.price} / night</li>
 
                                         </div>
                                         <div>
-                                            <li>Address: {booking?.listing?.address}</li>
-                                            <li>City: {booking?.listing?.city}</li>
-                                            <li>State: {booking?.listing?.state}</li>
-                                            <li>Zip code: {booking?.listing?.zipCode}</li>
-                                            <li>Country: {booking?.listing?.country}</li>
+                                            <li><span>Address: </span>{booking?.listing?.address}</li>
+                                            <li><span>City: </span>{booking?.listing?.city}</li>
+                                            <li><span>State: </span>{booking?.listing?.state}</li>
+                                            <li><span>Zip code: </span>{booking?.listing?.zipCode}</li>
+                                            <li><span>Country: </span>{booking?.listing?.country}</li>
 
                                         </div>
 
