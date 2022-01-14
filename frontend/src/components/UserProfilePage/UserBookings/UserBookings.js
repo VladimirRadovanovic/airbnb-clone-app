@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 
 import { getUserBookings } from "../../../store/bookings/sessionBookings";
+import { getAllListings } from "../../../store/Listings/allListings";
 import './UserBookings.css'
 
 
@@ -12,16 +13,20 @@ function UserBookings() {
 
     useEffect(() => {
         dispatch(getUserBookings())
+        dispatch(getAllListings())
     }, [dispatch])
 
     const bookings = useSelector(state => state.bookings)
     const listings = useSelector(state => state.listings)
+    console.log(listings, '*******listings*****')
     const user = useSelector(state => state.session.user)
 
 
     const bookingsList = []
     for (let key in bookings) {
         let booking = bookings[key]
+
+        console.log(listings[booking.spotId], '******listing attacher********')
         booking.listing = listings[booking.spotId]
         bookingsList.push(
             booking
