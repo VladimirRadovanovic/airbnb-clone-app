@@ -17,12 +17,12 @@ const bookingsValidator = [
     .exists({checkFalsy: true})
     .withMessage('Please select a start date')
     .isAfter()
-    .withMessage('Date can not be in the past.'),
+    .withMessage('Date can not be todays date, or a past date.'),
     check('endDate')
     .exists({checkFalsy: true})
     .withMessage('Please select the end date')
     .isAfter()
-    .withMessage('Date can not be in the past.'),
+    .withMessage('Date can not be todays date, or a past date.'),
 
     handleValidationErrors
 ]

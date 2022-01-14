@@ -42,21 +42,36 @@ function MyCalendar() {
     const dispatch = useDispatch()
     const history = useHistory()
     const [errors, setErrors] = useState([]);
+
     const [state, setState] = useState([
         {
             startDate: new Date(),
-            endDate: null,
+            endDate: new Date(),
             key: 'selection'
         }
     ]);
 
     const { id } = useParams()
 
+    const reset = () => {
+        setState(
+            [
+                {
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    key: 'selection'
+                }
+            ]
+        )
+    }
+
+
+
     console.log(state)
     const handleBooking = () => {
         state[0].listingId = id
         console.log(state, 'use params id')
-        return dispatch(bookAStay(state)).then(() => history.push('/api/user/profile')).catch(
+        return dispatch(bookAStay(state)).then(() => reset()).then(() => history.push('/api/user/profile')).catch(
             async (res) => {
                 const data = await res.json()
                 if (data && data.errors) setErrors(data.errors)
