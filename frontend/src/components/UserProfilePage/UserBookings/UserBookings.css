@@ -16,7 +16,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.booking-list-item {
+.booking-list-item ul li{
     padding-top: 15px;
     padding-bottom: 15px;
     color: rgb(107, 107, 107);
@@ -66,7 +66,7 @@ padding: 14px 25px;
 }
 
 .cancel-booking-button {
-    margin-left: 165px;
+    margin-left: 130px;
     margin-top: 165px;
 }
 
@@ -75,5 +75,11 @@ padding: 14px 25px;
 }
 
 .bookings-data-container div {
-    padding-left: 30px;
+    padding-left: 15px;
+}
+
+
+.bookings-image {
+    height: 200px;
+    width: 250px;
 }
