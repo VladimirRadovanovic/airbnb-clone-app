@@ -10,35 +10,7 @@ import LoginFormModal from '../LoginFormModal';
 import { bookAStay } from '../../store/bookings/sessionBookings';
 import './DatePicker.css'
 
-// class MyComponent extends Component {
-//   handleSelect(ranges){
-//     console.log(ranges);
-//     // {
-//     //   selection: {
-//     //     startDate: [native Date Object],
-//     //     endDate: [native Date Object],
-//     //   }
-//     // }
-//   }
-//   render(){
-//     const selectionRange = {
-//       startDate: new Date(),
-//       endDate: new Date(),
-//       key: 'selection',
-//     }
-//     return (
-//       <DateRangePicker
-//         ranges={[selectionRange]}
-//         onChange={this.handleSelect}
-//         showSelectionPreview={true}
-//         minDate={new Date()}
-//         rangeColors={['red']}
-//       />
-//     )
-//   }
-// }
 
-// export default MyComponent;
 
 function MyCalendar() {
     const dispatch = useDispatch()
@@ -71,12 +43,12 @@ function MyCalendar() {
 
 
 
-    console.log(state)
+
     const handleBooking = () => {
 
         if (!sessionUser) return setShowModal(true)
         state[0].listingId = id
-        console.log(state, 'use params id')
+
         return dispatch(bookAStay(state)).then(() => reset()).then(() => history.push('/api/user/profile/bookings')).catch(
             async (res) => {
                 const data = await res.json()

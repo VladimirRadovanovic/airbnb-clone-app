@@ -19,7 +19,7 @@ function UserBookings() {
 
     const bookings = useSelector(state => state.bookings)
     const listings = useSelector(state => state.listings)
-    console.log(listings, '*******listings*****')
+
     const user = useSelector(state => state.session.user)
 
 
@@ -27,7 +27,7 @@ function UserBookings() {
     for (let key in bookings) {
         let booking = bookings[key]
 
-        console.log(listings[booking.spotId], '******listing attacher********')
+
         booking.listing = listings[booking.spotId]
         bookingsList.push(
             booking
@@ -46,6 +46,7 @@ function UserBookings() {
         const bookingId = Number(id.split('-')[1])
         dispatch(cancelBooking(bookingId))
     }
+    // dsa
 
     return (
         <div className="user-bookings-container">

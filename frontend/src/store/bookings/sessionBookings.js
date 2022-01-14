@@ -64,7 +64,7 @@ export const getUserBookings = () => async(dispatch) => {
     const response = await csrfFetch('/api/user/bookings')
     const bookingsData = await response.json()
     if (bookingsData.bookings) {
-        console.log(bookingsData.bookings, '******booking data*******')
+
         dispatch(getBookings(bookingsData.bookings))
     }
     return response
@@ -82,7 +82,7 @@ const sessionBookingsReducer = (state = {}, action) => {
             return newState
         case GET_BOOKINGS:
             newState={...state}
-            console.log(action.bookings, '*****inReducer*******')
+
             action.bookings.forEach(booking => {
                 newState[booking.id] = booking
             })
