@@ -1,0 +1,6 @@
+.users-bookings-list {
+    margin-bottom: 200px;
+
+    display: flex;
+    flex-direction: column;
+}

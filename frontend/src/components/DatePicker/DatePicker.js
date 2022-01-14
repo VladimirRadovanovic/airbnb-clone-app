@@ -76,7 +76,7 @@ function MyCalendar() {
         if (!sessionUser) return setShowModal(true)
         state[0].listingId = id
         console.log(state, 'use params id')
-        return dispatch(bookAStay(state)).then(() => reset()).then(() => history.push('/api/user/profile')).catch(
+        return dispatch(bookAStay(state)).then(() => reset()).then(() => history.push('/api/user/profile/bookings')).catch(
             async (res) => {
                 const data = await res.json()
                 if (data && data.errors) setErrors(data.errors)
