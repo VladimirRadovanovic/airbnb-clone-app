@@ -41,11 +41,31 @@ function UserBookings() {
     })
 
     return (
-        <div>
+        <div className="user-bookings-container">
             <ul className="users-bookings-list">
                 {
                     usersBookingsList.map(booking => (
-                        <li key={booking.id}>{booking.id}</li>
+                        <li key={booking.id}>
+                            <div className="bookings-image-container">
+                                <img src={booking.listing.Images[0].imageUrl} />
+                            </div>
+                            <div>
+                                <h2>{booking.listing.title}</h2>
+                                <span>Booked on: {booking.createAt}</span>
+                                <span>Start date{booking.startDate}</span>
+                                <span>End date{booking.endDate}</span>
+                                <span>Hosted by:{booking.listing.User.username}</span>
+                                <span>Bathrooms:{booking.listing.bathrooms}</span>
+                                <span>Bedrooms:{booking.listing.bedrooms}</span>
+                                <span>Price: ${booking.listing.price} / night</span>
+                                <span>Address:{booking.listing.address}</span>
+                                <span>City:{booking.listing.city}</span>
+                                <span>State:{booking.listing.state}</span>
+                                <span>Zip code:{booking.listing.zipCode}</span>
+                                <span>Country:{booking.listing.country}</span>
+
+                            </div>
+                        </li>
                     ))
                 }
             </ul>
