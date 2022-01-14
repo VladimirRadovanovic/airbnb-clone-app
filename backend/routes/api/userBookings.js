@@ -61,6 +61,14 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
     return res.json({bookings})
 }))
 
+router.delete('/delete', requireAuth, asyncHandler(async(req, res) => {
+    const { id } = req.body
+    const booking = await Booking.findByPk(id)
+    await booking.destroy()
+    return res.json({ message: 'Deleted' })
+
+}))
+
 
 
 module.exports = router

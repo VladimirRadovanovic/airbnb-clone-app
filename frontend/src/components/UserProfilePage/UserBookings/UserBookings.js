@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { getUserBookings } from "../../../store/bookings/sessionBookings";
 import { getAllListings } from "../../../store/Listings/allListings";
+import { cancelBooking } from "../../../store/bookings/sessionBookings";
 import './UserBookings.css'
 
 
@@ -40,30 +41,51 @@ function UserBookings() {
         }
     })
 
+    const handleCancelBooking = (e) => {
+        const id = e.target.id;
+        const bookingId = Number(id.split('-')[1])
+        dispatch(cancelBooking(bookingId))
+    }
+
     return (
         <div className="user-bookings-container">
             <ul className="users-bookings-list">
                 {
                     usersBookingsList.map(booking => (
-                        <li key={booking.id}>
-                            <div className="bookings-image-container">
-                                <img src={booking.listing.Images[0].imageUrl} />
-                            </div>
-                            <div>
-                                <h2>{booking.listing.title}</h2>
-                                <span>Booked on: {booking.createAt}</span>
-                                <span>Start date{booking.startDate}</span>
-                                <span>End date{booking.endDate}</span>
-                                <span>Hosted by:{booking.listing.User.username}</span>
-                                <span>Bathrooms:{booking.listing.bathrooms}</span>
-                                <span>Bedrooms:{booking.listing.bedrooms}</span>
-                                <span>Price: ${booking.listing.price} / night</span>
-                                <span>Address:{booking.listing.address}</span>
-                                <span>City:{booking.listing.city}</span>
-                                <span>State:{booking.listing.state}</span>
-                                <span>Zip code:{booking.listing.zipCode}</span>
-                                <span>Country:{booking.listing.country}</span>
+                        <li className="booking-list-item" key={booking.id}>
+                            <div className="single-booking-container">
+                                <div className="bookings-image-container">
+                                    <img src={booking?.listing?.Images[0]?.imageUrl} />
+                                </div>
+                                <div className="align-container">
+                                    {/* <div className="bookings-title">{booking?.listing?.title}</div> */}
+                                <div className="new-data-container">
+                                    <div className="bookings-data-container">
+                                        <div >
+                                            <li>Booked on: {booking?.createdAt && new Date(booking.createdAt).toDateString()}</li>
+                                            <li>Start date: {booking?.startDate && new Date(booking.startDate).toDateString()}</li>
+                                            <li>End date: {booking?.endDate && new Date(booking.endDate).toDateString()}</li>
+                                            <li>Hosted by: {booking?.listing?.User?.username}</li>
+                                        </div>
+                                        <div>
+                                            <li>Bathrooms: {booking?.listing?.bathrooms}</li>
+                                            <li>Bedrooms: {booking?.listing?.bedrooms}</li>
+                                            <li>Price: ${booking?.listing?.price} / night</li>
 
+                                        </div>
+                                        <div>
+                                            <li>Address: {booking?.listing?.address}</li>
+                                            <li>City: {booking?.listing?.city}</li>
+                                            <li>State: {booking?.listing?.state}</li>
+                                            <li>Zip code: {booking?.listing?.zipCode}</li>
+                                            <li>Country: {booking?.listing?.country}</li>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                                <button onClick={handleCancelBooking} id={`cancel-${booking?.id}`} className="cancel-booking-button remove-listing-button">Cancel booking</button>
                             </div>
                         </li>
                     ))

@@ -13,6 +13,7 @@ import profilePic from '../../images/t.jpeg'
 import ninja from '../../images/ninja.png'
 import './ProfileButton.css';
 import { removeUserListings } from "../../store/Listings/sessionListings";
+import { removeUsersBookings } from "../../store/bookings/sessionBookings";
 
 
 
@@ -46,6 +47,7 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     dispatch(removeUserListings())
+    dispatch(removeUsersBookings())
     history.push('/')
     setShowLoginModal(false)
     setShowSignupModal(false)
