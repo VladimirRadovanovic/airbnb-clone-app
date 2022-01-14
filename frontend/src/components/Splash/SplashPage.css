@@ -18,8 +18,9 @@
     height: 740px;
     background-image: url('../../images/splash-img4.jpg');
     background-size: cover;
-
-    background-position-y: -70px;
+    margin-top: 30px;
+    background-position: center;
+    /* background-position-y: -70px; */
     border-radius: 25px;
     opacity: 0.9;
     color: white;
@@ -95,7 +96,8 @@ h2 {
 .img2-container {
     display: flex;
     justify-content: center;
-    background-color: rgb(241, 241, 241);
+    background-color: white;
+    margin-bottom: 320px;
 }
 
 .splash-img-container2 {

@@ -84,6 +84,16 @@ module.exports = (sequelize, DataTypes) => {
   Spot.associate = function(models) {
     // associations can be defined here
     Spot.belongsTo(models.User, {foreignKey: 'hostId'})
+    Spot.hasMany(models.Image, {
+      foreignKey: 'spotId',
+      onDelete: 'cascade',
+      hooks: true
+    })
+    Spot.hasMany(models.Booking, {
+      foreignKey: 'spotId',
+      onDelete: 'cascade',
+      hooks: true
+    })
 
   };
   return Spot;

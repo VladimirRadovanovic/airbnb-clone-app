@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import sessionListingsReducer from "./Listings/sessionListings";
 import allListingsReducer from "./Listings/allListings";
+import sessionBookingsReducer from "./bookings/sessionBookings";
 
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   sessionListings: sessionListingsReducer,
   listings: allListingsReducer,
+  bookings: sessionBookingsReducer,
 
 });
 

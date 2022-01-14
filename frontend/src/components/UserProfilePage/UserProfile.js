@@ -8,6 +8,7 @@ import UserListings from "./UserListings/UserListings";
 import './UserProfile.css'
 import profilePlaceholderPic from '../../images/profile-placeholder.png'
 import ninja from '../../images/ninja.png'
+import UserBookings from "./UserBookings/UserBookings";
 
 
 function UserProfile({ user }) {
@@ -34,7 +35,8 @@ function UserProfile({ user }) {
                     <UserListings user={user} />
                 </Route>
                 <Route path='/api/user/profile/bookings'>
-                    <h1>To do bookings</h1>
+                    {/* <h1>To do bookings</h1> */}
+                    <UserBookings />
                 </Route>
                 <Route path='/api/user/profile/reviews'>
                     <h1>To do reviews</h1>

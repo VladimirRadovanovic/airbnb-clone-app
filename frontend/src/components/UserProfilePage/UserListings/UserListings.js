@@ -70,20 +70,20 @@ function UserListings() {
                         <li className="listings-list-item" key={listing.id}>
                             <div className="listing-container">
                                 <div className="listing-image-container">
-                                    <div className="main-image-container">
-                                        <img className="main-image" src={listingImg} alt='listing image' />
+                                    <div className="main-image-container" id='main-image-container-profile'>
+                                        <img className="main-image" src={listing?.Images[0].imageUrl ? listing?.Images[0].imageUrl : listingImg} alt='listing image' />
                                     </div>
-                                    <div className="side-images-container">
-                                        <img className="side-image side-image-1" src={listingImg} alt='listing image' />
-                                        <img className="side-image side-image-2" src={listingImg} alt='listing image' />
-                                        <img className="side-image side-image-3" src={listingImg} alt='listing image' />
-                                        <img className="side-image side-image-4" src={listingImg} alt='listing image' />
+                                    <div className="side-images-container" id='side-image-container-profile'>
+                                        <img className="side-image side-image-1" src={listing?.Images[1].imageUrl ? listing?.Images[1].imageUrl : listingImg} alt='listing image' />
+                                        <img className="side-image side-image-2" src={listing?.Images[2].imageUrl ? listing?.Images[2].imageUrl : listingImg} alt='listing image' />
+                                        <img className="side-image side-image-3" src={listing?.Images[3].imageUrl ? listing?.Images[3].imageUrl : listingImg} alt='listing image' />
+                                        <img className="side-image side-image-4" src={listing?.Images[4].imageUrl ? listing?.Images[4].imageUrl : listingImg} alt='listing image' />
                                     </div>
                                 </div>
                                 <div className="listing-data-container">
                                     <h2 className="title">{listing?.title}</h2>
                                     <p className="description">{listing?.description}</p>
-                                    <p className="created-on"><span>Created on: </span> {listing?.createdAt && new Date(listing.createdAt).toDateString()}</p>
+                                    <p className="created-on"><span>Created on: {listing?.createdAt && new Date(listing.createdAt).toDateString()}</span> </p>
                                     <div className="details-container">
                                         <p><span>Address:</span> {listing?.address}</p>
                                         <p><span>City:</span> {listing?.city}</p>

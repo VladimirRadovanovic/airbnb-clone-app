@@ -7,6 +7,8 @@ import DropdownCombobox from "../DropdownCombobox/DropdownCombobox";
 import { items } from "../DropdownCombobox/utils";
 import { createListing, updateListing } from "../../store/Listings/sessionListings";
 import { createInAllListings } from "../../store/Listings/allListings";
+import upload from '../../images/upload.svg'
+import checkMark from '../../images/check.svg'
 
 
 
@@ -17,16 +19,18 @@ function CreateSpotForm({ setShowModal }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
-    const [title, setTitle] = useState( "");
-    const [address, setAddress] = useState( "");
-    const [city, setCity] = useState( "");
-    let [state, setState] = useState( '');
-    const [zipCode, setZipCode] = useState( "");
-    const [country, setCountry] = useState( "");
-    const [price, setPrice] = useState( "");
-    const [bedrooms, setBedrooms] = useState( '');
-    const [bathrooms, setBathrooms] = useState( '');
-    const [description, setDescription] = useState( "");
+    const [title, setTitle] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    let [state, setState] = useState('');
+    const [zipCode, setZipCode] = useState("");
+    const [country, setCountry] = useState("");
+    const [price, setPrice] = useState("");
+    const [bedrooms, setBedrooms] = useState('');
+    const [bathrooms, setBathrooms] = useState('');
+    const [description, setDescription] = useState("");
+    const [images, setImages] = useState([]);
+    const [showCheckMark, setShowCheckMark] = useState(false)
     const [errors, setErrors] = useState([]);
 
 
@@ -36,13 +40,19 @@ function CreateSpotForm({ setShowModal }) {
     //         setState(spot?.state)
     //     }
     // }, [state])
+    useEffect(() => {
+
+        if (images.length === 5) {
+            setShowCheckMark(true)
+        }
+    }, [images])
 
 
 
     const handleClick = () => {
 
 
-            setShowModal(false)
+        setShowModal(false)
 
     }
 
@@ -50,6 +60,9 @@ function CreateSpotForm({ setShowModal }) {
         e.preventDefault();
 
         setErrors([])
+        if (images.length !== 5) {
+            return setErrors(['Please select five images by holding down the shift key when selecting.'])
+        }
 
         const reset = () => {
             setTitle('')
@@ -62,35 +75,34 @@ function CreateSpotForm({ setShowModal }) {
             setBedrooms('')
             setBathrooms('')
             setDescription('')
+            setImages([])
         }
 
 
 
-            const listing = {
-                title,
-                address,
-                city,
-                state,
-                zipCode,
-                country,
-                price,
-                bedrooms,
-                bathrooms,
-                description
+        const listing = {
+            title,
+            address,
+            city,
+            state,
+            zipCode,
+            country,
+            price,
+            bedrooms,
+            bathrooms,
+            description,
+            images
+        }
+
+
+
+        return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
+            async (res) => {
+                const data = await res.json()
+                if (data && data.errors) setErrors(data.errors)
+
             }
-
-
-
-            return dispatch(createListing(listing)).then(() => reset()).then(() => setShowModal(false)).then(() => history.push('/api/user/profile')).catch(
-                async(res) => {
-                    const data = await res.json()
-                    if (data && data.errors) setErrors(data.errors)
-
-                }
-            ).finally(() => {
-                // console.log(data?.spot, 'in finally************')
-                // if (data.spot) dispatch(createInAllListings(listing))
-            })
+        )
 
 
 
@@ -98,6 +110,19 @@ function CreateSpotForm({ setShowModal }) {
     const stateSetter = (x) => {
         setState(x)
     }
+
+    const updateFiles = (e) => {
+        // const imagesArr =[]
+
+        const files = e.target.files;
+        // if (imagesArr.length === 5) {
+        setImages(files);
+        // setShowCheckMark(true)
+        // }
+        // else {
+        //     imagesArr.push(files)
+        // }
+    };
 
     return (
         <>
@@ -142,7 +167,7 @@ function CreateSpotForm({ setShowModal }) {
                         />
 
 
-                        <DropdownCombobox  stateSetter={stateSetter} />
+                        <DropdownCombobox stateSetter={stateSetter} />
                         <input
                             placeholder="Zip code *"
                             // disabled = {spot !== undefined}
@@ -198,6 +223,29 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setDescription(e.target.value)}
                             required
                         />
+                        {/* <input
+                            type="file"
+                            name="filefield"
+                            multiple
+                            onChange={updateFiles} /> */}
+                            {showCheckMark ? <div className="check-container"><img className="check-image" src={checkMark} alt='success' /></div> :
+                        <div className="file-input-container">
+                            <label className="image-upload-container">
+                                <div className="inside-container">
+                                    <input
+                                    className="signup-image-upload"
+                                    type="file"
+                                    onChange={updateFiles}
+                                    multiple
+                                    name="filefield"
+                                     />
+                                    <img className="upload-logo" src={upload} alt='upload icon' />
+                                    <span className="upload-text">Upload five photos</span>
+                                </div>
+                            </label>
+                        </div>
+
+                            }
                     </div>
                     <button className="create-listing-button" type="submit">Create listing</button>
 

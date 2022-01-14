@@ -1,0 +1,92 @@
+.users-bookings-list {
+    margin-bottom: 300px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.single-booking-container {
+    display: flex;
+    flex-direction: row;
+    margin-right: 90px;
+    margin-left: 35px;
+    border: 1px solid lightgray;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.booking-list-item ul li{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: rgb(107, 107, 107);
+    font-family: arial, sans-serif;
+    ;
+}
+
+.bookings-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    height: 250px;
+}
+
+.bookings-image-container img {
+    border-radius: 18px;
+}
+
+.bookings-title {
+    font-size: 25px;
+    font-weight: bolder;
+}
+.bookings-data-container {
+    padding-left: 20px;
+    display: flex;
+
+    flex-wrap: wrap;
+    /* align-items: center; */
+
+}
+.bookings-data-container li {
+padding: 14px 25px;
+}
+.bookings-title {
+    display: block;
+}
+
+.new-data-container {
+    display: flex;
+
+}
+
+.align-container {
+    display: flex;
+    flex-direction: row!important;
+}
+
+.cancel-booking-button {
+    margin-left: 165px;
+    margin-top: 165px;
+}
+
+.bookings-data-container span {
+    font-weight: bolder;
+}
+
+.bookings-data-container div {
+    padding-left: 30px;
+}
+
+
+.bookings-image {
+    height: 260px;
+    width: 330px;
+}
+
+/* .bookings-list-item {
+    margin-top: 20px;
+    margin-bottom: 70px;
+} */

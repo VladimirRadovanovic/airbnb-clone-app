@@ -2,28 +2,39 @@
     width: 100%;
     /* height: 400px; */
     display: flex;
+    height: 500px;
 }
 .main-image-container {
     width: 69%!important;
 }
 
+#main-image-container-profile {
+    width: 50%!important;
+    height: 100%;
+}
+
 .side-image-container {
     width: 50%!important;
 }
+#side-image-container-profile {
+    width: 50%!important;
+    height: 100%;
+}
 .main-image {
     width: 100%;
-    height: 440px;
+    height: 100%;
     border-top-left-radius: 18px;
     border-bottom-left-radius: 18px;
 }
 
 .side-image {
     width: 50%;
-    height: 218px;
+    height: 49.7%;
     /* margin: 0!important; */
 }
 .listing-container {
     width: 100%;
+    /* margin-bottom: 300px; */
 }
 
 .listings-list-item {
@@ -40,6 +51,7 @@
 
 .listings-list {
     padding: 20px 30px;
+    margin-bottom: 300px;
 }
 
 .side-image-1 {

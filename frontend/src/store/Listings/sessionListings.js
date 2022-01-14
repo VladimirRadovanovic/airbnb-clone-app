@@ -69,6 +69,7 @@ export const updateListing = (data) => async(dispatch) => {
     const updatedListing = await response.json()
     if (updatedListing.spot) {
         updatedListing.spot.User = updatedListing.user
+        updatedListing.spot.Images = updatedListing.images
         dispatch(updateUserListing(updatedListing.spot))
         dispatch(updateInAllListings(updatedListing.spot))
     }
@@ -109,10 +110,33 @@ export const createListing = (data) => async (dispatch) => {
         data.state = data.state[0]
     }
 
+    const formData = new FormData();
+    formData.append('title', data.title)
+    formData.append('address', data.address)
+    formData.append('city', data.city)
+    formData.append('state', data.state)
+    formData.append('zipCode', data.zipCode)
+    formData.append('country', data.country)
+    formData.append('price', data.price)
+    formData.append('bedrooms', data.bedrooms)
+    formData.append('bathrooms', data.bathrooms)
+    formData.append('description', data.description)
+
+    if (data.images && data.images.length !== 0) {
+        for (var i = 0; i < data.images.length; i++) {
+          formData.append("images", data.images[i]);
+        }
+      }
+
+
+
 
     const response = await csrfFetch('/api/user/listings/new', {
         method: 'POST',
-        body: JSON.stringify(data)
+        headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: formData,
     })
 
     const listingData = await response.json()
@@ -120,7 +144,9 @@ export const createListing = (data) => async (dispatch) => {
 
     if (listingData.spot) {
         listingData.spot.User = listingData.user
-        console.log(listingData.spot, '**********listing data spot*************')
+        listingData.spot.Images = listingData.images
+
+
         dispatch(addListing(listingData.spot))
         dispatch(createInAllListings(listingData.spot))
     }
@@ -150,6 +176,7 @@ const sessionListingsReducer = (state = {}, action) => {
             });
             return newState
         case CREATE_LISTING:
+
             newState = { ...state, [action.spot.id]: action.spot }
             return newState
         default:

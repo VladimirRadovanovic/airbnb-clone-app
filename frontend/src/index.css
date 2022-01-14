@@ -6,11 +6,17 @@
 *::after {
   box-sizing: border-box;
   /* overflow-x: hidden; */
+  /* overflow-x: hidden; */
 }
 
 body {
-    padding: 0;
-    margin: 0;
+    min-height: 100vh!important;
+    padding: 0px!important;
+    margin: 0px!important;
+
+
+    /* position: relative; */
+
 }
 
 img {
@@ -18,11 +24,11 @@ img {
 }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
+    /* display: flex;
+    flex-direction: column; */
+    /* min-height: 100vh; */
+    padding: 0px!important;
+    margin: 0px!important;
 }
 
 /* .black-box {
@@ -212,4 +218,17 @@ h2 {
     /* margin-left: 10px; */
     width: 371px!important;
     margin-top: -2px;
+}
+/* main {
+    position: relative;
+    min-height: 100vh;
+} */
+
+.main-page-container {
+    position: relative;
+    min-height: 100vh;
+    padding: 0px!important;
+    margin: 0px!important;
+    display: flex;
+    flex-direction: column;
 }

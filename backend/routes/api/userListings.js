@@ -6,7 +6,8 @@ const { check, validationResult } = require('express-validator');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 const { Op } = require("sequelize");
-const { Spot, User } = require('../../db/models');
+const { Spot, User, Image } = require('../../db/models');
+const { multipleMulterUpload, multiplePublicFileUpload } = require('../../awsS3')
 
 
 const router = express.Router();
@@ -67,50 +68,104 @@ const listingValidator = [
 ];
 
 // create listing route
-router.post('/new', listingValidator, requireAuth, asyncHandler(async (req, res) => {
+router.post('/new',
+    multipleMulterUpload('images'),
+    listingValidator,
+    requireAuth,
+    asyncHandler(async (req, res) => {
 
-    const { id } = req.user;
-    const {
-        title,
-        address,
-        city,
-        state,
-        zipCode,
-        country,
-        price,
-        bedrooms,
-        bathrooms,
-        description
-    } = req.body
+        const { id } = req.user;
+        const {
+            title,
+            address,
+            city,
+            state,
+            zipCode,
+            country,
+            price,
+            bedrooms,
+            bathrooms,
+            description
+        } = req.body
+        //could be req.file
 
 
-    // price = Number(price.slice(1))
-    // state = state[0]
+        const listingImagesUrl = await multiplePublicFileUpload(req.files)
 
-    const user = await User.findByPk(id)
 
-    const spot = Spot.build({
-        title,
-        address,
-        city,
-        state,
-        zipCode,
-        country,
-        price,
-        bedrooms,
-        bathrooms,
-        description,
-        hostId: id
-    })
+        // price = Number(price.slice(1))
+        // state = state[0]
 
-    await spot.save()
-    // spot.user = user
+        const user = await User.findByPk(id)
 
-    return res.json({ spot, user })
-}))
+        const spot = Spot.build({
+            title,
+            address,
+            city,
+            state,
+            zipCode,
+            country,
+            price,
+            bedrooms,
+            bathrooms,
+            description,
+            hostId: id
+        })
+
+        await spot.save()
+        // spot.user = user
+        // let images = null;
+        // listingImagesUrl.forEach(async(listingImageUrl) => {
+        //     if (!listingImageUrl) listingImageUrl === null
+        //     const image = await Image.build({
+        //         imageUrl: listingImageUrl,
+        //         spotId: spot.id
+        //     })
+        //     await image.save()
+        // }).then(async() => {
+
+        //     const listingId = spot.id
+        //      images = await Image.findAll({
+        //         where: {
+        //             spotId: listingId
+        //         }
+        //     })
+
+        // })
+        let images = null
+        const imageBuilder = async (listingImagesUrl) => {
+            // listingImagesUrl.length
+
+            for (let i = 0; i < 5; i++) {
+                let listingImageUrl = listingImagesUrl[i]
+
+                if (!listingImageUrl) listingImageUrl === null
+
+
+                const image = await Image.build({
+                    imageUrl: listingImageUrl,
+                    spotId: spot.id
+                })
+                await image.save()
+            }
+
+            images = await Image.findAll({
+                where: {
+                    spotId: spot.id
+                }
+            })
+        }
+
+        await imageBuilder(listingImagesUrl)
+
+        // i thing i will have to include the images with the spot
+
+
+        return res.json({ spot, user, images })
+    }))
 
 // get user listings route
-
+// include model images wit this.probably
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
     const { id } = req.user
     const spots = await Spot.findAll({
@@ -118,10 +173,15 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
         where: {
             hostId: id,
         },
-            include: {
-                    model: User,
-                    // as: 'user'
+        include: [
+            {
+                model: User,
+                // as: 'user'
+            },
+            {
+                model: Image
             }
+        ]
     })
 
 
@@ -160,8 +220,13 @@ router.put('/update', requireAuth, listingValidator, asyncHandler(async (req, re
 
     const spot = await Spot.findByPk(spotId)
     const user = await User.findByPk(id)
+    const images = await Image.findAll({
+        where: {
+            spotId
+        }
+    })
 
-    console.log(user, 'user in update ********************')
+
 
     await spot.update({
         title,
@@ -176,7 +241,7 @@ router.put('/update', requireAuth, listingValidator, asyncHandler(async (req, re
         description,
     })
 
-    return res.json({ spot, user })
+    return res.json({ spot, user, images })
 }))
 
 
