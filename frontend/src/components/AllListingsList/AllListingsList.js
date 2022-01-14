@@ -36,18 +36,18 @@ function AllListingsList({user}) {
                 <div className="left-container">
                 <ul className="all-listings-list">
                     {listingsList.map(listing => (
-                        <li className="all-listings-list-item" key={listing.id}>
+                        <li className="all-listings-list-item" key={listing?.id}>
 
                             <div className="all-listings-img-container">
-                            <img className="all-listings-img" src={listing?.Images[0].imageUrl ? listing?.Images[0].imageUrl : placeholderImg} alt='listing photo' />
+                            <img className="all-listings-img" src={listing?.Images[0]?.imageUrl ? listing?.Images[0]?.imageUrl : placeholderImg} alt='listing photo' />
                             </div>
                             <div className="all-listings-data-container">
-                            <span className="data">{listing.city}, {listing.state ? listing.state : listing.country}</span>
+                            <span className="data">{listing?.city}, {listing?.state ? listing?.state : listing?.country}</span>
                             {/* <span>{listing.state}</span> */}
-                            <span className="price">${listing.price} / night</span>
+                            <span className="price">${listing?.price} / night</span>
                             </div>
                             <div className="view-listings-container">
-                            <NavLink to={`/api/listings/${listing.id}`}>View listing</NavLink>
+                            <NavLink to={`/api/listings/${listing?.id}`}>View listing</NavLink>
                             </div>
                             </li>
                     ))}

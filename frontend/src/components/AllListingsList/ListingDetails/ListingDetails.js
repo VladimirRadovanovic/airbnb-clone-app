@@ -28,13 +28,13 @@ function ListingDetails() {
                 <div className="listing-container">
                     <div className="listing-image-container listing-detail-img-container">
                         <div className="main-image-container detail-main-img-container">
-                            <img className="main-image detail-main-img" src={listing?.Images[0].imageUrl ? listing?.Images[0].imageUrl : listingImg} alt='listing image' />
+                            <img className="main-image detail-main-img" src={listing?.Images[0]?.imageUrl ? listing?.Images[0]?.imageUrl : listingImg} alt='listing image' />
                         </div>
                         <div className="side-images-container detail-side-img-container">
-                            <img className="side-image side-image-1 detail-side-img" src={listing?.Images[1].imageUrl ? listing?.Images[1].imageUrl : listingImg} alt='listing image' />
-                            <img className="side-image side-image-2 detail-side-img" src={listing?.Images[2].imageUrl ? listing?.Images[2].imageUrl : listingImg} alt='listing image' />
-                            <img className="side-image side-image-3 detail-side-img" src={listing?.Images[3].imageUrl ? listing?.Images[3].imageUrl : listingImg} alt='listing image' />
-                            <img className="side-image side-image-4 detail-side-img" src={listing?.Images[4].imageUrl ? listing?.Images[4].imageUrl : listingImg} alt='listing image' />
+                            <img className="side-image side-image-1 detail-side-img" src={listing?.Images[1]?.imageUrl ? listing?.Images[1]?.imageUrl : listingImg} alt='listing image' />
+                            <img className="side-image side-image-2 detail-side-img" src={listing?.Images[2]?.imageUrl ? listing?.Images[2]?.imageUrl : listingImg} alt='listing image' />
+                            <img className="side-image side-image-3 detail-side-img" src={listing?.Images[3]?.imageUrl ? listing?.Images[3]?.imageUrl : listingImg} alt='listing image' />
+                            <img className="side-image side-image-4 detail-side-img" src={listing?.Images[4]?.imageUrl ? listing?.Images[4]?.imageUrl : listingImg} alt='listing image' />
                         </div>
                     </div>
                     <div className="listing-data-container">
