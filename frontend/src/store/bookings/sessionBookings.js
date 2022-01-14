@@ -13,9 +13,9 @@ const addBooking = (booking) => {
 
 
 export const bookAStay = (booked) => async(dispatch) => {
-    const response = await csrfFetch('api/user/bookings/new', {
+    const response = await csrfFetch('/api/user/bookings/new', {
         method: 'POST',
-        body: JSON.stringify(booked)
+        body: JSON.stringify(booked[0])
     })
     const data = await response.json()
 

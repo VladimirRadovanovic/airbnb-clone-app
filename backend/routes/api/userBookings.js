@@ -2,6 +2,8 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
+
+const { handleValidationErrors } = require('../../utils/validation');
 const {Booking} = require('../../db/models');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { Op } = require("sequelize");
@@ -10,7 +12,23 @@ const { Op } = require("sequelize");
 
 const router = express.Router();
 
+const bookingsValidator = [
+    check('startDate')
+    .exists({checkFalsy: true})
+    .withMessage('Please select a start date')
+    .isAfter()
+    .withMessage('Date can not be in the past.'),
+    check('endDate')
+    .exists({checkFalsy: true})
+    .withMessage('Please select the end date')
+    .isAfter()
+    .withMessage('Date can not be in the past.'),
+
+    handleValidationErrors
+]
+
 router.post('/new',
+bookingsValidator,
 requireAuth,
 asyncHandler(async(req,res) => {
     const { id } = req.user;

@@ -4,9 +4,9 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-
-
 import { DateRange } from 'react-date-range';
+
+import { bookAStay } from '../../store/bookings/sessionBookings';
 
 // class MyComponent extends Component {
 //   handleSelect(ranges){
@@ -54,7 +54,8 @@ function MyCalendar() {
 
     console.log(state)
     const handleBooking = () => {
-        state.listingId = id
+        state[0].listingId = id
+        console.log(state, 'use params id')
         return dispatch(bookAStay(state)).then(() => history.push('/api/user/profile')).catch(
             async (res) => {
                 const data = await res.json()
